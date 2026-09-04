@@ -1,0 +1,266 @@
+@import "tailwindcss";
+
+/* Shared height for home “Numbers” (Performance) + global CTA band */
+:root {
+  --home-band-height: min(560px, 88vh);
+}
+
+@theme {
+  --color-primary: #008FFF;
+  --color-magenta: #00C9FF;
+  --color-purple: #432172;
+  --color-text-primary: #FFFFFF;
+  --color-text-secondary: #4B5563;
+  --color-bg-default: #0B1121;
+  --color-bg-section: #F7F9FC;
+  --color-bg-footer: #0F172A;
+  --font-noto-sans: "Noto Sans", system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-noto-sans);
+    scroll-behavior: smooth;
+    overflow-y: scroll;
+    overflow-x: clip;
+    cursor: default;
+    /* Force vertical scrollbar to prevent layout shift */
+  }
+
+  body {
+    @apply m-0 p-0 text-[#0F0F0F] bg-[#FFFFFF] antialiased;
+    overflow-x: clip;
+    font-size: 16px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    cursor: default;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-noto-sans);
+    font-size: 2.5rem;
+    line-height: 1.15;
+  }
+
+  p,
+  span,
+  label,
+  li,
+  a,
+  button,
+  input,
+  textarea,
+  select {
+    font-family: var(--font-noto-sans);
+    font-size: 16px;
+  }
+
+  /*
+   * Cursor: no I-beam over normal copy (inherits default from html/body).
+   * Pointer on obvious controls; children inherit (e.g. text inside <a>).
+   */
+  :where(a[href],
+    button:not(:disabled),
+    [role='button']:not([aria-disabled='true']),
+    summary,
+    label[for],
+    select:not(:disabled),
+    input[type='button'],
+    input[type='submit'],
+    input[type='reset'],
+    input[type='checkbox'],
+    input[type='radio'],
+    input[type='file'],
+    .cursor-pointer) {
+    cursor: pointer;
+  }
+}
+
+/* ── Navbar CTA button ─────────────────────────────────────────── */
+.glow-cta {
+  display: inline-block;
+  cursor: pointer;
+  border-radius: 9999px;
+  border: 1.5px solid #00C9FF;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+  background: transparent;
+}
+
+.glow-cta:hover {
+  border-color: transparent;
+  background: linear-gradient(#fff, #fff) padding-box,
+    linear-gradient(135deg, #008FFF, #00C9FF, #432172) border-box;
+  box-shadow: 0 5px 14px -4px rgba(0, 201, 255, 0.3);
+}
+
+.glow-cta-inner {
+  border-radius: 9999px;
+  background: linear-gradient(135deg, #008FFF, #00C9FF);
+  color: white;
+  font-weight: 600;
+  padding: 8px 22px;
+  font-size: 0.9rem;
+  transition: background 0.25s ease, color 0.25s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  white-space: nowrap;
+  font-family: var(--font-noto-sans);
+}
+
+.glow-cta:hover .glow-cta-inner {
+  background: transparent;
+  color: #00C9FF;
+}
+
+@layer utilities {
+  .text-gradient-primary {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-magenta));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-gradient-secondary {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .bg-gradient-primary {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-magenta));
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+/* ── Enterprise Header Nav Links ─────────────────────────────────────────── */
+.enterprise-nav-link {
+  position: relative;
+  color: #0F0F0F;
+  font-weight: 500;
+  font-size: 17px;
+  text-decoration: none;
+  padding-bottom: 6px;
+  transition: color 0.2s ease-out;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.enterprise-nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 1.5px;
+  background-color: #2563EB;
+  transition: width 0.2s ease-out;
+}
+
+.enterprise-nav-link:hover {
+  color: #2563EB;
+}
+
+.enterprise-nav-link:hover::after {
+  width: 50%;
+}
+
+.enterprise-nav-link.active {
+  color: #08137C;
+  font-weight: 500;
+}
+
+.enterprise-nav-link.active::after {
+  width: 50%;
+  height: 1.7px;
+  background-color: #08137C;
+}
+
+/* ── Enterprise CTA button ─────────────────────────────────────────── */
+.enterprise-cta {
+  background: linear-gradient(to right, #2555eb, #2575eb);
+  color: #FFFFFF;
+  font-weight: 500;
+  font-size: 17px;
+  border-radius: 5px;
+  border: none;
+  padding: 4px 21px;
+  /* adjusted by 1px to offset removed border width */
+  transition: all 0.2s ease-out;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+}
+
+.enterprise-cta:hover {
+  color: #FFFFFF;
+  transform: scale(1.02);
+}
+
+/* CTA premium gradient shift (optional, subtle) */
+@keyframes ctaGradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.cta-gradient-shift {
+  background-size: 200% 200%;
+  animation: ctaGradientShift 4s ease infinite;
+}
+
+/* ContactFormSection: ::placeholder does not always inherit utility font-size (esp. WebKit / iOS). */
+.contact-form-field::placeholder,
+.contact-form-field::-webkit-input-placeholder,
+.contact-form-field::-moz-placeholder {
+  font-size: 16px !important;
+  line-height: normal !important;
+  opacity: 1 !important;
+}
+
+/* Contact page (/contact): 15px inputs + placeholders */
+.contact-page-form .contact-form-field::placeholder,
+.contact-page-form .contact-form-field::-webkit-input-placeholder,
+.contact-page-form .contact-form-field::-moz-placeholder {
+  font-size: 15px !important;
+}
+
+/* ── Animated Gradient Line ─────────────────────────────────────────── */
+@keyframes gradientMove {
+  0% {
+    transform: translateX(-30%);
+  }
+
+  100% {
+    transform: translateX(30%);
+  }
+}
+
+.animate-gradient-x {
+  animation: gradientMove 6s linear infinite alternate;
+}

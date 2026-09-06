@@ -412,25 +412,25 @@ function ConnectedOperationsVisual() {
   return (
     <div className="grid gap-6 md:grid-cols-[1.4fr_1fr]">
       <div className="space-y-5">
-        <div className="rounded-[5px] border border-indigo-200 bg-gradient-to-br from-indigo-50 to-indigo-100/50 p-6">
-          <div className="text-[12px] font-bold uppercase tracking-widest text-indigo-900 mb-2">Enterprise Command Center</div>
+        <div className="rounded-[5px] border border-gray-200 bg-white p-6 hover:shadow-md transition-shadow">
+          <div className="text-[12px] font-bold uppercase tracking-widest text-gray-500 mb-2">Enterprise Command Center</div>
           <div className="text-[18px] font-bold text-[#122a66] mb-4">One Platform. Total Control.</div>
           <p className="text-[13px] text-gray-700 leading-relaxed">
             All departments, processes, and data points connected through a single unified system — eliminating silos and enabling real-time control.
           </p>
           
           <div className="grid grid-cols-3 gap-3 mt-5">
-            <div className="rounded-[5px] bg-white p-4 text-center border border-indigo-100 hover:border-indigo-300 transition-colors">
+            <div className="rounded-[5px] bg-gray-50 p-4 text-center border border-gray-200 hover:border-gray-300 transition-colors">
               <div className="text-[11px] text-gray-600 font-bold uppercase tracking-wider">Status</div>
               <div className="mt-2 text-[18px] font-bold text-[#10B981] flex items-center justify-center gap-1">
                 <span>✓</span> Live
               </div>
             </div>
-            <div className="rounded-[5px] bg-white p-4 text-center border border-indigo-100 hover:border-indigo-300 transition-colors">
+            <div className="rounded-[5px] bg-gray-50 p-4 text-center border border-gray-200 hover:border-gray-300 transition-colors">
               <div className="text-[11px] text-gray-600 font-bold uppercase tracking-wider">Modules</div>
               <div className="mt-2 text-[18px] font-bold text-[#468BEF]">11/11</div>
             </div>
-            <div className="rounded-[5px] bg-white p-4 text-center border border-indigo-100 hover:border-indigo-300 transition-colors">
+            <div className="rounded-[5px] bg-gray-50 p-4 text-center border border-gray-200 hover:border-gray-300 transition-colors">
               <div className="text-[11px] text-gray-600 font-bold uppercase tracking-wider">Sync</div>
               <div className="mt-2 text-[18px] font-bold text-[#7C3AED]">98%</div>
             </div>

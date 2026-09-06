@@ -1,28 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FaInstagram, FaLinkedinIn, FaYoutube } from 'react-icons/fa';
-import getInTouch from '../../assets/shapes/get-in-touch.svg';
-
-/** Light drop-shadow on img — follows SVG alpha; matches CTASection. */
-const CTA_IMG_SHADOW =
-  'bg-transparent [filter:drop-shadow(0_1px_3px_rgb(15_23_42/0.12))_drop-shadow(0_4px_10px_rgb(15_23_42/0.07))]';
-
-/** ~+1px vs h-[30px] — matches CTASection / Navbar CTA motion. */
-const CTA_SVG_LINK =
-  'inline-block w-fit origin-center leading-none transition-transform duration-200 ease-out hover:scale-[calc(31/30)] active:scale-[0.98] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2563EB]';
-
-const SOCIAL_LINKS = [
-  { href: '#', label: 'LinkedIn', Icon: FaLinkedinIn },
-  { href: '#', label: 'YouTube', Icon: FaYoutube },
-  { href: '#', label: 'Instagram', Icon: FaInstagram },
-];
-
-const COL_HEAD = 'mb-2 text-lg font-semibold text-[#515151] md:text-[18px]';
-const LINK =
-  'block text-[14px] leading-snug text-[#a8a8a8] hover:text-[#515151] md:text-[15px]';
-
-/** `index.css` @layer base sets `a, span { font-size: 16px }` — override with important. */
-const LEGAL_TEXT = '!text-[13px] leading-normal text-[#b7b7b7]';
+import { ArrowUpRight, Mail } from 'lucide-react';
 
 const SOLUTIONS = [
   { label: 'ERP Implementation', to: '/services' },
@@ -40,127 +19,157 @@ const INDUSTRIES = [
   { label: 'HR Services', to: '/industries' },
 ];
 
-/** Layered bands below the card — matches footer.svg rects (cls-16 → cls-13). */
-function FooterBottomBands() {
-  return (
-    <div className="flex w-full flex-col gap-[2px]" aria-hidden>
-      <div className="h-[3px] w-full bg-[#a1acff]/30" />
-      <div className="h-[5px] w-full bg-[#a1acff]/50" />
-      <div className="h-2 w-full bg-[#a1acff]/70" />
-      <div className="h-4 w-full bg-[#a1acff] md:h-[15px]" />
-    </div>
-  );
-}
+const SOCIAL_LINKS = [
+  {
+    href: 'https://www.linkedin.com',
+    label: 'LinkedIn',
+    Icon: FaLinkedinIn,
+    color: 'hover:text-[#0077B5] hover:bg-[#0077B5]/10 hover:border-[#0077B5]/30',
+  },
+  {
+    href: 'https://www.youtube.com',
+    label: 'YouTube',
+    Icon: FaYoutube,
+    color: 'hover:text-[#FF0000] hover:bg-[#FF0000]/10 hover:border-[#FF0000]/30',
+  },
+  {
+    href: 'https://www.instagram.com',
+    label: 'Instagram',
+    Icon: FaInstagram,
+    color: 'hover:text-[#E4405F] hover:bg-[#E4405F]/10 hover:border-[#E4405F]/30',
+  },
+];
 
 export default function Footer() {
+  const currentYear = new Date().getFullYear();
+
   return (
-    <footer className="relative z-10 w-full bg-[#ebebff]">
-      <div
-        className="pointer-events-none h-px w-full shrink-0"
-        style={{
-          background: 'linear-gradient(90deg, #c2e3ff 0%, #1e82e6 50%, #c2e3ff 100%)',
-        }}
-        aria-hidden
-      />
-      {/* Same horizontal inset as Navbar: `px-4 lg:px-[80px]` */}
-      <div className="px-4 pb-5 pt-5 lg:px-[80px] lg:pb-6 lg:pt-6">
-        <div className="flex flex-col overflow-hidden rounded-[5px] border-[0.5px] border-solid border-[#97a8f2] bg-white shadow-sm">
-          <div className="grid grid-cols-1 gap-4 px-4 py-4 sm:grid-cols-2 sm:gap-0 sm:px-5 sm:py-4 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.95fr)_minmax(0,0.95fr)_minmax(0,0.95fr)] lg:px-6 lg:py-5">
-            <div className="flex flex-col justify-start sm:border-solid sm:border-[#dddddd]/50 sm:border-r-[0.5px] sm:pr-4 lg:pr-5">
-              <Link to="/" className="mb-2 flex items-center gap-2">
-                <img src="/idms_logo.svg" alt="IDMS Infotech" className="h-12 w-auto md:h-[52px]" />
-              </Link>
-              <p className="mb-1 text-base font-semibold leading-tight text-[#3a4b87] md:text-[17px]">
-                Driving Intelligent Growth
-              </p>
-              <p className="mb-3 max-w-none text-[15px] leading-relaxed text-[#a8a8a8] md:text-[15px] whitespace-nowrap">
-                Smart ERP built for real-world operations.
-              </p>
-              <Link to="/contact" aria-label="Get in Touch" className={CTA_SVG_LINK}>
-                <img
-                  src={getInTouch}
-                  alt=""
-                  width={183}
-                  height={53}
-                  className={`h-[33px] w-auto ${CTA_IMG_SHADOW}`}
-                  decoding="async"
-                />
+    <footer className="relative z-10 w-full bg-white border-t border-slate-200/80 overflow-hidden">
+      <div className="relative z-10 max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-[80px] pt-12 sm:pt-16 pb-8 sm:pb-12">
+        {/* Main Grid Content */}
+        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-12 lg:gap-8 pb-10 border-b border-slate-200/70">
+          
+          {/* Col 1: Brand Info */}
+          <div className="flex flex-col lg:col-span-4 lg:pr-8">
+            <Link to="/" className="mb-4 inline-block">
+              <img src="/idms_logo.svg" alt="IDMS Infotech" className="h-10 w-auto sm:h-12" />
+            </Link>
+            <h3 className="!text-[17px] font-bold text-[#0B0F19] tracking-tight mb-2">
+              Driving Intelligent Growth
+            </h3>
+            <p className="!text-[14px] text-[#64748B] leading-relaxed mb-6 max-w-sm">
+              Smart ERP built for real-world operations, eliminating silos and enabling real-time enterprise control.
+            </p>
+            
+            <div>
+              <Link
+                to="/contact"
+                className="group inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#2563EB] hover:bg-[#1D4ED8] text-white !text-[14px] font-semibold tracking-wide shadow-[0_4px_14px_rgba(37,99,235,0.25)] hover:shadow-[0_6px_18px_rgba(37,99,235,0.35)] hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
+              >
+                <span>Get in Touch</span>
+                <ArrowUpRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </Link>
             </div>
+          </div>
 
-            <div className="sm:border-solid sm:border-[#dddddd]/50 sm:border-r-[0.5px] sm:pl-4 lg:pl-6">
-              <p className={COL_HEAD}>Solutions</p>
-              <ul className="space-y-2.5">
-                {SOLUTIONS.map(({ label, to }) => (
-                  <li key={label}>
-                    <Link to={to} className={LINK}>
-                      {label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
+          {/* Col 2: Solutions */}
+          <div className="lg:col-span-3">
+            <p className="!text-[15px] font-bold text-[#0B0F19] tracking-tight mb-4">
+              Solutions
+            </p>
+            <ul className="space-y-3">
+              {SOLUTIONS.map(({ label, to }) => (
+                <li key={label}>
+                  <Link
+                    to={to}
+                    className="!text-[14px] text-[#64748B] hover:text-[#2563EB] hover:translate-x-0.5 transition-all duration-150 inline-block"
+                  >
+                    {label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-            <div className="sm:border-solid sm:border-[#dddddd]/50 sm:border-r-[0.5px] sm:pl-4 lg:pl-6">
-              <p className={COL_HEAD}>Industries</p>
-              <ul className="space-y-2.5">
-                {INDUSTRIES.map(({ label, to }) => (
-                  <li key={label}>
-                    <Link to={to} className={LINK}>
-                      {label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
+          {/* Col 3: Industries */}
+          <div className="lg:col-span-3">
+            <p className="!text-[15px] font-bold text-[#0B0F19] tracking-tight mb-4">
+              Industries
+            </p>
+            <ul className="space-y-3">
+              {INDUSTRIES.map(({ label, to }) => (
+                <li key={label}>
+                  <Link
+                    to={to}
+                    className="!text-[14px] text-[#64748B] hover:text-[#2563EB] hover:translate-x-0.5 transition-all duration-150 inline-block"
+                  >
+                    {label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-            <div className="sm:pl-4 lg:pl-6">
-              <p className={COL_HEAD}>Connect with Us</p>
-              <ul className="space-y-2.5">
-                {SOCIAL_LINKS.map(({ href, label, Icon }) => (
+          {/* Col 4: Connect with Us */}
+          <div className="lg:col-span-2 flex flex-col justify-between">
+            <div>
+              <p className="!text-[15px] font-bold text-[#0B0F19] tracking-tight mb-4">
+                Connect with Us
+              </p>
+              <ul className="space-y-2.5 mb-6">
+                {SOCIAL_LINKS.map(({ href, label, Icon, color }) => (
                   <li key={label}>
                     <a
                       href={href}
-                      className={`group ${LINK} flex items-center gap-2.5`}
-                      {...(href.startsWith('http')
-                        ? { target: '_blank', rel: 'noopener noreferrer' }
-                        : {})}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group inline-flex items-center gap-2.5 !text-[14px] text-[#64748B] hover:text-[#0B0F19] transition-colors py-1"
                     >
-                      <Icon
-                        className="h-[15px] w-[15px] shrink-0 text-[#a8a8a8] md:h-4 md:w-4 group-hover:text-[#515151]"
-                        aria-hidden
-                      />
-                      {label}
+                      <span className={`w-8 h-8 rounded-lg border border-slate-200/80 bg-slate-50 flex items-center justify-center transition-all ${color}`}>
+                        <Icon className="h-4 w-4" />
+                      </span>
+                      <span className="font-medium group-hover:text-[#0B0F19] transition-colors">{label}</span>
                     </a>
                   </li>
                 ))}
               </ul>
             </div>
+
+            <div className="space-y-1.5 pt-2 text-[#64748B] !text-[13px]">
+              <a
+                href="mailto:info@idmsinfotech.com"
+                className="flex items-center gap-2 text-[#64748B] hover:text-[#2563EB] transition-colors"
+              >
+                <Mail className="w-3.5 h-3.5 text-[#2563EB]" />
+                <span>info@idmsinfotech.com</span>
+              </a>
+            </div>
           </div>
 
-          <div className="flex flex-col">
-            <div className="px-4 pt-0 sm:px-5 lg:px-6">
-              <div className="h-[0.5px] w-full bg-[#dddddd]/50" aria-hidden />
-            </div>
-            <div className="flex flex-col items-center justify-between gap-2 px-4 py-3 sm:flex-row sm:px-5 lg:px-6">
-              <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 sm:justify-start">
-                <Link to="/privacy-policy" className={`${LEGAL_TEXT} hover:text-[#515151]`}>
-                  Privacy Policy
-                </Link>
-                <span className="h-3 w-[0.5px] shrink-0 bg-[#dddddd]/50" aria-hidden />
-                <Link to="/terms" className={`${LEGAL_TEXT} hover:text-[#515151]`}>
-                  Terms of Use
-                </Link>
-              </div>
-              <span className={`text-center sm:text-right ${LEGAL_TEXT}`}>
-                © 2026 IDMS Infotech Private Limited. All rights reserved.
-              </span>
-            </div>
-          </div>
         </div>
-      </div>
 
-      <FooterBottomBands />
+        {/* Bottom Row */}
+        <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 !text-[13px] text-[#94A3B8]">
+          <div className="flex flex-wrap items-center gap-4 text-[#64748B]">
+            <Link to="/contact" className="hover:text-[#0B0F19] transition-colors">
+              Privacy Policy
+            </Link>
+            <span className="h-3 w-px bg-slate-200" aria-hidden />
+            <Link to="/contact" className="hover:text-[#0B0F19] transition-colors">
+              Terms of Use
+            </Link>
+            <span className="h-3 w-px bg-slate-200" aria-hidden />
+            <Link to="/contact" className="hover:text-[#0B0F19] transition-colors">
+              Security
+            </Link>
+          </div>
+
+          <p className="text-[#64748B] text-center sm:text-right">
+            © {currentYear} IDMS Infotech Private Limited. All rights reserved.
+          </p>
+        </div>
+
+      </div>
     </footer>
   );
 }

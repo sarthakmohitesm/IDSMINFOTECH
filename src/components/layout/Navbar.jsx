@@ -191,7 +191,7 @@ export default function Navbar() {
 
               <Link
                 to="/contact"
-                className="group inline-flex items-center justify-center gap-2 px-5 py-2 xl:px-6 xl:py-2.5 rounded-full bg-gradient-to-r from-[#1e82e6] to-[#0083ff] text-white text-[14px] xl:text-[15px] font-semibold tracking-wide shadow-[0_4px_14px_rgba(30,130,230,0.3)] hover:shadow-[0_6px_22px_rgba(30,130,230,0.45)] hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 shrink-0 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2563EB]"
+                className="group inline-flex items-center justify-center gap-2 px-5 py-2 xl:px-6 xl:py-2.5 rounded bg-gradient-to-r from-[#1e82e6] to-[#0083ff] text-white text-[14px] xl:text-[15px] font-semibold tracking-wide shadow-[0_4px_14px_rgba(30,130,230,0.3)] hover:shadow-[0_6px_22px_rgba(30,130,230,0.45)] hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 shrink-0 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2563EB]"
                 aria-label="Request a demo"
               >
                 <span>Request a Demo</span>
@@ -231,7 +231,7 @@ export default function Navbar() {
           <div className="pt-4 border-t border-gray-100/80 mt-2 flex flex-col gap-4">
             <Link
               to="/contact"
-              className="group flex w-full items-center justify-center gap-2 py-3 px-6 rounded-full bg-gradient-to-r from-[#1e82e6] to-[#0083ff] text-white text-[15px] font-semibold tracking-wide shadow-[0_4px_14px_rgba(30,130,230,0.3)] hover:shadow-[0_6px_22px_rgba(30,130,230,0.45)] active:scale-[0.98] transition-all duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2563EB]"
+              className="group flex w-full items-center justify-center gap-2 py-3 px-6 rounded bg-gradient-to-r from-[#1e82e6] to-[#0083ff] text-white text-[15px] font-semibold tracking-wide shadow-[0_4px_14px_rgba(30,130,230,0.3)] hover:shadow-[0_6px_22px_rgba(30,130,230,0.45)] active:scale-[0.98] transition-all duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2563EB]"
               aria-label="Request a demo"
               onClick={() => setIsOpen(false)}
             >

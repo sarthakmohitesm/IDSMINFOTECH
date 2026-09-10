@@ -20,10 +20,10 @@ export default function IndustriesCTABanner() {
             Our experts don't just speak code — they speak your industry language. Schedule a workshop to discuss your specific operational challenges.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-6">
-             <Link to="/contact" className="px-10 py-5 bg-gradient-primary text-white font-bold rounded-full text-lg shadow-xl shadow-blue-500/20 hover:scale-105 transition-transform">
+             <Link to="/contact" className="px-10 py-5 bg-gradient-primary text-white font-bold rounded text-lg shadow-xl shadow-blue-500/20 hover:scale-105 transition-transform">
                Request Demo
              </Link>
-             <Link to="/contact" className="px-10 py-5 border border-white/20 text-white font-bold rounded-full text-lg hover:bg-white/5 transition-colors">
+             <Link to="/contact" className="px-10 py-5 border border-white/20 text-white font-bold rounded text-lg hover:bg-white/5 transition-colors">
                Talk to Expert
              </Link>
           </div>

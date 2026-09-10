@@ -1,33 +1,27 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Play, ShieldCheck, Zap, Sparkles } from 'lucide-react';
+import { ArrowRight, Play } from 'lucide-react';
 import ModelViewer from './ui/ModelViewer';
 
 export default function HeroSaaS() {
   return (
     <section className="relative w-full pt-14 sm:pt-20 lg:pt-24 pb-16 sm:pb-24 lg:pb-28 bg-white overflow-hidden">
-      {/* Background Subtle Grid Pattern (Nexus / Modern SaaS Style) */}
-      <div
-        className="absolute inset-0 bg-[linear-gradient(to_right,#e5e7eb_1px,transparent_1px),linear-gradient(to_bottom,#e5e7eb_1px,transparent_1px)] bg-[size:44px_44px] [mask-image:radial-gradient(ellipse_75%_65%_at_50%_30%,#000_65%,transparent_100%)] pointer-events-none z-0"
-        aria-hidden="true"
-      />
-
       {/* Top Ambient Glows */}
       <div
-        className="absolute -top-32 left-1/4 -translate-x-1/2 w-[600px] sm:w-[800px] h-[420px] bg-gradient-to-b from-blue-100/50 via-sky-50/30 to-transparent blur-3xl pointer-events-none z-0"
+        className="absolute -top-32 left-1/4 -translate-x-1/2 w-[600px] sm:w-[800px] h-[420px] bg-gradient-to-b from-blue-100/40 via-sky-50/20 to-transparent blur-3xl pointer-events-none z-0"
         aria-hidden="true"
       />
       <div
-        className="absolute top-10 right-10 w-[450px] h-[450px] bg-gradient-to-bl from-indigo-100/40 via-blue-50/20 to-transparent blur-3xl pointer-events-none z-0"
+        className="absolute top-10 right-10 w-[500px] h-[500px] bg-gradient-to-bl from-pink-100/30 via-purple-50/20 to-transparent blur-3xl pointer-events-none z-0"
         aria-hidden="true"
       />
 
-      <div className="relative z-10 max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
           
           {/* LEFT COLUMN: Shifted Content */}
-          <div className="lg:col-span-7 flex flex-col items-start text-left">
+          <div className="lg:col-span-6 flex flex-col items-start text-left">
             {/* Pill Badge */}
             <motion.div
               initial={{ opacity: 0, y: -12 }}
@@ -47,7 +41,7 @@ export default function HeroSaaS() {
               initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-[38px] sm:text-[52px] lg:text-[58px] xl:text-[66px] font-extrabold tracking-[-0.035em] text-[#0B0F19] leading-[1.08] mb-6 max-w-2xl"
+              className="text-[38px] sm:text-[50px] lg:text-[54px] xl:text-[62px] font-extrabold tracking-[-0.035em] text-[#0B0F19] leading-[1.08] mb-6 max-w-2xl"
             >
               Control your infrastructure <br className="hidden sm:inline" />
               at global scale.
@@ -86,37 +80,16 @@ export default function HeroSaaS() {
                 <span>View Product Tour</span>
               </Link>
             </motion.div>
-
-            {/* Trust Highlights */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="flex flex-wrap items-center gap-6 pt-6 border-t border-slate-200/70 text-slate-500 text-[13px] font-medium"
-            >
-              <div className="flex items-center gap-2">
-                <ShieldCheck className="w-4 h-4 text-[#2563EB]" />
-                <span>Enterprise Grade Security</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Zap className="w-4 h-4 text-[#2563EB]" />
-                <span>Real-Time Sync</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Sparkles className="w-4 h-4 text-[#2563EB]" />
-                <span>Modern ERP Cloud</span>
-              </div>
-            </motion.div>
           </div>
 
-          {/* RIGHT COLUMN: 3D Model */}
+          {/* RIGHT COLUMN: 3D Model - Enlarged Container */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.9, y: 24 }}
+            initial={{ opacity: 0, scale: 0.92, y: 24 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
-            className="lg:col-span-5 relative flex items-center justify-center w-full h-[380px] sm:h-[460px] lg:h-[540px]"
+            className="lg:col-span-6 relative flex items-center justify-center w-full h-[480px] sm:h-[580px] lg:h-[650px] xl:h-[700px]"
           >
-            <ModelViewer scale={0.72} />
+            <ModelViewer scale={0.46} />
           </motion.div>
 
         </div>

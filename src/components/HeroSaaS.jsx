@@ -6,7 +6,7 @@ import ModelViewer from './ui/ModelViewer';
 
 export default function HeroSaaS() {
   return (
-    <section className="relative w-full pt-14 sm:pt-20 lg:pt-24 pb-16 sm:pb-24 lg:pb-28 bg-white overflow-hidden">
+    <section className="relative w-full pt-2 sm:pt-3 lg:pt-4 pb-12 sm:pb-16 lg:pb-20 bg-white overflow-hidden">
       {/* Top Ambient Glows */}
       <div
         className="absolute -top-32 left-1/4 -translate-x-1/2 w-[600px] sm:w-[800px] h-[420px] bg-gradient-to-b from-blue-100/40 via-sky-50/20 to-transparent blur-3xl pointer-events-none z-0"
@@ -18,7 +18,7 @@ export default function HeroSaaS() {
       />
 
       <div className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-center">
           
           {/* LEFT COLUMN: Shifted Content */}
           <div className="lg:col-span-6 flex flex-col items-start text-left">
@@ -27,7 +27,7 @@ export default function HeroSaaS() {
               initial={{ opacity: 0, y: -12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full border border-blue-200/80 bg-white/90 shadow-[0_2px_8px_rgba(37,99,235,0.08)] mb-6 text-[13px] font-medium text-slate-700 backdrop-blur-sm hover:border-blue-300 transition-colors cursor-default select-none"
+              className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full border border-blue-200/80 bg-white/90 shadow-[0_2px_8px_rgba(37,99,235,0.08)] mb-4 text-[13px] font-medium text-slate-700 backdrop-blur-sm hover:border-blue-300 transition-colors cursor-default select-none"
             >
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>

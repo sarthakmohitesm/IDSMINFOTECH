@@ -242,12 +242,8 @@ export default function ValueSection() {
                   <div className="rounded-xl border border-slate-200/70 bg-slate-50/40 p-2.5">
                     <div className="flex items-center justify-between mb-1.5">
                       <span className="text-[9.5px] font-bold text-slate-700 uppercase tracking-wider flex items-center gap-1.5">
-                        <Radio className="h-3 w-3 text-cyan-500 animate-pulse" />
+                        <Radio className="h-3 w-3 text-cyan-500" />
                         LIVE INDUSTRIAL STREAM
-                      </span>
-                      <span className="text-[9px] text-emerald-600 font-bold flex items-center gap-1">
-                        <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-ping" />
-                        Active Feed
                       </span>
                     </div>
                     <div className="space-y-1 text-[9.5px] text-slate-600 leading-tight">

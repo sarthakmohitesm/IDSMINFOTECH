@@ -32,16 +32,8 @@ export default function DigitalTwin3DStage({
 
       {/* ── TOP HEADER ── */}
       <div className="relative z-30 flex items-center justify-between gap-2 border-b border-white/10 pb-2">
-        {/* Title */}
-        <div className="flex items-center gap-2">
-          <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
-          </span>
-          <span className="text-[11px] font-bold text-white tracking-wider uppercase">
-            INTERACTIVE 3D DIGITAL TWIN
-          </span>
-        </div>
+        {/* Spacer (title removed) */}
+        <div />
 
         {/* View mode toggle */}
         <div className="flex items-center p-0.5 bg-[#07101c]/90 rounded-full border border-white/15 text-[9.5px] font-semibold">

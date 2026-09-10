@@ -73,7 +73,7 @@ const TestimonialCard = ({ testimonial, onClick, index }) => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay: index * 0.08, duration: 0.5 }}
-      className="group relative snap-start shrink-0 w-[85vw] md:w-[340px] lg:w-[360px] xl:w-[380px] rounded-2xl border border-slate-200/90 bg-white p-7 sm:p-8 flex flex-col justify-between overflow-hidden shadow-[0_4px_24px_rgba(15,23,42,0.06)] md:cursor-none hover:shadow-[0_16px_45px_rgba(15,23,42,0.1)] hover:-translate-y-1 transition-all duration-300 transform-gpu"
+      className="group relative snap-start shrink-0 w-[85vw] md:w-[340px] lg:w-[360px] xl:w-[380px] rounded border border-slate-200/90 bg-white p-7 sm:p-8 flex flex-col justify-between overflow-hidden shadow-[0_4px_24px_rgba(15,23,42,0.06)] md:cursor-none hover:shadow-[0_16px_45px_rgba(15,23,42,0.1)] hover:-translate-y-1 transition-all duration-300 transform-gpu"
     >
       {/* Dynamic Hover Cursor Badge (Desktop Only) */}
       <motion.div
@@ -89,7 +89,7 @@ const TestimonialCard = ({ testimonial, onClick, index }) => {
         {/* Quote Icon + Rating Header */}
         <div className="flex items-center justify-between mb-5">
           <div className="flex items-center gap-2.5">
-            <div className="w-9 h-9 rounded-xl bg-blue-50 flex items-center justify-center border border-blue-100">
+            <div className="w-9 h-9 rounded bg-blue-50 flex items-center justify-center border border-blue-100">
               <Quote className="w-4 h-4 text-[#2563EB]" />
             </div>
             <div className="flex gap-0.5">
@@ -109,7 +109,7 @@ const TestimonialCard = ({ testimonial, onClick, index }) => {
 
       {/* Author Info */}
       <div className="relative z-10 flex items-center gap-3.5 mt-auto border-t border-slate-100 pt-5 pointer-events-none">
-        <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-[#2563EB] to-[#1D4ED8] flex items-center justify-center overflow-hidden shadow-sm shrink-0">
+        <div className="w-11 h-11 rounded bg-gradient-to-br from-[#2563EB] to-[#1D4ED8] flex items-center justify-center overflow-hidden shadow-sm shrink-0">
           <span className="text-[16px] font-bold text-white uppercase">{testimonial.author.charAt(0)}</span>
         </div>
         <div className="min-w-0">
@@ -197,14 +197,14 @@ export default function TestimonialSection() {
               <button
                 type="button"
                 onClick={scrollLeft}
-                className="flex h-11 w-11 items-center justify-center rounded-xl border border-slate-200/90 bg-white text-[#0B0F19] shadow-sm transition-all hover:bg-[#2563EB] hover:text-white hover:border-[#2563EB] hover:shadow-[0_4px_12px_rgba(37,99,235,0.25)]"
+                className="flex h-11 w-11 items-center justify-center rounded border border-slate-200/90 bg-white text-[#0B0F19] shadow-sm transition-all hover:bg-[#2563EB] hover:text-white hover:border-[#2563EB] hover:shadow-[0_4px_12px_rgba(37,99,235,0.25)]"
               >
                 <HiArrowLeft size={18} strokeWidth={1.5} />
               </button>
               <button
                 type="button"
                 onClick={scrollRight}
-                className="flex h-11 w-11 items-center justify-center rounded-xl border border-slate-200/90 bg-white text-[#0B0F19] shadow-sm transition-all hover:bg-[#2563EB] hover:text-white hover:border-[#2563EB] hover:shadow-[0_4px_12px_rgba(37,99,235,0.25)]"
+                className="flex h-11 w-11 items-center justify-center rounded border border-slate-200/90 bg-white text-[#0B0F19] shadow-sm transition-all hover:bg-[#2563EB] hover:text-white hover:border-[#2563EB] hover:shadow-[0_4px_12px_rgba(37,99,235,0.25)]"
               >
                 <HiArrowRight size={18} strokeWidth={1.5} />
               </button>
@@ -238,14 +238,14 @@ export default function TestimonialSection() {
           <button
             type="button"
             onClick={scrollLeft}
-            className="flex h-11 w-11 items-center justify-center rounded-xl border border-slate-200/90 bg-white text-[#0B0F19] shadow-sm transition-all active:bg-[#2563EB] active:text-white"
+            className="flex h-11 w-11 items-center justify-center rounded border border-slate-200/90 bg-white text-[#0B0F19] shadow-sm transition-all active:bg-[#2563EB] active:text-white"
           >
             <HiArrowLeft size={20} strokeWidth={2} />
           </button>
           <button
             type="button"
             onClick={scrollRight}
-            className="flex h-11 w-11 items-center justify-center rounded-xl border border-slate-200/90 bg-white text-[#0B0F19] shadow-sm transition-all active:bg-[#2563EB] active:text-white"
+            className="flex h-11 w-11 items-center justify-center rounded border border-slate-200/90 bg-white text-[#0B0F19] shadow-sm transition-all active:bg-[#2563EB] active:text-white"
           >
             <HiArrowRight size={20} strokeWidth={2} />
           </button>
@@ -271,13 +271,13 @@ export default function TestimonialSection() {
               animate={{ x: 0, opacity: 1 }}
               exit={{ x: '100%', opacity: 0 }}
               transition={{ type: 'spring', damping: 28, stiffness: 220 }}
-              className="fixed top-[75px] md:top-[85px] right-2 md:right-6 bottom-2 md:bottom-6 w-[calc(100%-16px)] md:w-[360px] bg-white shadow-[0_24px_60px_rgba(15,23,42,0.2)] z-[101] flex flex-col overflow-hidden rounded-2xl border border-slate-200/60"
+              className="fixed top-[75px] md:top-[85px] right-2 md:right-6 bottom-2 md:bottom-6 w-[calc(100%-16px)] md:w-[360px] bg-white shadow-[0_24px_60px_rgba(15,23,42,0.2)] z-[101] flex flex-col overflow-hidden rounded border border-slate-200/60"
             >
               {/* Top Banner Area */}
               <div className="relative h-[220px] bg-gradient-to-br from-[#2563EB] via-[#1D4ED8] to-[#1E40AF] flex-shrink-0 flex items-center justify-center overflow-hidden">
                 <button
                   onClick={() => setSelectedTestimonial(null)}
-                  className="absolute top-5 right-5 w-9 h-9 bg-white/15 hover:bg-white text-white hover:text-[#2563EB] rounded-xl flex items-center justify-center transition-all z-10 backdrop-blur-sm"
+                  className="absolute top-5 right-5 w-9 h-9 bg-white/15 hover:bg-white text-white hover:text-[#2563EB] rounded flex items-center justify-center transition-all z-10 backdrop-blur-sm"
                 >
                   <HiXMark size={20} strokeWidth={1} />
                 </button>
@@ -294,7 +294,7 @@ export default function TestimonialSection() {
                 {/* Glowing Center Core */}
                 <div className="relative z-10 mt-4">
                   <div className="absolute inset-0 bg-white/20 blur-[50px] rounded-full scale-[2]" />
-                  <div className="w-[90px] h-[90px] rounded-2xl bg-white/15 backdrop-blur-md flex items-center justify-center shadow-[0_0_40px_rgba(255,255,255,0.25)] border border-white/30 rotate-[8deg] transform hover:rotate-0 transition-transform duration-500">
+                  <div className="w-[90px] h-[90px] rounded bg-white/15 backdrop-blur-md flex items-center justify-center shadow-[0_0_40px_rgba(255,255,255,0.25)] border border-white/30 rotate-[8deg] transform hover:rotate-0 transition-transform duration-500">
                     <span className="text-[40px] font-bold text-white uppercase" style={{ textShadow: '0 2px 12px rgba(0,0,0,0.15)' }}>
                       {selectedTestimonial.author.charAt(0)}
                     </span>
@@ -323,7 +323,7 @@ export default function TestimonialSection() {
                 </div>
 
                 <div className="mt-8 pt-6 border-t border-slate-100 flex items-center gap-3.5">
-                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#2563EB] to-[#1D4ED8] flex items-center justify-center overflow-hidden shrink-0 shadow-sm">
+                  <div className="w-12 h-12 rounded bg-gradient-to-br from-[#2563EB] to-[#1D4ED8] flex items-center justify-center overflow-hidden shrink-0 shadow-sm">
                     <span className="text-[18px] font-bold text-white uppercase">{selectedTestimonial.author.charAt(0)}</span>
                   </div>
                   <div className="min-w-0">

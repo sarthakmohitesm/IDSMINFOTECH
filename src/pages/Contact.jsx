@@ -52,7 +52,7 @@ const LABEL_CLASS =
   'mb-2 block text-[11px] font-bold uppercase tracking-[0.2em] text-gray-500';
 
 const SOCIAL_TILE =
-  'flex h-11 w-11 items-center justify-center rounded-lg border border-gray-400/50 bg-white/70 text-gray-800 shadow-sm transition-colors hover:border-[#122a66] hover:text-[#122a66] sm:h-12 sm:w-12';
+  'flex h-11 w-11 items-center justify-center rounded border border-gray-400/50 bg-white/70 text-gray-800 shadow-sm transition-colors hover:border-[#122a66] hover:text-[#122a66] sm:h-12 sm:w-12';
 
 const SOCIAL_LINKS = [
   { href: '#', label: 'LinkedIn', Icon: FaLinkedinIn },
@@ -467,7 +467,7 @@ export default function Contact() {
                       animate={{ opacity: 1, scale: 1, y: 0 }}
                       exit={{ opacity: 0, scale: 0.95 }}
                       transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                      className="text-center flex flex-col items-center max-w-[320px] bg-white rounded-xl shadow-[0_12px_40px_-10px_rgba(30,130,230,0.15)] border border-gray-100 p-8"
+                      className="text-center flex flex-col items-center max-w-[320px] bg-white rounded shadow-[0_12px_40px_-10px_rgba(30,130,230,0.15)] border border-gray-100 p-8"
                     >
                       <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-green-100 mb-5 relative">
                         <div className="absolute inset-0 rounded-full bg-green-400 opacity-20 animate-ping" />

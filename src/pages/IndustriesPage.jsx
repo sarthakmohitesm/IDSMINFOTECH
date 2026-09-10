@@ -21,7 +21,7 @@ export default function IndustriesPage() {
         }
         .ind-card {
           background: #FFFFFF;
-          border-radius: 20px;
+          border-radius: 4px;
           border: 1px solid rgba(0,0,0,0.06);
           padding: 32px;
           position: relative;

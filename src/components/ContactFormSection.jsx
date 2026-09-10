@@ -15,7 +15,7 @@ const CONTACT_EMAIL = 'info@idmsinfotech.com';
 
 /** Unified input class matching the main page theme */
 const inputClass =
-  'contact-form-field w-full rounded-xl border border-slate-200/90 bg-white pl-11 pr-4 py-3.5 text-[14px] leading-normal text-[#0B0F19] outline-none transition-[border-color,box-shadow] duration-200 [font-size:16px] placeholder:text-[#94A3B8] focus:border-[#2563EB] focus:shadow-[0_0_0_3px_rgba(37,99,235,0.12)]';
+  'contact-form-field w-full rounded border border-slate-200/90 bg-white pl-11 pr-4 py-3.5 text-[14px] leading-normal text-[#0B0F19] outline-none transition-[border-color,box-shadow] duration-200 [font-size:16px] placeholder:text-[#94A3B8] focus:border-[#2563EB] focus:shadow-[0_0_0_3px_rgba(37,99,235,0.12)]';
 
 const DIAL_CODE_MAP = {
   us: '+1',
@@ -115,7 +115,7 @@ export default function ContactFormSection() {
 
       <div className="relative z-10 max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-[80px]">
         {/* White Card Container */}
-        <div className="rounded-2xl bg-white border border-slate-200/80 shadow-[0_16px_45px_rgba(15,23,42,0.06)] p-8 sm:p-10 lg:p-14">
+        <div className="rounded bg-white border border-slate-200/80 shadow-[0_16px_45px_rgba(15,23,42,0.06)] p-8 sm:p-10 lg:p-14">
         <div className="flex flex-col lg:flex-row items-start w-full gap-12 lg:gap-16">
 
           {/* ─── LEFT SIDE ─── */}
@@ -166,7 +166,7 @@ export default function ContactFormSection() {
               href={`mailto:${CONTACT_EMAIL}`}
               className="inline-flex items-center gap-3 group mb-8 w-fit"
             >
-              <div className="w-10 h-10 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center group-hover:bg-[#2563EB] group-hover:border-[#2563EB] transition-all duration-200">
+              <div className="w-10 h-10 rounded bg-blue-50 border border-blue-100 flex items-center justify-center group-hover:bg-[#2563EB] group-hover:border-[#2563EB] transition-all duration-200">
                 <Mail className="w-[18px] h-[18px] text-[#2563EB] group-hover:text-white transition-colors duration-200" />
               </div>
               <span className="text-[16px] font-semibold text-[#0B0F19] group-hover:text-[#2563EB] transition-colors duration-200">
@@ -182,7 +182,7 @@ export default function ContactFormSection() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="flex-1 min-h-[280px] lg:min-h-[320px] w-full"
             >
-              <div className="relative h-full min-h-[280px] lg:min-h-[320px] w-full overflow-hidden rounded-2xl border border-slate-200/90 bg-slate-50 shadow-[0_4px_24px_rgba(15,23,42,0.06)]">
+              <div className="relative h-full min-h-[280px] lg:min-h-[320px] w-full overflow-hidden rounded border border-slate-200/90 bg-slate-50 shadow-[0_4px_24px_rgba(15,23,42,0.06)]">
                 <OfficeLocationMap />
               </div>
             </motion.div>
@@ -225,7 +225,7 @@ export default function ContactFormSection() {
                       <button
                         type="button"
                         onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                        className={`flex w-full items-center justify-between rounded-xl border bg-white px-3 py-3.5 text-[14px] font-medium leading-normal text-[#0B0F19] outline-none transition-[border-color,box-shadow] duration-200 [font-size:16px] ${isDropdownOpen ? 'border-[#2563EB] shadow-[0_0_0_3px_rgba(37,99,235,0.12)]' : 'border-slate-200/90 hover:border-slate-300 focus:border-[#2563EB] focus:shadow-[0_0_0_3px_rgba(37,99,235,0.12)]'}`}
+                        className={`flex w-full items-center justify-between rounded border bg-white px-3 py-3.5 text-[14px] font-medium leading-normal text-[#0B0F19] outline-none transition-[border-color,box-shadow] duration-200 [font-size:16px] ${isDropdownOpen ? 'border-[#2563EB] shadow-[0_0_0_3px_rgba(37,99,235,0.12)]' : 'border-slate-200/90 hover:border-slate-300 focus:border-[#2563EB] focus:shadow-[0_0_0_3px_rgba(37,99,235,0.12)]'}`}
                       >
                         <div className="flex items-center gap-1.5 sm:gap-2">
                            <img
@@ -247,7 +247,7 @@ export default function ContactFormSection() {
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0, y: -5 }}
                             transition={{ duration: 0.15 }}
-                            className="absolute left-0 top-full mt-2 w-[240px] bg-white border border-slate-200 rounded-xl shadow-[0_12px_32px_rgba(15,23,42,0.12)] z-30 overflow-hidden"
+                            className="absolute left-0 top-full mt-2 w-[240px] bg-white border border-slate-200 rounded shadow-[0_12px_32px_rgba(15,23,42,0.12)] z-30 overflow-hidden"
                           >
                             {COUNTRIES.map((country) => (
                               <button
@@ -305,13 +305,13 @@ export default function ContactFormSection() {
                     <div className="relative flex group shrink-0">
                       <button
                         type="button"
-                        className="flex min-h-[48px] items-center gap-2 rounded-xl border border-slate-200/90 bg-white px-5 text-[14px] leading-normal text-[#64748B] transition-all duration-200 hover:border-[#2563EB] hover:text-[#2563EB] focus:border-[#2563EB] focus:shadow-[0_0_0_3px_rgba(37,99,235,0.12)] focus:outline-none [font-size:14px]"
+                        className="flex min-h-[48px] items-center gap-2 rounded border border-slate-200/90 bg-white px-5 text-[14px] leading-normal text-[#64748B] transition-all duration-200 hover:border-[#2563EB] hover:text-[#2563EB] focus:border-[#2563EB] focus:shadow-[0_0_0_3px_rgba(37,99,235,0.12)] focus:outline-none [font-size:14px]"
                       >
                         <Paperclip className="w-[16px] h-[16px]" strokeWidth={1.5} />
                         <span className="font-medium">Attach</span>
                       </button>
                       {/* Tooltip */}
-                      <div className="absolute right-0 bottom-full z-20 mb-3 hidden w-[220px] rounded-lg bg-[#0B0F19] p-2.5 text-center text-[13px] leading-normal text-white shadow-lg pointer-events-none [font-size:13px] group-hover:block">
+                      <div className="absolute right-0 bottom-full z-20 mb-3 hidden w-[220px] rounded bg-[#0B0F19] p-2.5 text-center text-[13px] leading-normal text-white shadow-lg pointer-events-none [font-size:13px] group-hover:block">
                         Attach any relevant documents.<br />Maximum 10mb.
                         <div className="absolute -bottom-1 right-6 sm:right-10 w-2.5 h-2.5 bg-[#0B0F19] rotate-45 transform"></div>
                       </div>
@@ -336,7 +336,7 @@ export default function ContactFormSection() {
                         ? 'Sent'
                         : 'Submit contact form'
                   }
-                  className="group mt-5 inline-flex items-center justify-center gap-2 w-fit px-8 py-3.5 rounded-xl bg-[#2563EB] hover:bg-[#1D4ED8] text-white text-[15px] font-semibold tracking-wide shadow-[0_4px_16px_rgba(37,99,235,0.3)] hover:shadow-[0_6px_22px_rgba(37,99,235,0.4)] hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 disabled:opacity-60 disabled:pointer-events-none"
+                  className="group mt-5 inline-flex items-center justify-center gap-2 w-fit px-8 py-3.5 rounded bg-[#2563EB] hover:bg-[#1D4ED8] text-white text-[15px] font-semibold tracking-wide shadow-[0_4px_16px_rgba(37,99,235,0.3)] hover:shadow-[0_6px_22px_rgba(37,99,235,0.4)] hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 disabled:opacity-60 disabled:pointer-events-none"
                 >
                   {submitState === 'idle' ? (
                     <>
@@ -360,7 +360,7 @@ export default function ContactFormSection() {
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       exit={{ opacity: 0 }}
-                      className="absolute inset-0 z-20 flex items-center justify-center bg-white/95 backdrop-blur-sm rounded-2xl"
+                      className="absolute inset-0 z-20 flex items-center justify-center bg-white/95 backdrop-blur-sm rounded"
                     >
                       <motion.div
                         initial={{ opacity: 0, scale: 0.95, y: 10 }}

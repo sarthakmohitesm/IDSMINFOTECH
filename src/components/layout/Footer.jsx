@@ -64,7 +64,7 @@ export default function Footer() {
             <div>
               <Link
                 to="/contact"
-                className="group inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#2563EB] hover:bg-[#1D4ED8] text-white !text-[14px] font-semibold tracking-wide shadow-[0_4px_14px_rgba(37,99,235,0.25)] hover:shadow-[0_6px_18px_rgba(37,99,235,0.35)] hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
+                className="group inline-flex items-center gap-2 px-5 py-2.5 rounded bg-[#2563EB] hover:bg-[#1D4ED8] text-white !text-[14px] font-semibold tracking-wide shadow-[0_4px_14px_rgba(37,99,235,0.25)] hover:shadow-[0_6px_18px_rgba(37,99,235,0.35)] hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
               >
                 <span>Get in Touch</span>
                 <ArrowUpRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -125,7 +125,7 @@ export default function Footer() {
                       rel="noopener noreferrer"
                       className="group inline-flex items-center gap-2.5 !text-[14px] text-[#64748B] hover:text-[#0B0F19] transition-colors py-1"
                     >
-                      <span className={`w-8 h-8 rounded-lg border border-slate-200/80 bg-slate-50 flex items-center justify-center transition-all ${color}`}>
+                      <span className={`w-8 h-8 rounded border border-slate-200/80 bg-slate-50 flex items-center justify-center transition-all ${color}`}>
                         <Icon className="h-4 w-4" />
                       </span>
                       <span className="font-medium group-hover:text-[#0B0F19] transition-colors">{label}</span>

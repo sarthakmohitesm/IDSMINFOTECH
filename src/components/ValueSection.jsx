@@ -205,7 +205,7 @@ function DashboardVisual() {
                   {metric.value}
                 </div>
               </div>
-              <div className="flex h-10 w-10 items-center justify-center rounded-lg" style={{ background: `${metric.tone}15`, color: metric.tone }}>
+              <div className="flex h-10 w-10 items-center justify-center rounded" style={{ background: `${metric.tone}15`, color: metric.tone }}>
                 {index === 0 && <Factory className="h-5 w-5" />}
                 {index === 1 && <CircleDollarSign className="h-5 w-5" />}
                 {index === 2 && <Activity className="h-5 w-5" />}
@@ -271,7 +271,7 @@ function QualityVisual() {
             <div className="text-[11px] font-semibold text-gray-700">Compliance</div>
             <div className="text-[9px] text-gray-500 uppercase tracking-wider mt-0.5">Standards enforced</div>
           </div>
-          <div className="h-9 w-9 flex items-center justify-center rounded-lg bg-[#FF007815]">
+          <div className="h-9 w-9 flex items-center justify-center rounded bg-[#FF007815]">
             <ShieldCheck className="h-4 w-4 text-[#FF0078]" />
           </div>
         </div>
@@ -283,7 +283,7 @@ function QualityVisual() {
       <div className="space-y-1.5">
         {qualityPoints.map((point) => (
           <div key={point} className="flex items-start gap-2.5 rounded-[5px] border border-gray-100 bg-white p-2.5">
-            <div className="flex h-5 w-5 items-center justify-center rounded-lg shrink-0 bg-[#10B98115]">
+            <div className="flex h-5 w-5 items-center justify-center rounded shrink-0 bg-[#10B98115]">
               <CheckCircle2 className="h-3.5 w-3.5 text-[#10B981]" />
             </div>
             <span className="text-[11px] text-gray-700 font-medium">{point}</span>
@@ -394,10 +394,10 @@ function ModuleCoreVisual() {
 
               {/* Border glow on hover */}
               <div 
-                className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity"
+                className="absolute inset-0 rounded opacity-0 group-hover:opacity-100 transition-opacity"
                 style={{ 
                   boxShadow: `inset 0 0 8px ${module.color}20`,
-                  borderRadius: '8px'
+                  borderRadius: '4px'
                 }}
               />
             </div>

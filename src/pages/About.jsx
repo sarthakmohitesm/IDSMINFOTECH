@@ -242,7 +242,7 @@ export default function About() {
                   <div className="absolute inset-0 bg-gradient-to-br from-transparent to-[#2555eb]/[0.02] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
                   
                   {/* Blue Glow Effect */}
-                  <div className="absolute -inset-1 bg-[#2555eb]/[0.03] rounded-[10px] blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 -z-10" />
+                  <div className="absolute -inset-1 bg-[#2555eb]/[0.03] rounded blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 -z-10" />
 
                   <div className="pointer-events-none absolute inset-x-0 top-0 h-[3px] origin-center scale-x-0 rounded-t-[5px] bg-[#0083FF] transition-transform duration-700 cubic-bezier(.22,1,.36,1) group-hover:scale-x-100" />
                   

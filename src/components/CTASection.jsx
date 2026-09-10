@@ -14,7 +14,7 @@ export default function CTASection() {
 
       <div className="relative z-10 max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-[80px]">
         {/* Solid White Card Container */}
-        <div className="rounded-2xl bg-white border border-slate-200/80 shadow-[0_16px_45px_rgba(15,23,42,0.06)] p-8 sm:p-12 lg:p-14">
+        <div className="rounded bg-white border border-slate-200/80 shadow-[0_16px_45px_rgba(15,23,42,0.06)] p-8 sm:p-12 lg:p-14">
           <div className="mx-auto flex max-w-3xl flex-col items-center justify-center text-center">
             {/* Eyebrow Pill Badge */}
             <motion.div
@@ -60,14 +60,14 @@ export default function CTASection() {
             >
               <Link
                 to="/contact"
-                className="group inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl bg-[#2563EB] hover:bg-[#1D4ED8] text-white text-[15px] font-semibold tracking-wide shadow-[0_4px_16px_rgba(37,99,235,0.35)] hover:shadow-[0_6px_22px_rgba(37,99,235,0.45)] hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
+                className="group inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded bg-[#2563EB] hover:bg-[#1D4ED8] text-white text-[15px] font-semibold tracking-wide shadow-[0_4px_16px_rgba(37,99,235,0.35)] hover:shadow-[0_6px_22px_rgba(37,99,235,0.45)] hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
               >
                 <span>Request a Demo</span>
                 <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5" strokeWidth={2.5} />
               </Link>
               <Link
                 to="/contact"
-                className="group inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl bg-white hover:bg-slate-50 text-[#1E293B] text-[15px] font-semibold tracking-wide border border-slate-200/90 shadow-[0_2px_8px_rgba(0,0,0,0.04)] hover:border-slate-300 active:scale-[0.98] transition-all duration-200"
+                className="group inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded bg-white hover:bg-slate-50 text-[#1E293B] text-[15px] font-semibold tracking-wide border border-slate-200/90 shadow-[0_2px_8px_rgba(0,0,0,0.04)] hover:border-slate-300 active:scale-[0.98] transition-all duration-200"
               >
                 <span>Talk to Our Team</span>
               </Link>

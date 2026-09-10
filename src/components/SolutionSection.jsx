@@ -287,7 +287,7 @@ export default function SolutionSection() {
                     setIsTransitioning(true);
                     setActiveIndex(idx);
                   }}
-                  className={`relative h-full overflow-hidden rounded-2xl border border-slate-200/90 shadow-md shrink-0 cursor-pointer ${isTransitioning ? 'transition-all duration-700 ease-in-out' : ''
+                  className={`relative h-full overflow-hidden rounded border border-slate-200/90 shadow-md shrink-0 cursor-pointer ${isTransitioning ? 'transition-all duration-700 ease-in-out' : ''
                     } ${widthClass}`}
                 >
                   <img

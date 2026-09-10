@@ -242,7 +242,7 @@ export default function ServicesPage() {
         .sol-glass-card {
           background: var(--color-bg-default);
           border: 1px solid rgba(0, 143, 255, 0.1);
-          border-radius: 16px;
+          border-radius: 4px;
           box-shadow: 0 10px 30px rgba(0,0,0,0.03);
           padding: 32px;
         }
@@ -269,7 +269,7 @@ export default function ServicesPage() {
 
         .sol-model-card {
           background: var(--color-bg-default);
-          border-radius: 20px;
+          border-radius: 4px;
           border: 1px solid rgba(0,0,0,0.06);
           padding: 32px;
           position: relative;
@@ -285,7 +285,7 @@ export default function ServicesPage() {
         }
         .sol-outcome-strip {
           background: var(--color-bg-default);
-          border-radius: 20px;
+          border-radius: 4px;
           border: 1px solid rgba(0,0,0,0.05);
           display: flex;
           align-items: center;
@@ -307,7 +307,7 @@ export default function ServicesPage() {
         .sol-outcome-icon {
           width: 48px;
           height: 48px;
-          border-radius: 12px;
+          border-radius: 4px;
           background: rgba(0, 143, 255, 0.08);
           display: flex;
           align-items: center;
@@ -464,7 +464,7 @@ export default function ServicesPage() {
             ))}
           </div>
 
-          <div style={{ background: 'var(--color-bg-default)', borderRadius: '24px', padding: '48px', border: '1px solid rgba(0,0,0,0.04)', boxShadow: '0 8px 30px rgba(0,0,0,0.02)' }}>
+          <div style={{ background: 'var(--color-bg-default)', borderRadius: '4px', padding: '48px', border: '1px solid rgba(0,0,0,0.04)', boxShadow: '0 8px 30px rgba(0,0,0,0.02)' }}>
             {TABS_DATA.map((tab, idx) => (
               <div key={tab.id} className={`sol-tab-panel sol-grid-2 ${activeTab === idx ? 'active' : ''}`} style={{ gridTemplateColumns: '1fr 1fr', gap: '48px', alignItems: 'center' }}>
                 <div>
@@ -495,7 +495,7 @@ export default function ServicesPage() {
                       </div>
                     ))}
                   </div>
-                  <div style={{ padding: '16px', background: 'rgba(0,143,255,0.04)', borderLeft: '3px solid var(--color-primary)', color: 'var(--color-text-secondary)', fontSize: '0.9rem', borderRadius: '0 8px 8px 0', fontWeight: '500' }}>
+                  <div style={{ padding: '16px', background: 'rgba(0,143,255,0.04)', borderLeft: '3px solid var(--color-primary)', color: 'var(--color-text-secondary)', fontSize: '0.9rem', borderRadius: '0 4px 4px 0', fontWeight: '500' }}>
                     {tab.note}
                   </div>
                 </div>

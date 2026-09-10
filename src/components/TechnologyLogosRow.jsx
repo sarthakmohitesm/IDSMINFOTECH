@@ -246,7 +246,7 @@ export default function TechnologyLogosRow() {
         transition={{ duration: 0.4, delay: 0.06, ease: [0.22, 1, 0.36, 1] }}
         style={{
           background: '#f8f9fa',
-          borderRadius: 5,
+          borderRadius: 4,
           border: '1px solid #e0d9d0',
           overflow: 'hidden',
           boxShadow: '0 2px 24px rgba(60,40,20,0.06)',

@@ -158,7 +158,7 @@ export default function LandingHeroSlideshow() {
       {activeIndex === 1 && (
         <div className="absolute inset-0 z-10">
           {/* Text positioned at bottom left with blurred background */}
-          <div className="absolute bottom-32 left-12 lg:left-20 max-w-[800px] backdrop-blur-md bg-black/30 rounded-lg flex items-center">
+          <div className="absolute bottom-32 left-12 lg:left-20 max-w-[800px] backdrop-blur-md bg-black/30 rounded flex items-center">
             <motion.h1 className="text-[40px] font-bold leading-tight text-white text-left w-full px-2 py-0">
               {[
                 "Connect Every Machine, Process, and ",
@@ -192,7 +192,7 @@ export default function LandingHeroSlideshow() {
       {activeIndex === 2 && (
         <div className="absolute inset-0 z-10">
           {/* Text positioned at bottom left with blurred background */}
-          <div className="absolute bottom-70 left-12 lg:left-16 max-w-[800px] backdrop-blur-md bg-black/30 rounded-lg flex items-center">
+          <div className="absolute bottom-70 left-12 lg:left-16 max-w-[800px] backdrop-blur-md bg-black/30 rounded flex items-center">
             <motion.h1 className="text-[40px] font-bold leading-tight text-white text-left w-full px-2 py-0">
               {[
                 "A Day Powered by Smart ERP — ",

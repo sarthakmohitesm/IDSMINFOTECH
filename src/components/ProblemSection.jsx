@@ -56,7 +56,7 @@ export default function ProblemSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-60px' }}
           transition={{ duration: 0.6 }}
-          className="rounded-2xl border border-slate-200/90 bg-white p-6 sm:p-8 lg:p-10 shadow-[0_16px_45px_rgba(15,23,42,0.05)]"
+          className="rounded border border-slate-200/90 bg-white p-6 sm:p-8 lg:p-10 shadow-[0_16px_45px_rgba(15,23,42,0.05)]"
         >
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-6 items-center">
             
@@ -134,48 +134,48 @@ export default function ProblemSection() {
 
               {/* 6 Outer Department Badges */}
               {/* 1. Finance (Top Left) */}
-              <div className="absolute top-2 left-2 sm:left-4 z-10 rounded-xl border border-slate-200/90 bg-white px-3 py-1.5 shadow-xs flex items-center gap-2">
-                <span className="w-6 h-6 rounded-md bg-[#FFF1F2] text-[#F43F5E] flex items-center justify-center text-xs font-bold">
+              <div className="absolute top-2 left-2 sm:left-4 z-10 rounded border border-slate-200/90 bg-white px-3 py-1.5 shadow-xs flex items-center gap-2">
+                <span className="w-6 h-6 rounded bg-[#FFF1F2] text-[#F43F5E] flex items-center justify-center text-xs font-bold">
                   $
                 </span>
                 <span className="text-[13px] font-semibold text-slate-800">Finance</span>
               </div>
 
               {/* 2. Inventory (Top Right) */}
-              <div className="absolute top-2 right-2 sm:right-4 z-10 rounded-xl border border-slate-200/90 bg-white px-3 py-1.5 shadow-xs flex items-center gap-2">
-                <span className="w-6 h-6 rounded-md bg-[#EFF6FF] text-[#3B82F6] flex items-center justify-center">
+              <div className="absolute top-2 right-2 sm:right-4 z-10 rounded border border-slate-200/90 bg-white px-3 py-1.5 shadow-xs flex items-center gap-2">
+                <span className="w-6 h-6 rounded bg-[#EFF6FF] text-[#3B82F6] flex items-center justify-center">
                   <Package className="w-3.5 h-3.5" />
                 </span>
                 <span className="text-[13px] font-semibold text-slate-800">Inventory</span>
               </div>
 
               {/* 3. Sales (Middle Left) */}
-              <div className="absolute top-1/2 -translate-y-1/2 left-0 z-10 rounded-xl border border-slate-200/90 bg-white px-3 py-1.5 shadow-xs flex items-center gap-2">
-                <span className="w-6 h-6 rounded-md bg-[#F5F3FF] text-[#8B5CF6] flex items-center justify-center">
+              <div className="absolute top-1/2 -translate-y-1/2 left-0 z-10 rounded border border-slate-200/90 bg-white px-3 py-1.5 shadow-xs flex items-center gap-2">
+                <span className="w-6 h-6 rounded bg-[#F5F3FF] text-[#8B5CF6] flex items-center justify-center">
                   <TrendingUp className="w-3.5 h-3.5" />
                 </span>
                 <span className="text-[13px] font-semibold text-slate-800">Sales</span>
               </div>
 
               {/* 4. Production (Middle Right) */}
-              <div className="absolute top-1/2 -translate-y-1/2 right-0 z-10 rounded-xl border border-slate-200/90 bg-white px-3 py-1.5 shadow-xs flex items-center gap-2">
-                <span className="w-6 h-6 rounded-md bg-[#FFFBEB] text-[#F59E0B] flex items-center justify-center">
+              <div className="absolute top-1/2 -translate-y-1/2 right-0 z-10 rounded border border-slate-200/90 bg-white px-3 py-1.5 shadow-xs flex items-center gap-2">
+                <span className="w-6 h-6 rounded bg-[#FFFBEB] text-[#F59E0B] flex items-center justify-center">
                   <Factory className="w-3.5 h-3.5" />
                 </span>
                 <span className="text-[13px] font-semibold text-slate-800">Production</span>
               </div>
 
               {/* 5. HR (Bottom Left) */}
-              <div className="absolute bottom-2 left-4 sm:left-6 z-10 rounded-xl border border-slate-200/90 bg-white px-3 py-1.5 shadow-xs flex items-center gap-2">
-                <span className="w-6 h-6 rounded-md bg-[#ECFDF5] text-[#10B981] flex items-center justify-center">
+              <div className="absolute bottom-2 left-4 sm:left-6 z-10 rounded border border-slate-200/90 bg-white px-3 py-1.5 shadow-xs flex items-center gap-2">
+                <span className="w-6 h-6 rounded bg-[#ECFDF5] text-[#10B981] flex items-center justify-center">
                   <Users className="w-3.5 h-3.5" />
                 </span>
                 <span className="text-[13px] font-semibold text-slate-800">HR</span>
               </div>
 
               {/* 6. Analytics (Bottom Right) */}
-              <div className="absolute bottom-2 right-4 sm:right-6 z-10 rounded-xl border border-slate-200/90 bg-white px-3 py-1.5 shadow-xs flex items-center gap-2">
-                <span className="w-6 h-6 rounded-md bg-[#EEF2FF] text-[#6366F1] flex items-center justify-center">
+              <div className="absolute bottom-2 right-4 sm:right-6 z-10 rounded border border-slate-200/90 bg-white px-3 py-1.5 shadow-xs flex items-center gap-2">
+                <span className="w-6 h-6 rounded bg-[#EEF2FF] text-[#6366F1] flex items-center justify-center">
                   <Clock className="w-3.5 h-3.5" />
                 </span>
                 <span className="text-[13px] font-semibold text-slate-800">Analytics</span>
@@ -311,7 +311,7 @@ export default function ProblemSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-60px' }}
           transition={{ duration: 0.6 }}
-          className="rounded-2xl border border-blue-200/80 bg-white shadow-[0_25px_60px_-15px_rgba(37,99,235,0.12)] overflow-hidden"
+          className="rounded border border-blue-200/80 bg-white shadow-[0_25px_60px_-15px_rgba(37,99,235,0.12)] overflow-hidden"
         >
           {/* Top Bar */}
           <div className="px-6 py-4 bg-gradient-to-r from-blue-50/70 via-[#F8FAFC] to-emerald-50/40 border-b border-slate-200/80 flex flex-wrap items-center justify-between gap-3">
@@ -343,7 +343,7 @@ export default function ProblemSection() {
               ].map((m, i) => (
                 <div
                   key={i}
-                  className="p-4 rounded-xl border border-slate-200/80 bg-[#FAFAFA] hover:bg-white hover:border-blue-200 hover:shadow-xs transition-all"
+                  className="p-4 rounded border border-slate-200/80 bg-[#FAFAFA] hover:bg-white hover:border-blue-200 hover:shadow-xs transition-all"
                 >
                   <div className="text-[12px] font-semibold text-slate-500 mb-1">
                     {m.label}
@@ -362,7 +362,7 @@ export default function ProblemSection() {
             {/* Bottom 2-Col Grid */}
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-5">
               {/* Left: Performance Throughput (8 cols) */}
-              <div className="lg:col-span-8 p-5 rounded-xl border border-slate-200/80 bg-[#FAFAFA] flex flex-col justify-between">
+              <div className="lg:col-span-8 p-5 rounded border border-slate-200/80 bg-[#FAFAFA] flex flex-col justify-between">
                 <div className="flex items-center justify-between mb-4">
                   <div>
                     <div className="text-[13px] font-bold text-slate-800">
@@ -402,7 +402,7 @@ export default function ProblemSection() {
               </div>
 
               {/* Right: Connected Modules Status (4 cols) */}
-              <div className="lg:col-span-4 p-5 rounded-xl border border-slate-200/80 bg-[#FAFAFA] flex flex-col justify-between">
+              <div className="lg:col-span-4 p-5 rounded border border-slate-200/80 bg-[#FAFAFA] flex flex-col justify-between">
                 <div className="text-[13px] font-bold text-slate-800 mb-3">
                   Live Module Sync Matrix
                 </div>
@@ -415,7 +415,7 @@ export default function ProblemSection() {
                   ].map((row, i) => (
                     <div
                       key={i}
-                      className="flex items-center justify-between px-3 py-2 rounded-lg bg-white border border-slate-200/60 text-[12px]"
+                      className="flex items-center justify-between px-3 py-2 rounded bg-white border border-slate-200/60 text-[12px]"
                     >
                       <span className="font-semibold text-slate-700">{row.name}</span>
                       <span className="inline-flex items-center gap-1 text-[11px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full">

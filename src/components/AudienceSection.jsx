@@ -59,7 +59,7 @@ function AudienceCard({
   duration 
 }) {
   return (
-    <div className="group relative bg-[rgba(255,255,255,0.03)] border border-[rgba(255,255,255,0.07)] rounded-[20px] p-[32px_24px_28px] flex flex-col overflow-hidden transition-all duration-300 hover:-translate-y-[6px] hover:border-[rgba(255,255,255,0.14)] hover:bg-[rgba(255,255,255,0.055)]">
+    <div className="group relative bg-[rgba(255,255,255,0.03)] border border-[rgba(255,255,255,0.07)] rounded p-[32px_24px_28px] flex flex-col overflow-hidden transition-all duration-300 hover:-translate-y-[6px] hover:border-[rgba(255,255,255,0.14)] hover:bg-[rgba(255,255,255,0.055)]">
       
       {/* Top Accent Line */}
       <div className={`absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r ${accentGrad}`} />
@@ -84,7 +84,7 @@ function AudienceCard({
         </div>
 
         {/* Icon */}
-        <div className={`w-[48px] h-[48px] rounded-[14px] flex items-center justify-center text-[22px] text-white transition-transform duration-300 group-hover:scale-110 ${iconBg}`}>
+        <div className={`w-[48px] h-[48px] rounded flex items-center justify-center text-[22px] text-white transition-transform duration-300 group-hover:scale-110 ${iconBg}`}>
           <Icon />
         </div>
       </div>

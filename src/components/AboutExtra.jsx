@@ -122,7 +122,7 @@ function ExpertiseTree() {
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="relative z-10 px-10 py-5 rounded-[20px] bg-gradient-to-r from-[#9600FA] to-[#468BEF] text-white text-xl font-bold font-noto-sans shadow-[0_0_40px_rgba(150,0,250,0.25)] mb-0"
+            className="relative z-10 px-10 py-5 rounded bg-gradient-to-r from-[#9600FA] to-[#468BEF] text-white text-xl font-bold font-noto-sans shadow-[0_0_40px_rgba(150,0,250,0.25)] mb-0"
           >
             IDMS Smart ERP Platform
           </motion.div>
@@ -175,14 +175,14 @@ function ExpertiseTree() {
                   whileHover={{ scale: 1.05, y: -3 }}
                   whileTap={{ scale: 0.97 }}
                   onClick={() => setExpanded(expanded === i ? null : i)}
-                  className="w-full rounded-[18px] p-4 text-center shadow-md border-2 transition-all cursor-pointer relative z-10"
+                  className="w-full rounded p-4 text-center shadow-md border-2 transition-all cursor-pointer relative z-10"
                   style={{
                     backgroundColor: branch.bg,
                     borderColor: expanded === i ? branch.color : branch.border,
                     boxShadow: expanded === i ? `0 0 20px ${branch.color}30` : undefined
                   }}
                 >
-                  <div className="w-10 h-10 mx-auto rounded-xl flex items-center justify-center mb-2 shadow-sm" style={{ backgroundColor: `${branch.color}20` }}>
+                  <div className="w-10 h-10 mx-auto rounded flex items-center justify-center mb-2 shadow-sm" style={{ backgroundColor: `${branch.color}20` }}>
                     <branch.icon className="w-5 h-5" style={{ color: branch.color }} />
                   </div>
                   <div className="text-xs font-bold text-[#111827] font-noto-sans leading-tight mb-1">{branch.title}</div>
@@ -210,7 +210,7 @@ function ExpertiseTree() {
                             initial={{ opacity: 0, x: -10 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ delay: j * 0.05 }}
-                            className="flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-medium font-noto-sans"
+                            className="flex items-center gap-2 px-3 py-2 rounded text-xs font-medium font-noto-sans"
                             style={{ backgroundColor: `${branch.color}10`, color: branch.color, border: `1px solid ${branch.color}25` }}
                           >
                             <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ backgroundColor: branch.color }}></span>
@@ -318,7 +318,7 @@ function WhatDrivesUsTree() {
           </h2>
         </motion.div>
 
-        <div className="relative rounded-[32px] border border-[#e8ebf3] bg-white/88 p-5 shadow-[0_20px_42px_rgba(15,23,42,0.08)] backdrop-blur-sm md:p-8">
+        <div className="relative rounded border border-[#e8ebf3] bg-white/88 p-5 shadow-[0_20px_42px_rgba(15,23,42,0.08)] backdrop-blur-sm md:p-8">
           <div className="grid grid-cols-1 gap-5 lg:grid-cols-12">
             {foundationCards.map((card, index) => {
               const Icon = card.icon;
@@ -333,14 +333,14 @@ function WhatDrivesUsTree() {
                   whileHover={{ y: -8, scale: 1.015, boxShadow: card.hoverShadow }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.04 + index * 0.06, duration: 0.28 }}
-                  className={`group relative overflow-hidden rounded-[28px] border p-7 text-left shadow-[0_14px_32px_rgba(15,23,42,0.06)] lg:col-span-4 ${card.border} ${card.background}`}
+                  className={`group relative overflow-hidden rounded border p-7 text-left shadow-[0_14px_32px_rgba(15,23,42,0.06)] lg:col-span-4 ${card.border} ${card.background}`}
                 >
                   <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-white/75 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                   <div className="mb-5 flex items-center gap-4">
                     <motion.div
                       whileHover={{ scale: 1.08, rotate: -4 }}
                       transition={{ duration: 0.22 }}
-                      className={`flex h-14 w-14 items-center justify-center rounded-2xl shadow-sm transition-shadow duration-300 group-hover:shadow-[0_16px_26px_rgba(15,23,42,0.10)] ${card.iconBg}`}
+                      className={`flex h-14 w-14 items-center justify-center rounded shadow-sm transition-shadow duration-300 group-hover:shadow-[0_16px_26px_rgba(15,23,42,0.10)] ${card.iconBg}`}
                     >
                       <Icon className={`h-7 w-7 ${card.iconColor}`} />
                     </motion.div>
@@ -373,11 +373,11 @@ function WhatDrivesUsTree() {
             transition={{ delay: 0.22 }}
             className="mt-5"
           >
-            <div className="group mx-auto w-full rounded-[30px] border border-white/70 bg-[linear-gradient(135deg,#468BEF_0%,#10B981_100%)] p-8 text-white shadow-[0_24px_48px_rgba(48,126,207,0.24)] md:max-w-[1040px] md:p-10">
+            <div className="group mx-auto w-full rounded border border-white/70 bg-[linear-gradient(135deg,#468BEF_0%,#10B981_100%)] p-8 text-white shadow-[0_24px_48px_rgba(48,126,207,0.24)] md:max-w-[1040px] md:p-10">
               <motion.div
                 whileHover={{ rotate: -6, scale: 1.08 }}
                 transition={{ duration: 0.22 }}
-                className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl border border-white/40 bg-white/15 transition-colors duration-300 group-hover:bg-white/20"
+                className="mb-5 flex h-12 w-12 items-center justify-center rounded border border-white/40 bg-white/15 transition-colors duration-300 group-hover:bg-white/20"
               >
                 <BadgeCheck className="h-7 w-7 text-white" />
               </motion.div>
@@ -410,25 +410,25 @@ function WhatDrivesUsTree() {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 18, scale: 0.97 }}
               transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
-              className="relative my-auto flex w-full max-w-[620px] overflow-hidden rounded-[20px] border border-white/60 bg-black/95 shadow-[0_22px_70px_rgba(0,0,0,0.32)]"
+              className="relative my-auto flex w-full max-w-[620px] overflow-hidden rounded border border-white/60 bg-black/95 shadow-[0_22px_70px_rgba(0,0,0,0.32)]"
               onClick={(event) => event.stopPropagation()}
             >
               <div className={`relative min-h-[170px] flex-1 overflow-hidden bg-gradient-to-br ${activeFoundation.panelGradient} p-3 md:p-4`}>
                 <div className={`pointer-events-none absolute inset-0 ${activeFoundation.panelGlow}`} />
                 <div className="pointer-events-none absolute left-[10%] top-[14%] h-12 w-12 rounded-full border border-white/70 bg-white/55 shadow-[0_18px_40px_rgba(15,23,42,0.08)]" />
                 <div className="pointer-events-none absolute right-[14%] top-[18%] h-8 w-8 rounded-full border border-white/70 bg-white/45 shadow-[0_14px_28px_rgba(15,23,42,0.08)]" />
-                <div className="pointer-events-none absolute bottom-[16%] left-[18%] h-14 w-14 rounded-[18px] border border-white/70 bg-white/55 shadow-[0_20px_40px_rgba(15,23,42,0.08)]" />
-                <div className="pointer-events-none absolute bottom-[12%] right-[12%] h-10 w-10 rounded-2xl border border-white/70 bg-white/55 shadow-[0_16px_32px_rgba(15,23,42,0.08)]" />
+                <div className="pointer-events-none absolute bottom-[16%] left-[18%] h-14 w-14 rounded border border-white/70 bg-white/55 shadow-[0_20px_40px_rgba(15,23,42,0.08)]" />
+                <div className="pointer-events-none absolute bottom-[12%] right-[12%] h-10 w-10 rounded border border-white/70 bg-white/55 shadow-[0_16px_32px_rgba(15,23,42,0.08)]" />
 
-                <div className="relative z-10 flex h-full flex-col justify-between rounded-[16px] border border-black/8 bg-black/94 p-2.5 shadow-[0_16px_36px_rgba(0,0,0,0.24)]">
-                  <div className="overflow-hidden rounded-[14px] border border-white/5 bg-[linear-gradient(135deg,#101217_0%,#171c23_100%)]">
+                <div className="relative z-10 flex h-full flex-col justify-between rounded border border-black/8 bg-black/94 p-2.5 shadow-[0_16px_36px_rgba(0,0,0,0.24)]">
+                  <div className="overflow-hidden rounded border border-white/5 bg-[linear-gradient(135deg,#101217_0%,#171c23_100%)]">
                     <div className={`relative h-[96px] w-full overflow-hidden bg-gradient-to-br ${activeFoundation.accentLine}`}>
                       <div className="absolute inset-0 bg-[radial-gradient(circle_at_22%_26%,rgba(255,255,255,0.72)_0%,rgba(255,255,255,0.22)_18%,transparent_40%)]" />
                       <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_28%,rgba(255,255,255,0.55)_0%,rgba(255,255,255,0.10)_18%,transparent_42%)]" />
                       <div className="absolute bottom-0 left-0 right-0 h-[55%] bg-[linear-gradient(180deg,rgba(255,255,255,0)_0%,rgba(11,14,20,0.22)_100%)]" />
-                      <div className="absolute left-[10%] top-[18%] h-[56%] w-[28%] rounded-[16px] border border-white/30 bg-white/22 backdrop-blur-sm" />
-                      <div className="absolute left-[34%] top-[12%] h-[64%] w-[24%] rounded-[16px] border border-white/30 bg-white/20 backdrop-blur-sm" />
-                      <div className="absolute right-[11%] bottom-[12%] h-[44%] w-[30%] rounded-[18px] border border-white/30 bg-white/18 backdrop-blur-sm" />
+                      <div className="absolute left-[10%] top-[18%] h-[56%] w-[28%] rounded border border-white/30 bg-white/22 backdrop-blur-sm" />
+                      <div className="absolute left-[34%] top-[12%] h-[64%] w-[24%] rounded border border-white/30 bg-white/20 backdrop-blur-sm" />
+                      <div className="absolute right-[11%] bottom-[12%] h-[44%] w-[30%] rounded border border-white/30 bg-white/18 backdrop-blur-sm" />
                     </div>
                   </div>
 
@@ -460,7 +460,7 @@ function WhatDrivesUsTree() {
 
                 <div className="mt-3.5">
                   <div className="font-noto-sans text-[9px] font-bold uppercase tracking-[0.18em] text-[#a2a8b5]">Current Status</div>
-                  <div className={`mt-1.5 inline-flex rounded-md px-3 py-1.5 font-noto-sans text-[11px] font-bold uppercase tracking-[0.08em] ${activeFoundation.statusTone}`}>
+                  <div className={`mt-1.5 inline-flex rounded px-3 py-1.5 font-noto-sans text-[11px] font-bold uppercase tracking-[0.08em] ${activeFoundation.statusTone}`}>
                     {activeFoundation.status}
                   </div>
                 </div>
@@ -547,7 +547,7 @@ function OurTeam() {
           </p>
         </motion.div>
 
-        <div className="relative rounded-[34px] border border-[#eceff6] bg-[linear-gradient(180deg,rgba(255,255,255,0.96)_0%,rgba(249,250,255,0.92)_100%)] px-5 py-8 shadow-[0_24px_60px_rgba(15,23,42,0.08)] backdrop-blur-sm md:px-8 lg:px-10">
+        <div className="relative rounded border border-[#eceff6] bg-[linear-gradient(180deg,rgba(255,255,255,0.96)_0%,rgba(249,250,255,0.92)_100%)] px-5 py-8 shadow-[0_24px_60px_rgba(15,23,42,0.08)] backdrop-blur-sm md:px-8 lg:px-10">
           <div className="pointer-events-none absolute inset-x-12 top-0 h-px bg-gradient-to-r from-transparent via-[#9600FA]/20 to-transparent" />
           <div className="relative group/nav">
             {/* Side Arrows */}
@@ -580,7 +580,7 @@ function OurTeam() {
                     className="relative w-full max-w-[360px] aspect-[0.95/1.1] max-h-[390px] cursor-pointer group/img"
                     onClick={handleNext}
                   >
-                    <div className="absolute inset-0 translate-x-4 translate-y-4 rounded-[30px] bg-[linear-gradient(135deg,rgba(255,0,120,0.10),rgba(150,0,250,0.08),rgba(70,139,239,0.10))] blur-[2px]" />
+                    <div className="absolute inset-0 translate-x-4 translate-y-4 rounded bg-[linear-gradient(135deg,rgba(255,0,120,0.10),rgba(150,0,250,0.08),rgba(70,139,239,0.10))] blur-[2px]" />
                     {/* Decorative Frame Elements - Top Right */}
                     <motion.div
                       initial={{ width: 0, height: 0 }}
@@ -597,7 +597,7 @@ function OurTeam() {
                       className="absolute -bottom-3 -left-3 border-b-2 border-l-2 border-[#9600FA]/40 z-0"
                     />
 
-                    <div className="relative w-full h-full overflow-hidden rounded-[28px] shadow-[0_26px_60px_rgba(15,23,42,0.16)] border border-gray-100 bg-white z-10">
+                    <div className="relative w-full h-full overflow-hidden rounded shadow-[0_26px_60px_rgba(15,23,42,0.16)] border border-gray-100 bg-white z-10">
                       <img
                         src={current.image}
                         alt={current.name}
@@ -625,7 +625,7 @@ function OurTeam() {
                     </div>
                   </div>
 
-                  <div className="relative overflow-hidden rounded-[28px] border border-[#eceff5] bg-[linear-gradient(180deg,#ffffff_0%,#fafbff_100%)] p-6 shadow-[0_20px_40px_rgba(15,23,42,0.06)]">
+                  <div className="relative overflow-hidden rounded border border-[#eceff5] bg-[linear-gradient(180deg,#ffffff_0%,#fafbff_100%)] p-6 shadow-[0_20px_40px_rgba(15,23,42,0.06)]">
                     <div className="pointer-events-none absolute right-0 top-0 h-24 w-24 bg-[radial-gradient(circle,rgba(150,0,250,0.08)_0%,transparent_70%)]" />
                     <div className="mb-4 flex items-center justify-between gap-4">
                       <div className="font-noto-sans text-[11px] font-black uppercase tracking-[0.24em] text-[#9600FA]">

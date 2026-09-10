@@ -41,7 +41,7 @@ export default function VideoSection() {
               transition: { duration: 1, ease: [0.22, 1, 0.36, 1] } 
             }
           }}
-          className="relative w-full max-w-[800px] aspect-video rounded-2xl overflow-hidden shadow-[0_25px_60px_rgba(0,0,0,0.18)] border border-gray-100"
+          className="relative w-full max-w-[800px] aspect-video rounded overflow-hidden shadow-[0_25px_60px_rgba(0,0,0,0.18)] border border-gray-100"
         >
           <iframe
             className="absolute inset-0 w-full h-full shadow-inner"

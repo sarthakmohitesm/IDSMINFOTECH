@@ -687,7 +687,7 @@ export default function Gallery() {
                 { category: 'Clients', title: 'Collaboration Labs', description: 'On-site implementation and planning.', image: conferenceLargeImg },
                 { category: 'Culture', title: 'The People Story', description: 'The engineering culture at IDMS.', image: portfolioLargeImg },
               ].map((card, i) => (
-                <motion.div key={i} className="group relative h-[400px] overflow-hidden rounded-xl border border-black/5 shadow-sm">
+                <motion.div key={i} className="group relative h-[400px] overflow-hidden rounded border border-black/5 shadow-sm">
                   <img
                     src={card.image}
                     loading="lazy"

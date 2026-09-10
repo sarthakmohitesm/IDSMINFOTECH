@@ -62,7 +62,7 @@ const AboutHero = () => {
         {/* Main Hero Container */}
         <div 
           ref={heroRef}
-          className="w-full min-h-[80vh] bg-white border border-gray-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-[32px] relative overflow-hidden flex items-center p-6 md:p-8 lg:px-12 lg:py-10"
+          className="w-full min-h-[80vh] bg-white border border-gray-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded relative overflow-hidden flex items-center p-6 md:p-8 lg:px-12 lg:py-10"
         >
           {/* Cursor Glow */}
           <motion.div
@@ -130,7 +130,7 @@ const AboutHero = () => {
                   <motion.span 
                     key={i} 
                     whileHover={{ scale: 1.05, y: -2, transition: { type: "spring", stiffness: 400 } }}
-                    className="inline-flex items-center gap-2 px-4 py-2.5 rounded-[12px] bg-white border border-gray-100 text-[#111827] text-sm font-bold shadow-[0_2px_12px_rgb(0,0,0,0.06)] whitespace-nowrap cursor-default group hover:shadow-lg transition-all"
+                    className="inline-flex items-center gap-2 px-4 py-2.5 rounded bg-white border border-gray-100 text-[#111827] text-sm font-bold shadow-[0_2px_12px_rgb(0,0,0,0.06)] whitespace-nowrap cursor-default group hover:shadow-lg transition-all"
                   >
                     <tag.icon className="w-4 h-4" style={{ color: tag.color }} />
                     {tag.label}
@@ -157,11 +157,11 @@ const AboutHero = () => {
                   {/* LAYER 3: Data / Foundation (Bottom Layer) */}
                   <motion.div 
                     style={{ x: x3, y: y3, translateZ: -60 }}
-                    className="absolute w-[280px] h-[280px] bg-gradient-to-br from-[#111827] to-[#1F2937] rounded-3xl border border-gray-700 shadow-[20px_20px_60px_rgba(0,0,0,0.15)] flex flex-col p-6 overflow-hidden"
+                    className="absolute w-[280px] h-[280px] bg-gradient-to-br from-[#111827] to-[#1F2937] rounded border border-gray-700 shadow-[20px_20px_60px_rgba(0,0,0,0.15)] flex flex-col p-6 overflow-hidden"
                   >
                     <div className="absolute inset-0 bg-[#008FFF]/5"></div>
                     <div className="flex items-center gap-4 border-b border-gray-700 pb-4">
-                      <div className="w-10 h-10 rounded-xl bg-gray-800 flex items-center justify-center">
+                      <div className="w-10 h-10 rounded bg-gray-800 flex items-center justify-center">
                         <Database className="w-5 h-5 text-[#008FFF]" />
                       </div>
                       <div>
@@ -181,10 +181,10 @@ const AboutHero = () => {
                   {/* LAYER 2: Services / Automation (Middle Layer) */}
                   <motion.div 
                     style={{ x: x2, y: y2, translateZ: 40 }}
-                    className="absolute w-[280px] h-[280px] bg-white/40 backdrop-blur-xl rounded-3xl border border-white/60 shadow-[0_30px_60px_rgba(67,33,114,0.1)] flex flex-col p-6 overflow-hidden"
+                    className="absolute w-[280px] h-[280px] bg-white/40 backdrop-blur-xl rounded border border-white/60 shadow-[0_30px_60px_rgba(67,33,114,0.1)] flex flex-col p-6 overflow-hidden"
                   >
                     <div className="flex items-center gap-4 border-b border-gray-200/50 pb-4">
-                      <div className="w-10 h-10 rounded-[14px] bg-gradient-to-br from-[#432172] to-[#00C9FF] flex items-center justify-center shadow-lg">
+                      <div className="w-10 h-10 rounded bg-gradient-to-br from-[#432172] to-[#00C9FF] flex items-center justify-center shadow-lg">
                         <Workflow className="w-5 h-5 text-white" />
                       </div>
                       <div>
@@ -193,13 +193,13 @@ const AboutHero = () => {
                       </div>
                     </div>
                     <div className="mt-6 flex flex-wrap gap-3 relative z-10">
-                      <div className="w-12 h-12 bg-white rounded-xl shadow-sm border border-gray-100 flex items-center justify-center">
+                      <div className="w-12 h-12 bg-white rounded shadow-sm border border-gray-100 flex items-center justify-center">
                         <Settings className="w-5 h-5 text-[#432172] animate-[spin_10s_linear_infinite]" />
                       </div>
-                      <div className="w-12 h-12 bg-white rounded-xl shadow-sm border border-gray-100 flex items-center justify-center">
+                      <div className="w-12 h-12 bg-white rounded shadow-sm border border-gray-100 flex items-center justify-center">
                         <Server className="w-5 h-5 text-[#00C9FF]" />
                       </div>
-                      <div className="w-12 h-12 bg-white rounded-xl shadow-sm border border-gray-100 flex items-center justify-center">
+                      <div className="w-12 h-12 bg-white rounded shadow-sm border border-gray-100 flex items-center justify-center">
                         <Shield className="w-5 h-5 text-emerald-500" />
                       </div>
                     </div>
@@ -218,10 +218,10 @@ const AboutHero = () => {
                   {/* LAYER 1: UI / Visuals (Top Layer) */}
                   <motion.div 
                     style={{ x: x1, y: y1, translateZ: 140 }}
-                    className="absolute w-[280px] h-[280px] bg-white/90 backdrop-blur-2xl rounded-3xl border border-white/80 shadow-[0_40px_80px_rgba(0,143,255,0.2)] flex flex-col p-6 overflow-hidden"
+                    className="absolute w-[280px] h-[280px] bg-white/90 backdrop-blur-2xl rounded border border-white/80 shadow-[0_40px_80px_rgba(0,143,255,0.2)] flex flex-col p-6 overflow-hidden"
                   >
                     <div className="flex items-center gap-4 mb-6">
-                      <div className="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center">
+                      <div className="w-10 h-10 rounded bg-blue-50 flex items-center justify-center">
                         <LayoutTemplate className="w-5 h-5 text-[#008FFF]" />
                       </div>
                       <div>
@@ -232,13 +232,13 @@ const AboutHero = () => {
                     
                     {/* UI Dashboard Mockup elements */}
                     <div className="w-full flex gap-3 mb-4">
-                      <div className="flex-1 h-20 bg-gradient-to-br from-[#008FFF]/10 to-[#008FFF]/5 rounded-2xl border border-blue-100/50 flex flex-col justify-center px-4">
+                      <div className="flex-1 h-20 bg-gradient-to-br from-[#008FFF]/10 to-[#008FFF]/5 rounded border border-blue-100/50 flex flex-col justify-center px-4">
                         <div className="text-[10px] text-gray-500 font-bold mb-1">REVENUE</div>
                         <div className="text-lg font-black text-[#111827] flex items-center gap-1">
                           <TrendingUp className="w-4 h-4 text-emerald-500" /> +42%
                         </div>
                       </div>
-                      <div className="flex-1 h-20 bg-gradient-to-br from-[#432172]/5 to-[#00C9FF]/5 rounded-2xl border border-purple-100/50 flex flex-col justify-center px-4">
+                      <div className="flex-1 h-20 bg-gradient-to-br from-[#432172]/5 to-[#00C9FF]/5 rounded border border-purple-100/50 flex flex-col justify-center px-4">
                          <div className="text-[10px] text-gray-500 font-bold mb-1">UPTIME</div>
                          <div className="text-lg font-black text-[#111827] flex items-center gap-1">
                           <CheckCircle2 className="w-4 h-4 text-[#432172]" /> 99.9%
@@ -247,7 +247,7 @@ const AboutHero = () => {
                     </div>
                     
                     {/* Mini Chart Mockup */}
-                    <div className="w-full h-16 bg-gray-50 rounded-2xl relative overflow-hidden flex items-end px-2 gap-1 pb-2">
+                    <div className="w-full h-16 bg-gray-50 rounded relative overflow-hidden flex items-end px-2 gap-1 pb-2">
                        {/* Animated chart bars */}
                        {[40, 60, 30, 80, 50, 90, 70].map((h, i) => (
                          <motion.div 
@@ -266,7 +266,7 @@ const AboutHero = () => {
                   <motion.div 
                     animate={{ z: [0, 50, 0], opacity: [0.6, 1, 0.6] }} 
                     transition={{ duration: 3, repeat: Infinity }} 
-                    className="absolute top-0 right-[40px] w-6 h-6 rounded-lg bg-[#00C9FF] shadow-[0_0_20px_#00C9FF] flex items-center justify-center"
+                    className="absolute top-0 right-[40px] w-6 h-6 rounded bg-[#00C9FF] shadow-[0_0_20px_#00C9FF] flex items-center justify-center"
                     style={{ translateZ: 100 }}
                   >
                     <Box className="w-3 h-3 text-white" />
@@ -275,7 +275,7 @@ const AboutHero = () => {
                   <motion.div 
                     animate={{ z: [0, 80, 0], opacity: [0.6, 1, 0.6] }} 
                     transition={{ duration: 4, repeat: Infinity, delay: 1 }} 
-                    className="absolute bottom-10 left-[20px] w-8 h-8 rounded-xl bg-[#008FFF] shadow-[0_0_20px_#008FFF] flex items-center justify-center"
+                    className="absolute bottom-10 left-[20px] w-8 h-8 rounded bg-[#008FFF] shadow-[0_0_20px_#008FFF] flex items-center justify-center"
                     style={{ translateZ: 80 }}
                   >
                     <LineChart className="w-4 h-4 text-white" />
@@ -294,7 +294,7 @@ const AboutHero = () => {
                   <motion.div 
                     animate={{ z: [0, -40, 0], opacity: [0.4, 0.8, 0.4] }} 
                     transition={{ duration: 5, repeat: Infinity, delay: 2 }} 
-                    className="absolute bottom-[40px] right-[-20px] w-14 h-14 rounded-[12px] bg-gradient-to-br from-[#432172] to-[#591BFF] shadow-[0_0_30px_#432172] flex items-center justify-center border border-white/20"
+                    className="absolute bottom-[40px] right-[-20px] w-14 h-14 rounded bg-gradient-to-br from-[#432172] to-[#591BFF] shadow-[0_0_30px_#432172] flex items-center justify-center border border-white/20"
                     style={{ translateZ: 120 }}
                   >
                      <Building2 className="w-6 h-6 text-white" />
@@ -303,7 +303,7 @@ const AboutHero = () => {
                   <motion.div 
                     animate={{ z: [0, 100, 0], opacity: [0.7, 1, 0.7] }} 
                     transition={{ duration: 6, repeat: Infinity, delay: 1.5 }} 
-                    className="absolute top-[140px] right-[-60px] w-20 h-8 rounded-lg bg-white/10 backdrop-blur-md border border-white/40 flex items-center justify-center shadow-xl"
+                    className="absolute top-[140px] right-[-60px] w-20 h-8 rounded bg-white/10 backdrop-blur-md border border-white/40 flex items-center justify-center shadow-xl"
                     style={{ translateZ: 40 }}
                   >
                      <span className="text-[10px] font-mono text-emerald-400 font-bold">200 OK</span>

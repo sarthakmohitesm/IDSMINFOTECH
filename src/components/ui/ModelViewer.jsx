@@ -1,72 +1,74 @@
-import React, { Suspense, useRef, useEffect } from 'react';
+/* eslint-disable react/no-unknown-property */
+import React, { Suspense, useRef } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { useGLTF, Environment, OrbitControls } from '@react-three/drei';
+import { useGLTF, Environment, OrbitControls, Float, ContactShadows, Center } from '@react-three/drei';
 
-function Model({ url }) {
+function Model({ url = '/IDMS_logo.glb', scale = 0.72 }) {
   const { scene } = useGLTF(url);
   const groupRef = useRef();
-  const angleRef = useRef(0); // current Y rotation in radians
-
-  useEffect(() => {
-    // Set initial opacity on all mesh materials
-    scene.traverse((child) => {
-      if (child.isMesh && child.material) {
-        const mat = child.material;
-        if (Array.isArray(mat)) {
-          mat.forEach((m) => {
-            m.transparent = true;
-            m.opacity = 0.1;
-          });
-        } else {
-          mat.transparent = true;
-          mat.opacity = 0.65;
-        }
-      }
-    });
-  }, [scene]);
 
   useFrame((_, delta) => {
     if (!groupRef.current) return;
-
-    // Normalise angle to [0, 2π]
-    const TWO_PI = Math.PI * 2;
-    let angle = ((angleRef.current % TWO_PI) + TWO_PI) % TWO_PI;
-
-    // "back" zone = π/2 → 3π/2  (the 180° arc behind)
-    const inBack = angle > Math.PI / 2 && angle < (3 * Math.PI) / 2;
-
-    // Slow crawl on front, fast snap through the back
-    // Increased rotation speed
-    const speed = inBack ? 6.0 : 0.5; // rad/s
-
-    const step = speed * delta;
-    angleRef.current += step;
-
-    groupRef.current.rotation.y = angleRef.current;
+    // Continuous smooth idle rotation around Y axis
+    groupRef.current.rotation.y += delta * 0.45;
   });
 
-  return <primitive ref={groupRef} object={scene} scale={0.7} />;
-}
-
-export default function ModelViewer() {
   return (
-    <Canvas
-      camera={{ position: [0, 0, 5], fov: 45 }}
-      className="w-full h-full"
-      style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }}
-    >
-      <ambientLight intensity={0.45} />
-      <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} intensity={0.9} castShadow />
-      <Suspense fallback={null}>
-        <Model url="/IDMS_logo.glb" />
-        <Environment preset="city" />
-      </Suspense>
-      <OrbitControls 
-        enableZoom={false} 
-        enablePan={false} 
-        minPolarAngle={Math.PI / 2} 
-        maxPolarAngle={Math.PI / 2} 
-      />
-    </Canvas>
+    <group ref={groupRef}>
+      <Center>
+        <primitive
+          object={scene}
+          scale={scale}
+        />
+      </Center>
+    </group>
   );
 }
+
+export default function ModelViewer({ className = '', scale = 0.72 }) {
+  return (
+    <div className={`relative w-full h-full min-h-[360px] sm:min-h-[420px] lg:min-h-[480px] flex items-center justify-center select-none ${className}`}>
+      {/* Ambient background soft glow behind 3D model */}
+      <div
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[280px] sm:w-[360px] lg:w-[420px] h-[280px] sm:h-[360px] lg:h-[420px] bg-gradient-to-tr from-blue-500/12 via-indigo-500/8 to-cyan-400/15 rounded-full blur-3xl pointer-events-none -z-10"
+        aria-hidden="true"
+      />
+
+      <Canvas
+        camera={{ position: [0, 0, 5.2], fov: 42 }}
+        className="w-full h-full cursor-grab active:cursor-grabbing"
+        dpr={[1, 2]}
+        gl={{ antialias: true, alpha: true }}
+      >
+        <ambientLight intensity={0.75} />
+        <directionalLight position={[10, 10, 6]} intensity={1.3} />
+        <directionalLight position={[-10, -4, -4]} intensity={0.6} color="#38bdf8" />
+        <pointLight position={[0, 4, 3]} intensity={0.7} />
+
+        <Suspense fallback={null}>
+          <Float speed={2} rotationIntensity={0.15} floatIntensity={0.25}>
+            <Model url="/IDMS_logo.glb" scale={scale} />
+          </Float>
+          <ContactShadows
+            position={[0, -1.6, 0]}
+            opacity={0.3}
+            scale={5.5}
+            blur={2.4}
+            far={4}
+          />
+          <Environment preset="city" />
+        </Suspense>
+
+        <OrbitControls
+          enableZoom={false}
+          enablePan={false}
+          minPolarAngle={Math.PI / 3}
+          maxPolarAngle={(2 * Math.PI) / 3}
+          rotateSpeed={0.8}
+        />
+      </Canvas>
+    </div>
+  );
+}
+
+useGLTF.preload('/IDMS_logo.glb');

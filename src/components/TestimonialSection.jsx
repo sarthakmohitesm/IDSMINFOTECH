@@ -133,8 +133,8 @@ const TestimonialCard = ({
           relative rounded-2xl bg-white flex flex-col justify-between overflow-hidden cursor-pointer
           transition-shadow duration-500 ease-out transform-gpu
           ${isCenter
-            ? 'p-5 sm:p-6 min-h-[255px] sm:min-h-[265px] max-h-[275px] shadow-[0_18px_48px_rgba(37,99,235,0.16),0_6px_18px_rgba(15,23,42,0.06)] border-2 border-blue-400/90 z-20 ring-1 ring-blue-400/25'
-            : 'p-4.5 sm:p-5 min-h-[230px] sm:min-h-[238px] max-h-[248px] shadow-[0_6px_24px_rgba(15,23,42,0.05)] border border-slate-200/90 z-10 hover:shadow-[0_12px_32px_rgba(15,23,42,0.1)] hover:border-slate-300'
+            ? 'p-5 sm:p-6 min-h-[290px] sm:min-h-[310px] max-h-[330px] shadow-[0_18px_48px_rgba(37,99,235,0.16),0_6px_18px_rgba(15,23,42,0.06)] border-2 border-blue-400/90 z-20 ring-1 ring-blue-400/25'
+            : 'p-4.5 sm:p-5 min-h-[270px] sm:min-h-[285px] max-h-[305px] shadow-[0_6px_24px_rgba(15,23,42,0.05)] border border-slate-200/90 z-10 hover:shadow-[0_12px_32px_rgba(15,23,42,0.1)] hover:border-slate-300'
           }
         `}
       >
@@ -330,18 +330,18 @@ export default function TestimonialSection() {
     setVirtualIndex((prev) => prev + diff);
   };
 
-  // Auto-play: advance every 5.5s unless hovered
-  useEffect(() => {
-    if (isHovered) return;
-    const interval = setInterval(() => {
-      scrollRight();
-    }, 5500);
-    return () => clearInterval(interval);
-  }, [isHovered]);
+  // Auto-play disabled per user request
+  // useEffect(() => {
+  //   if (isHovered) return;
+  //   const interval = setInterval(() => {
+  //     scrollRight();
+  //   }, 5500);
+  //   return () => clearInterval(interval);
+  // }, [isHovered]);
 
   return (
     <section
-      className="relative w-full py-10 sm:py-14 lg:py-16 overflow-hidden select-none flex flex-col justify-center min-h-screen"
+      className="relative w-full pt-4 sm:pt-6 lg:pt-8 pb-10 sm:pb-14 lg:pb-16 overflow-hidden select-none flex flex-col justify-start min-h-screen"
       style={{
         background: 'linear-gradient(180deg, #F0F5FF 0%, #F8FAFF 40%, #EDF3FF 100%)',
       }}

@@ -1,6 +1,6 @@
-import React, { useState, useRef, useEffect, useCallback } from 'react';
-import { motion, AnimatePresence, useMotionValue } from 'framer-motion';
-import { HiStar, HiArrowRight, HiArrowLeft, HiXMark, HiArrowUpRight } from 'react-icons/hi2';
+import React, { useState, useRef, useEffect, useMemo } from 'react';
+import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from 'framer-motion';
+import { HiStar, HiArrowRight, HiArrowLeft, HiXMark } from 'react-icons/hi2';
 import { Quote, Sparkles } from 'lucide-react';
 
 const TESTIMONIALS = [
@@ -55,340 +55,453 @@ const TESTIMONIALS = [
   }
 ];
 
-/* ─── Single Testimonial Card ─── */
-const TestimonialCard = ({ testimonial, isCenter, onClick, index }) => {
+/* ─── Compact Stage Testimonial Card with 3D Tilt & Floating Bob ─── */
+const TestimonialCard = ({
+  testimonial,
+  isCenter,
+  onClick,
+  cardWidth,
+  floatDelay = 0
+}) => {
+  const cardRef = useRef(null);
+
+  const mouseX = useMotionValue(0.5);
+  const mouseY = useMotionValue(0.5);
+
+  const smoothX = useSpring(mouseX, { stiffness: 180, damping: 20 });
+  const smoothY = useSpring(mouseY, { stiffness: 180, damping: 20 });
+
+  const rotateX = useTransform(smoothY, [0, 1], [5, -5]);
+  const rotateY = useTransform(smoothX, [0, 1], [-5, 5]);
+
+  const glareX = useTransform(smoothX, [0, 1], [0, 100]);
+  const glareY = useTransform(smoothY, [0, 1], [0, 100]);
+
+  const handleMouseMove = (e) => {
+    if (!cardRef.current) return;
+    const rect = cardRef.current.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width;
+    const y = (e.clientY - rect.top) / rect.height;
+    mouseX.set(x);
+    mouseY.set(y);
+  };
+
+  const handleMouseLeave = () => {
+    mouseX.set(0.5);
+    mouseY.set(0.5);
+  };
+
   return (
     <motion.div
+      ref={cardRef}
       onClick={onClick}
-      layout
-      className={`
-        relative rounded-2xl bg-white flex flex-col justify-between overflow-hidden cursor-pointer
-        transition-all duration-500 ease-out transform-gpu select-none
-        ${isCenter
-          ? 'shadow-[0_20px_60px_rgba(37,99,235,0.13),0_4px_20px_rgba(15,23,42,0.08)] border-2 border-blue-200/60 z-20'
-          : 'shadow-[0_4px_24px_rgba(15,23,42,0.06)] border border-slate-200/80 z-10 hover:shadow-[0_12px_35px_rgba(15,23,42,0.1)]'
-        }
-      `}
-      style={{
-        width: isCenter ? '380px' : '320px',
-        minHeight: isCenter ? '320px' : '280px',
-        padding: isCenter ? '32px' : '28px',
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      animate={{
+        y: [0, -5, 0, 3.5, 0],
       }}
+      transition={{
+        y: {
+          duration: 4.8 + floatDelay * 0.5,
+          repeat: Infinity,
+          ease: 'easeInOut',
+          delay: floatDelay * 0.3,
+        },
+      }}
+      style={{
+        perspective: 900,
+        width: `${cardWidth}px`,
+      }}
+      className="shrink-0 select-none will-change-transform"
     >
-      {/* Subtle top gradient on center card */}
-      {isCenter && (
-        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-400 via-blue-600 to-indigo-500 rounded-t-2xl" />
-      )}
+      <motion.div
+        animate={{
+          scale: isCenter ? 1.05 : 0.94,
+          y: isCenter ? -8 : 0,
+          opacity: isCenter ? 1 : 0.86,
+        }}
+        transition={{
+          duration: 0.6,
+          ease: [0.16, 1, 0.3, 1],
+        }}
+        style={{
+          rotateX,
+          rotateY,
+          transformStyle: 'preserve-3d',
+        }}
+        className={`
+          relative rounded-2xl bg-white flex flex-col justify-between overflow-hidden cursor-pointer
+          transition-shadow duration-500 ease-out transform-gpu
+          ${isCenter
+            ? 'p-5 sm:p-6 min-h-[255px] sm:min-h-[265px] max-h-[275px] shadow-[0_18px_48px_rgba(37,99,235,0.16),0_6px_18px_rgba(15,23,42,0.06)] border-2 border-blue-400/90 z-20 ring-1 ring-blue-400/25'
+            : 'p-4.5 sm:p-5 min-h-[230px] sm:min-h-[238px] max-h-[248px] shadow-[0_6px_24px_rgba(15,23,42,0.05)] border border-slate-200/90 z-10 hover:shadow-[0_12px_32px_rgba(15,23,42,0.1)] hover:border-slate-300'
+          }
+        `}
+      >
+        {/* Specular Glare Reflection on Hover */}
+        <motion.div
+          className="absolute inset-0 pointer-events-none z-30 rounded-2xl"
+          style={{
+            background: useTransform(
+              [glareX, glareY],
+              ([x, y]) => `radial-gradient(circle at ${x}% ${y}%, rgba(255,255,255,0.2) 0%, transparent 60%)`
+            ),
+          }}
+        />
 
-      <div className="relative z-10 flex-1 flex flex-col">
-        {/* Quote Icon + Rating Header */}
-        <div className="flex items-center justify-between mb-5">
-          <div className="flex items-center gap-2.5">
-            <div className={`
-              flex items-center justify-center rounded-lg border
-              ${isCenter
-                ? 'w-10 h-10 bg-blue-600 border-blue-600'
-                : 'w-9 h-9 bg-blue-50 border-blue-100'
-              }
+        {/* Top Gradient Highlight Bar for Active Card */}
+        {isCenter && (
+          <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-blue-600 to-indigo-600 rounded-t-2xl z-20" />
+        )}
+
+        <div className="relative z-10 flex-1 flex flex-col">
+          {/* Header: Quote Icon + 5 Stars + 5.0 Rating Badge */}
+          <div className="flex items-center justify-between mb-3">
+            <div className="flex items-center gap-2">
+              <div className={`
+                flex items-center justify-center rounded-lg transition-colors duration-300
+                ${isCenter
+                  ? 'w-8 h-8 bg-blue-600 text-white shadow-sm shadow-blue-500/25'
+                  : 'w-7.5 h-7.5 bg-blue-50 text-blue-600 border border-blue-100'
+                }
+              `}>
+                <Quote className={`${isCenter ? 'w-4 h-4' : 'w-3.5 h-3.5'}`} />
+              </div>
+
+              <div className="flex gap-0.5">
+                {[...Array(5)].map((_, i) => (
+                  <HiStar key={i} size={isCenter ? 15 : 13.5} className="text-amber-400" />
+                ))}
+              </div>
+            </div>
+
+            <span className={`
+              font-bold rounded-full border border-slate-200/80 bg-slate-50 text-[#0B0F19]
+              ${isCenter ? 'text-[11.5px] px-2.5 py-0.5' : 'text-[11px] px-2 py-0.5'}
             `}>
-              <Quote className={`${isCenter ? 'w-5 h-5 text-white' : 'w-4 h-4 text-blue-600'}`} />
-            </div>
-            <div className="flex gap-0.5">
-              {[...Array(5)].map((_, i) => (
-                <HiStar key={i} size={isCenter ? 18 : 16} className="text-amber-400" />
-              ))}
-            </div>
+              5.0
+            </span>
           </div>
-          <span className={`
-            font-bold bg-slate-50 border border-slate-200/80 rounded-full
-            ${isCenter ? 'text-[14px] px-3 py-1 text-[#0B0F19]' : 'text-[13px] px-2.5 py-0.5 text-[#0B0F19]'}
+
+          {/* Testimonial Quote Text */}
+          <p className={`
+            text-[#4B5563] font-normal leading-[1.6] mb-3 overflow-hidden
+            ${isCenter ? 'text-[13px] sm:text-[13.5px] line-clamp-4' : 'text-[12px] sm:text-[12.5px] line-clamp-3'}
           `}>
-            5.0
-          </span>
+            &ldquo;{testimonial.text}&rdquo;
+          </p>
         </div>
 
-        {/* Testimonial Quote */}
-        <p className={`
-          text-[#4B5563] font-normal leading-[1.75] mb-6 overflow-hidden
-          ${isCenter ? 'text-[15px] line-clamp-6' : 'text-[14px] line-clamp-4'}
-        `}>
-          &ldquo;{testimonial.text}&rdquo;
-        </p>
-      </div>
+        {/* Author Info */}
+        <div className="relative z-10 flex items-center gap-2.5 mt-auto border-t border-slate-100 pt-3">
+          <div className={`
+            rounded-lg bg-gradient-to-br from-[#2563EB] to-[#1D4ED8] flex items-center justify-center overflow-hidden shadow-sm shrink-0
+            ${isCenter ? 'w-9 h-9' : 'w-8 h-8'}
+          `}>
+            <span className={`font-bold text-white uppercase ${isCenter ? 'text-[14px]' : 'text-[13px]'}`}>
+              {testimonial.author.charAt(0)}
+            </span>
+          </div>
 
-      {/* Author Info */}
-      <div className="relative z-10 flex items-center gap-3.5 mt-auto border-t border-slate-100 pt-5">
-        <div className={`
-          rounded-full bg-gradient-to-br from-[#2563EB] to-[#1D4ED8] flex items-center justify-center overflow-hidden shadow-sm shrink-0
-          ${isCenter ? 'w-12 h-12' : 'w-10 h-10'}
-        `}>
-          <span className={`font-bold text-white uppercase ${isCenter ? 'text-[17px]' : 'text-[15px]'}`}>
-            {testimonial.author.charAt(0)}
-          </span>
-        </div>
-        <div className="min-w-0">
-          <div className={`font-semibold text-[#0B0F19] truncate ${isCenter ? 'text-[15px]' : 'text-[14px]'}`}>
-            {testimonial.author}
-          </div>
-          <div className={`text-[#64748B] font-medium mt-0.5 truncate ${isCenter ? 'text-[12px]' : 'text-[11px]'}`}>
-            {testimonial.company}
+          <div className="min-w-0 flex-1">
+            <div className={`font-bold text-[#0B0F19] truncate ${isCenter ? 'text-[13.5px]' : 'text-[12.5px]'}`}>
+              {testimonial.author}
+            </div>
+            <div className={`text-[#64748B] font-medium truncate mt-0.5 ${isCenter ? 'text-[11.5px]' : 'text-[10.5px]'}`}>
+              {testimonial.company}
+            </div>
           </div>
         </div>
-      </div>
+      </motion.div>
     </motion.div>
   );
 };
 
-/* ─── Main Testimonial Section ─── */
+/* ─── Main Testimonial Section (Fitted in One Tab Viewport, No Bubbles) ─── */
 export default function TestimonialSection() {
   const [selectedTestimonial, setSelectedTestimonial] = useState(null);
-  const [activeIndex, setActiveIndex] = useState(1); // Start with 2nd card centered
-  const totalPages = Math.ceil(TESTIMONIALS.length / 3);
-  const [currentPage, setCurrentPage] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
 
-  // Calculate which cards are visible (show 3-4 at a time, center one is elevated)
-  const getVisibleCards = useCallback(() => {
-    const visibleCount = 4; // Show 4 cards at a time
-    const startIdx = Math.max(0, activeIndex - 1);
-    const cards = [];
+  const N = TESTIMONIALS.length;
+  const COPIES = 9;
+  const CENTER_COPY = 4;
+  const INITIAL_INDEX = CENTER_COPY * N; // index 28
 
-    for (let i = 0; i < visibleCount; i++) {
-      const idx = startIdx + i;
-      if (idx < TESTIMONIALS.length) {
-        cards.push({
-          testimonial: TESTIMONIALS[idx],
-          originalIndex: idx,
-          isCenter: idx === activeIndex,
-        });
+  const [virtualIndex, setVirtualIndex] = useState(INITIAL_INDEX);
+  const [isTransitionEnabled, setIsTransitionEnabled] = useState(true);
+
+  const containerRef = useRef(null);
+  const [containerWidth, setContainerWidth] = useState(1200);
+
+  // Resize listener
+  useEffect(() => {
+    const handleResize = () => {
+      if (containerRef.current) {
+        setContainerWidth(containerRef.current.offsetWidth);
       }
-    }
-    return cards;
-  }, [activeIndex]);
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
+  // Multi-copy items list with stable keys
+  const trackItems = useMemo(() => {
+    return Array.from({ length: COPIES }, (_, copyIdx) =>
+      TESTIMONIALS.map((t, origIdx) => ({
+        ...t,
+        uniqueKey: `${copyIdx}-${origIdx}`,
+        virtualIdx: copyIdx * N + origIdx,
+      }))
+    ).flat();
+  }, [N]);
+
+  // Dynamic card geometry
+  const cardMetrics = useMemo(() => {
+    if (containerWidth < 640) {
+      const width = Math.min(containerWidth - 48, 300);
+      const gap = 16;
+      return { cardWidth: width, gap, step: width + gap, isMobile: true };
+    } else if (containerWidth < 1024) {
+      const width = 290;
+      const gap = 18;
+      return { cardWidth: width, gap, step: width + gap, isMobile: false };
+    } else {
+      const width = 320;
+      const gap = 22;
+      return { cardWidth: width, gap, step: width + gap, isMobile: false };
+    }
+  }, [containerWidth]);
+
+  // Compute track translateX to position the active card at activeLeftOffset:
+  // Card (virtualIndex - 1) peeks on the left
+  // Card (virtualIndex) is the hero Active Card
+  // Card (virtualIndex + 1) is fully visible to the right
+  // Card (virtualIndex + 2) peeks on the far right
+  const trackTranslateX = useMemo(() => {
+    const { cardWidth, step, isMobile } = cardMetrics;
+
+    if (isMobile) {
+      return (containerWidth - cardWidth) / 2 - virtualIndex * step;
+    }
+
+    // On desktop / tablet: left card peeks in by ~150px
+    const activeLeftOffset = Math.max(180, (containerWidth - 1140) / 2 + 180);
+    return activeLeftOffset - virtualIndex * step;
+  }, [cardMetrics, containerWidth, virtualIndex]);
+
+  // Current real active index modulo N
+  const activeDotIndex = ((virtualIndex % N) + N) % N;
+
+  // Silent infinite wrap: keeps virtualIndex within safe boundaries
+  useEffect(() => {
+    if (virtualIndex >= (COPIES - 2) * N || virtualIndex <= 2 * N) {
+      const timer = setTimeout(() => {
+        setIsTransitionEnabled(false);
+        const normalized = ((virtualIndex % N) + N) % N + CENTER_COPY * N;
+        setVirtualIndex(normalized);
+
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            setIsTransitionEnabled(true);
+          });
+        });
+      }, 950);
+      return () => clearTimeout(timer);
+    }
+  }, [virtualIndex, N]);
+
+  // Navigation handlers
   const scrollLeft = () => {
-    setActiveIndex((prev) => {
-      const newIdx = Math.max(0, prev - 1);
-      setCurrentPage(Math.floor(newIdx / 3));
-      return newIdx;
-    });
+    setIsTransitionEnabled(true);
+    setVirtualIndex((prev) => prev - 1);
   };
 
   const scrollRight = () => {
-    setActiveIndex((prev) => {
-      const newIdx = Math.min(TESTIMONIALS.length - 1, prev + 1);
-      setCurrentPage(Math.floor(newIdx / 3));
-      return newIdx;
-    });
+    setIsTransitionEnabled(true);
+    setVirtualIndex((prev) => prev + 1);
   };
 
-  const goToPage = (page) => {
-    const newIdx = Math.min(page * 3 + 1, TESTIMONIALS.length - 1);
-    setActiveIndex(newIdx);
-    setCurrentPage(page);
+  const goToDot = (targetIdx) => {
+    setIsTransitionEnabled(true);
+    let diff = targetIdx - activeDotIndex;
+    if (diff > N / 2) diff -= N;
+    if (diff < -N / 2) diff += N;
+    setVirtualIndex((prev) => prev + diff);
   };
 
-  const visibleCards = getVisibleCards();
+  // Auto-play: advance every 5.5s unless hovered
+  useEffect(() => {
+    if (isHovered) return;
+    const interval = setInterval(() => {
+      scrollRight();
+    }, 5500);
+    return () => clearInterval(interval);
+  }, [isHovered]);
 
   return (
-    <section className="relative w-full py-16 sm:py-20 lg:py-28 overflow-hidden select-none"
+    <section
+      className="relative w-full py-6 sm:py-8 lg:py-9 overflow-hidden select-none flex flex-col justify-center min-h-0"
       style={{
-        background: 'linear-gradient(135deg, #f0f4ff 0%, #f8faff 30%, #eef2ff 50%, #f5f7ff 70%, #f0f4ff 100%)',
+        background: 'linear-gradient(180deg, #F0F5FF 0%, #F8FAFF 40%, #EDF3FF 100%)',
       }}
     >
-      {/* ─── Decorative Background Elements ─── */}
-      {/* Top-right blurred circle */}
-      <div
-        className="absolute -top-16 -right-16 w-[300px] h-[300px] rounded-full opacity-[0.12] pointer-events-none"
-        style={{ background: 'radial-gradient(circle, #6366f1 0%, transparent 70%)' }}
-        aria-hidden="true"
-      />
-      {/* Bottom-left blurred circle */}
-      <div
-        className="absolute -bottom-20 -left-20 w-[350px] h-[350px] rounded-full opacity-[0.1] pointer-events-none"
-        style={{ background: 'radial-gradient(circle, #818cf8 0%, transparent 70%)' }}
-        aria-hidden="true"
-      />
-      {/* Mid-right floating circle */}
-      <div
-        className="absolute top-1/2 -right-10 w-[200px] h-[200px] rounded-full opacity-[0.08] pointer-events-none"
-        style={{ background: 'radial-gradient(circle, #6366f1 0%, transparent 70%)' }}
-        aria-hidden="true"
-      />
-      {/* Subtle floating dots */}
-      <div className="absolute top-20 left-[15%] w-2 h-2 rounded-full bg-blue-300/30 pointer-events-none" aria-hidden="true" />
-      <div className="absolute top-32 right-[25%] w-3 h-3 rounded-full bg-indigo-300/20 pointer-events-none" aria-hidden="true" />
-      <div className="absolute bottom-28 left-[40%] w-2.5 h-2.5 rounded-full bg-blue-400/15 pointer-events-none" aria-hidden="true" />
-
-      {/* Subtle connection lines / decorative streaks */}
-      <div
-        className="absolute top-[15%] right-[10%] w-[120px] h-[1px] opacity-[0.08] pointer-events-none rotate-[-20deg]"
-        style={{ background: 'linear-gradient(90deg, transparent, #6366f1, transparent)' }}
-        aria-hidden="true"
-      />
-      <div
-        className="absolute bottom-[20%] left-[8%] w-[80px] h-[1px] opacity-[0.08] pointer-events-none rotate-[25deg]"
-        style={{ background: 'linear-gradient(90deg, transparent, #818cf8, transparent)' }}
-        aria-hidden="true"
-      />
-
       <div className="relative z-10 w-full">
-        {/* ─── HEADER ─── */}
-        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-[80px] mb-12 sm:mb-16">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+        {/* ─── SECTION HEADER ─── */}
+        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-[80px] mb-4 sm:mb-5">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
             <div className="min-w-0">
+              {/* Badge: • CLIENT SUCCESS */}
               <motion.div
-                initial={{ opacity: 0, y: 12 }}
+                initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.4 }}
-                className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-blue-200/80 bg-blue-50/70 text-blue-700 text-[12px] font-semibold tracking-wider uppercase mb-3"
+                transition={{ duration: 0.35 }}
+                className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full border border-blue-200/90 bg-blue-50/80 text-blue-700 text-[11px] font-bold tracking-wider uppercase mb-1.5"
               >
                 <span className="w-1.5 h-1.5 rounded-full bg-blue-600 animate-pulse" />
                 <span>Client Success</span>
               </motion.div>
 
+              {/* Title */}
               <motion.h2
-                initial={{ opacity: 0, y: 15 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.05 }}
-                className="text-[32px] sm:text-[44px] font-extrabold tracking-tight text-[#0B0F19] leading-[1.12]"
-              >
-                Trusted by <span className="bg-gradient-to-r from-[#2563EB] to-[#4F46E5] bg-clip-text text-transparent">Industry Leaders</span>
-              </motion.h2>
-
-              <motion.p
                 initial={{ opacity: 0, y: 12 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-                className="text-[15px] sm:text-[16px] text-[#64748B] mt-2 max-w-xl"
+                transition={{ duration: 0.4, delay: 0.05 }}
+                className="text-[26px] sm:text-[32px] lg:text-[36px] font-extrabold tracking-tight text-[#0B0F19] leading-tight"
+              >
+                Trusted by{' '}
+                <span className="bg-gradient-to-r from-[#2563EB] to-[#4338CA] bg-clip-text text-transparent">
+                  Industry Leaders
+                </span>
+              </motion.h2>
+
+              {/* Subtitle */}
+              <motion.p
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: 0.1 }}
+                className="text-[13px] sm:text-[14px] text-[#64748B] mt-1 max-w-xl leading-relaxed"
               >
                 Real feedback from enterprises that transformed their operations with IDMS Smart ERP.
               </motion.p>
             </div>
 
-            {/* Navigation Arrows */}
-            <div className="hidden md:flex gap-2.5 pb-2 shrink-0">
+            {/* Desktop Navigation Circular Arrows (Top Right) */}
+            <div className="hidden md:flex gap-2.5 pb-1 shrink-0">
               <button
                 type="button"
                 onClick={scrollLeft}
-                disabled={activeIndex <= 0}
-                className={`flex h-11 w-11 items-center justify-center rounded-xl border shadow-sm transition-all duration-300
-                  ${activeIndex <= 0
-                    ? 'border-slate-200/60 bg-slate-50 text-slate-300 cursor-not-allowed'
-                    : 'border-slate-200/90 bg-white text-[#0B0F19] hover:bg-[#2563EB] hover:text-white hover:border-[#2563EB] hover:shadow-[0_4px_16px_rgba(37,99,235,0.3)]'
-                  }
-                `}
+                aria-label="Previous testimonial"
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-200/90 bg-white/90 backdrop-blur-sm text-[#0B0F19] shadow-sm transition-all duration-300 hover:bg-[#2563EB] hover:text-white hover:border-[#2563EB] hover:shadow-[0_4px_14px_rgba(37,99,235,0.25)] hover:scale-105 active:scale-95"
               >
-                <HiArrowLeft size={18} strokeWidth={1.5} />
+                <HiArrowLeft size={16} strokeWidth={2} />
               </button>
               <button
                 type="button"
                 onClick={scrollRight}
-                disabled={activeIndex >= TESTIMONIALS.length - 1}
-                className={`flex h-11 w-11 items-center justify-center rounded-xl border shadow-sm transition-all duration-300
-                  ${activeIndex >= TESTIMONIALS.length - 1
-                    ? 'border-slate-200/60 bg-slate-50 text-slate-300 cursor-not-allowed'
-                    : 'border-slate-200/90 bg-white text-[#0B0F19] hover:bg-[#2563EB] hover:text-white hover:border-[#2563EB] hover:shadow-[0_4px_16px_rgba(37,99,235,0.3)]'
-                  }
-                `}
+                aria-label="Next testimonial"
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-200/90 bg-white/90 backdrop-blur-sm text-[#0B0F19] shadow-sm transition-all duration-300 hover:bg-[#2563EB] hover:text-white hover:border-[#2563EB] hover:shadow-[0_4px_14px_rgba(37,99,235,0.25)] hover:scale-105 active:scale-95"
               >
-                <HiArrowRight size={18} strokeWidth={1.5} />
+                <HiArrowRight size={16} strokeWidth={2} />
               </button>
             </div>
           </div>
         </div>
 
-        {/* ─── CARDS CAROUSEL ─── */}
-        <div className="relative max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-[60px]">
-          <div className="flex items-center justify-center gap-6 lg:gap-8 overflow-hidden py-8">
-            <AnimatePresence mode="popLayout">
-              {visibleCards.map(({ testimonial, originalIndex, isCenter }) => (
-                <motion.div
-                  key={originalIndex}
-                  layout
-                  initial={{ opacity: 0, scale: 0.85, y: 20 }}
-                  animate={{
-                    opacity: isCenter ? 1 : 0.85,
-                    scale: isCenter ? 1.05 : 0.95,
-                    y: isCenter ? -12 : 0,
-                  }}
-                  exit={{ opacity: 0, scale: 0.85, y: 20 }}
-                  transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-                  className="shrink-0"
-                >
-                  <TestimonialCard
-                    testimonial={testimonial}
-                    isCenter={isCenter}
-                    index={originalIndex}
-                    onClick={() => setSelectedTestimonial(testimonial)}
-                  />
-                </motion.div>
-              ))}
-            </AnimatePresence>
-          </div>
+        {/* ─── CAROUSEL STAGE VIEWPORT ─── */}
+        <div
+          ref={containerRef}
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+          className="relative w-full overflow-hidden py-3"
+        >
+          {/* Continuous smooth sliding track */}
+          <motion.div
+            animate={{ x: trackTranslateX }}
+            transition={
+              isTransitionEnabled
+                ? { duration: 0.85, ease: [0.16, 1, 0.3, 1] }
+                : { duration: 0 }
+            }
+            style={{
+              gap: `${cardMetrics.gap}px`,
+            }}
+            className="flex items-center will-change-transform"
+          >
+            {trackItems.map((item, idx) => {
+              const isCenter = idx === virtualIndex;
+              const floatDelay = (idx % N) * 0.4;
 
-          {/* Fade edges */}
-          <div className="absolute left-0 top-0 bottom-0 w-[40px] lg:w-[80px] bg-gradient-to-r from-[#f0f4ff] to-transparent z-20 pointer-events-none" />
-          <div className="absolute right-0 top-0 bottom-0 w-[40px] lg:w-[80px] bg-gradient-to-l from-[#f0f4ff] to-transparent z-20 pointer-events-none" />
+              return (
+                <TestimonialCard
+                  key={item.uniqueKey}
+                  testimonial={item}
+                  isCenter={isCenter}
+                  cardWidth={cardMetrics.cardWidth}
+                  floatDelay={floatDelay}
+                  onClick={() => setSelectedTestimonial(item)}
+                />
+              );
+            })}
+          </motion.div>
+
+          {/* Right Edge Soft Peek Gradient Fade */}
+          <div
+            className="absolute right-0 top-0 bottom-0 w-[50px] sm:w-[80px] lg:w-[110px] pointer-events-none z-30"
+            style={{
+              background: 'linear-gradient(to left, #EDF3FF 0%, rgba(237,243,255,0.7) 45%, transparent 100%)',
+            }}
+            aria-hidden="true"
+          />
         </div>
 
-        {/* ─── PAGINATION DOTS ─── */}
-        <div className="flex items-center justify-center gap-2.5 mt-8 sm:mt-10">
-          {Array.from({ length: totalPages }).map((_, page) => (
+        {/* ─── PAGINATION DOTS (7 dots, active is blue pill) ─── */}
+        <div className="flex items-center justify-center gap-2 mt-4 sm:mt-5">
+          {TESTIMONIALS.map((_, idx) => (
             <button
-              key={page}
+              key={idx}
               type="button"
-              onClick={() => goToPage(page)}
+              onClick={() => goToDot(idx)}
               className={`
-                rounded-full transition-all duration-400 ease-out
-                ${currentPage === page
-                  ? 'w-8 h-3 bg-gradient-to-r from-[#2563EB] to-[#4F46E5] shadow-[0_2px_8px_rgba(37,99,235,0.35)]'
-                  : 'w-3 h-3 bg-slate-300/70 hover:bg-slate-400/80'
+                rounded-full transition-all duration-400 ease-out cursor-pointer
+                ${activeDotIndex === idx
+                  ? 'w-6 h-2 bg-gradient-to-r from-[#2563EB] to-[#4F46E5] shadow-[0_2px_6px_rgba(37,99,235,0.35)]'
+                  : 'w-2 h-2 bg-slate-300/80 hover:bg-slate-400'
                 }
               `}
-              aria-label={`Go to page ${page + 1}`}
+              aria-label={`Go to testimonial ${idx + 1}`}
             />
           ))}
         </div>
 
-        {/* ─── Mobile Navigation ─── */}
-        <div className="flex md:hidden justify-center gap-3 mt-6 px-4">
+        {/* ─── Mobile Navigation Buttons ─── */}
+        <div className="flex md:hidden justify-center gap-2.5 mt-4 px-4">
           <button
             type="button"
             onClick={scrollLeft}
-            disabled={activeIndex <= 0}
-            className={`flex h-11 w-11 items-center justify-center rounded-xl border shadow-sm transition-all
-              ${activeIndex <= 0
-                ? 'border-slate-200/60 bg-slate-50 text-slate-300 cursor-not-allowed'
-                : 'border-slate-200/90 bg-white text-[#0B0F19] active:bg-[#2563EB] active:text-white'
-              }
-            `}
+            aria-label="Previous testimonial"
+            className="flex h-9 w-9 items-center justify-center rounded-xl border border-slate-200/90 bg-white text-[#0B0F19] shadow-sm transition-all active:bg-[#2563EB] active:text-white"
           >
-            <HiArrowLeft size={20} strokeWidth={2} />
+            <HiArrowLeft size={17} strokeWidth={2} />
           </button>
           <button
             type="button"
             onClick={scrollRight}
-            disabled={activeIndex >= TESTIMONIALS.length - 1}
-            className={`flex h-11 w-11 items-center justify-center rounded-xl border shadow-sm transition-all
-              ${activeIndex >= TESTIMONIALS.length - 1
-                ? 'border-slate-200/60 bg-slate-50 text-slate-300 cursor-not-allowed'
-                : 'border-slate-200/90 bg-white text-[#0B0F19] active:bg-[#2563EB] active:text-white'
-              }
-            `}
+            aria-label="Next testimonial"
+            className="flex h-9 w-9 items-center justify-center rounded-xl border border-slate-200/90 bg-white text-[#0B0F19] shadow-sm transition-all active:bg-[#2563EB] active:text-white"
           >
-            <HiArrowRight size={20} strokeWidth={2} />
+            <HiArrowRight size={17} strokeWidth={2} />
           </button>
         </div>
       </div>
 
-      {/* ─── Side Drawer Modal ─── */}
+      {/* ─── Side Drawer Modal for full story view ─── */}
       <AnimatePresence>
         {selectedTestimonial && (
           <>
-            {/* Backdrop */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -397,70 +510,65 @@ export default function TestimonialSection() {
               className="fixed top-[65px] left-0 right-0 bottom-0 bg-[#0B0F19]/50 backdrop-blur-[3px] z-[100]"
             />
 
-            {/* Panel */}
             <motion.div
               initial={{ x: '100%', opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               exit={{ x: '100%', opacity: 0 }}
               transition={{ type: 'spring', damping: 28, stiffness: 220 }}
-              className="fixed top-[75px] md:top-[85px] right-2 md:right-6 bottom-2 md:bottom-6 w-[calc(100%-16px)] md:w-[360px] bg-white shadow-[0_24px_60px_rgba(15,23,42,0.2)] z-[101] flex flex-col overflow-hidden rounded-2xl border border-slate-200/60"
+              className="fixed top-[75px] md:top-[85px] right-2 md:right-6 bottom-2 md:bottom-6 w-[calc(100%-16px)] md:w-[380px] bg-white shadow-[0_24px_60px_rgba(15,23,42,0.2)] z-[101] flex flex-col overflow-hidden rounded-2xl border border-slate-200/60"
             >
-              {/* Top Banner Area */}
-              <div className="relative h-[220px] bg-gradient-to-br from-[#2563EB] via-[#1D4ED8] to-[#1E40AF] flex-shrink-0 flex items-center justify-center overflow-hidden">
+              <div className="relative h-[200px] bg-gradient-to-br from-[#2563EB] via-[#1D4ED8] to-[#1E40AF] flex-shrink-0 flex items-center justify-center overflow-hidden">
                 <button
                   onClick={() => setSelectedTestimonial(null)}
-                  className="absolute top-5 right-5 w-9 h-9 bg-white/15 hover:bg-white text-white hover:text-[#2563EB] rounded-lg flex items-center justify-center transition-all z-10 backdrop-blur-sm"
+                  className="absolute top-4 right-4 w-8 h-8 bg-white/15 hover:bg-white text-white hover:text-[#2563EB] rounded-lg flex items-center justify-center transition-all z-10 backdrop-blur-sm"
+                  aria-label="Close modal"
                 >
-                  <HiXMark size={20} strokeWidth={1} />
+                  <HiXMark size={18} strokeWidth={1} />
                 </button>
 
-                {/* Subtle grid in banner */}
                 <div
                   className="absolute inset-0 opacity-[0.08]"
                   style={{
                     backgroundImage: 'linear-gradient(rgba(255,255,255,1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px)',
-                    backgroundSize: '32px 32px'
+                    backgroundSize: '32px 32px',
                   }}
                 />
 
-                {/* Glowing Center Core */}
-                <div className="relative z-10 mt-4">
-                  <div className="absolute inset-0 bg-white/20 blur-[50px] rounded-full scale-[2]" />
-                  <div className="w-[90px] h-[90px] rounded-2xl bg-white/15 backdrop-blur-md flex items-center justify-center shadow-[0_0_40px_rgba(255,255,255,0.25)] border border-white/30 rotate-[8deg] transform hover:rotate-0 transition-transform duration-500">
-                    <span className="text-[40px] font-bold text-white uppercase" style={{ textShadow: '0 2px 12px rgba(0,0,0,0.15)' }}>
+                <div className="relative z-10 mt-2">
+                  <div className="absolute inset-0 bg-white/20 blur-[40px] rounded-full scale-[2]" />
+                  <div className="w-[80px] h-[80px] rounded-2xl bg-white/15 backdrop-blur-md flex items-center justify-center shadow-[0_0_35px_rgba(255,255,255,0.25)] border border-white/30 rotate-[6deg] transform hover:rotate-0 transition-transform duration-500">
+                    <span className="text-[34px] font-bold text-white uppercase" style={{ textShadow: '0 2px 10px rgba(0,0,0,0.15)' }}>
                       {selectedTestimonial.author.charAt(0)}
                     </span>
                   </div>
                 </div>
 
-                {/* Stars in banner */}
-                <div className="absolute bottom-5 left-0 right-0 flex justify-center gap-1 z-10">
+                <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-1 z-10">
                   {[...Array(5)].map((_, i) => (
-                    <HiStar key={i} size={18} className="text-amber-300" />
+                    <HiStar key={i} size={16} className="text-amber-300" />
                   ))}
                 </div>
               </div>
 
-              {/* Detailed Content Area */}
-              <div className="flex-1 p-7 sm:p-8 overflow-y-auto bg-white flex flex-col justify-between" style={{ scrollbarWidth: 'thin' }}>
+              <div className="flex-1 p-6 sm:p-7 overflow-y-auto bg-white flex flex-col justify-between" style={{ scrollbarWidth: 'thin' }}>
                 <div>
-                  <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full border border-blue-200/80 bg-blue-50/70 text-blue-700 text-[11px] font-semibold tracking-wider uppercase mb-4">
+                  <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full border border-blue-200/80 bg-blue-50/70 text-blue-700 text-[11px] font-semibold tracking-wider uppercase mb-3">
                     <Sparkles className="w-3 h-3" />
                     <span>Success Story</span>
                   </div>
 
-                  <div className="text-[15px] text-[#4B5563] leading-[1.75] font-normal" style={{ whiteSpace: 'pre-line' }}>
+                  <div className="text-[14px] text-[#4B5563] leading-[1.7] font-normal" style={{ whiteSpace: 'pre-line' }}>
                     {selectedTestimonial.text}
                   </div>
                 </div>
 
-                <div className="mt-8 pt-6 border-t border-slate-100 flex items-center gap-3.5">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#2563EB] to-[#1D4ED8] flex items-center justify-center overflow-hidden shrink-0 shadow-sm">
-                    <span className="text-[18px] font-bold text-white uppercase">{selectedTestimonial.author.charAt(0)}</span>
+                <div className="mt-6 pt-5 border-t border-slate-100 flex items-center gap-3">
+                  <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-[#2563EB] to-[#1D4ED8] flex items-center justify-center overflow-hidden shrink-0 shadow-sm">
+                    <span className="text-[16px] font-bold text-white uppercase">{selectedTestimonial.author.charAt(0)}</span>
                   </div>
                   <div className="min-w-0">
-                    <div className="text-[15px] font-semibold text-[#0B0F19]">{selectedTestimonial.author}</div>
-                    <div className="text-[13px] text-[#64748B] font-medium mt-0.5 leading-tight">
+                    <div className="text-[14px] font-semibold text-[#0B0F19]">{selectedTestimonial.author}</div>
+                    <div className="text-[12px] text-[#64748B] font-medium mt-0.5 leading-tight">
                       {selectedTestimonial.company}
                     </div>
                   </div>

@@ -341,7 +341,7 @@ export default function TestimonialSection() {
 
   return (
     <section
-      className="relative w-full py-6 sm:py-8 lg:py-9 overflow-hidden select-none flex flex-col justify-center min-h-0"
+      className="relative w-full py-10 sm:py-14 lg:py-16 overflow-hidden select-none flex flex-col justify-center min-h-screen"
       style={{
         background: 'linear-gradient(180deg, #F0F5FF 0%, #F8FAFF 40%, #EDF3FF 100%)',
       }}

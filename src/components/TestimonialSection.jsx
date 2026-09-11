@@ -279,14 +279,14 @@ export default function TestimonialSection() {
   // Card (virtualIndex + 1) is fully visible to the right
   // Card (virtualIndex + 2) peeks on the far right
   const trackTranslateX = useMemo(() => {
-    const { cardWidth, step, isMobile } = cardMetrics;
+    const { cardWidth, gap, step, isMobile } = cardMetrics;
 
     if (isMobile) {
       return (containerWidth - cardWidth) / 2 - virtualIndex * step;
     }
 
-    // On desktop / tablet: left card peeks in by ~150px
-    const activeLeftOffset = Math.max(180, (containerWidth - 1140) / 2 + 180);
+    // On desktop / tablet: ensure the card before the active one is fully visible
+    const activeLeftOffset = Math.max(cardWidth + gap + 40, (containerWidth - 1140) / 2 + cardWidth + gap + 40);
     return activeLeftOffset - virtualIndex * step;
   }, [cardMetrics, containerWidth, virtualIndex]);
 

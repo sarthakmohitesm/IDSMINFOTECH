@@ -130,17 +130,17 @@ const TestimonialCard = ({
           transformStyle: 'preserve-3d',
         }}
         className={`
-          relative rounded-2xl bg-white flex flex-col justify-between overflow-hidden cursor-pointer
+          relative rounded bg-white flex flex-col justify-between overflow-hidden cursor-pointer
           transition-shadow duration-500 ease-out transform-gpu
           ${isCenter
-            ? 'p-5 sm:p-6 min-h-[290px] sm:min-h-[310px] max-h-[330px] shadow-[0_18px_48px_rgba(37,99,235,0.16),0_6px_18px_rgba(15,23,42,0.06)] border-2 border-blue-400/90 z-20 ring-1 ring-blue-400/25'
+            ? 'p-5 sm:p-6 min-h-[290px] sm:min-h-[310px] max-h-[330px] shadow-[0_18px_48px_rgba(37,99,235,0.16),0_6px_18px_rgba(15,23,42,0.06)] border-2 border-blue-500 z-20'
             : 'p-4.5 sm:p-5 min-h-[270px] sm:min-h-[285px] max-h-[305px] shadow-[0_6px_24px_rgba(15,23,42,0.05)] border border-slate-200/90 z-10 hover:shadow-[0_12px_32px_rgba(15,23,42,0.1)] hover:border-slate-300'
           }
         `}
       >
         {/* Specular Glare Reflection on Hover */}
         <motion.div
-          className="absolute inset-0 pointer-events-none z-30 rounded-2xl"
+          className="absolute inset-0 pointer-events-none z-30 rounded"
           style={{
             background: useTransform(
               [glareX, glareY],
@@ -149,17 +149,12 @@ const TestimonialCard = ({
           }}
         />
 
-        {/* Top Gradient Highlight Bar for Active Card */}
-        {isCenter && (
-          <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-blue-600 to-indigo-600 rounded-t-2xl z-20" />
-        )}
-
         <div className="relative z-10 flex-1 flex flex-col">
           {/* Header: Quote Icon + 5 Stars + 5.0 Rating Badge */}
           <div className="flex items-center justify-between mb-3">
             <div className="flex items-center gap-2">
               <div className={`
-                flex items-center justify-center rounded-lg transition-colors duration-300
+                flex items-center justify-center rounded transition-colors duration-300
                 ${isCenter
                   ? 'w-8 h-8 bg-blue-600 text-white shadow-sm shadow-blue-500/25'
                   : 'w-7.5 h-7.5 bg-blue-50 text-blue-600 border border-blue-100'
@@ -195,7 +190,7 @@ const TestimonialCard = ({
         {/* Author Info */}
         <div className="relative z-10 flex items-center gap-2.5 mt-auto border-t border-slate-100 pt-3">
           <div className={`
-            rounded-lg bg-gradient-to-br from-[#2563EB] to-[#1D4ED8] flex items-center justify-center overflow-hidden shadow-sm shrink-0
+            rounded bg-gradient-to-br from-[#2563EB] to-[#1D4ED8] flex items-center justify-center overflow-hidden shadow-sm shrink-0
             ${isCenter ? 'w-9 h-9' : 'w-8 h-8'}
           `}>
             <span className={`font-bold text-white uppercase ${isCenter ? 'text-[14px]' : 'text-[13px]'}`}>
@@ -416,7 +411,7 @@ export default function TestimonialSection() {
           ref={containerRef}
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
-          className="relative w-full overflow-hidden py-3"
+          className="relative w-full overflow-hidden py-8 sm:py-9"
         >
           {/* Continuous smooth sliding track */}
           <motion.div
@@ -483,7 +478,7 @@ export default function TestimonialSection() {
             type="button"
             onClick={scrollLeft}
             aria-label="Previous testimonial"
-            className="flex h-9 w-9 items-center justify-center rounded-xl border border-slate-200/90 bg-white text-[#0B0F19] shadow-sm transition-all active:bg-[#2563EB] active:text-white"
+            className="flex h-9 w-9 items-center justify-center rounded border border-slate-200/90 bg-white text-[#0B0F19] shadow-sm transition-all active:bg-[#2563EB] active:text-white"
           >
             <HiArrowLeft size={17} strokeWidth={2} />
           </button>
@@ -491,7 +486,7 @@ export default function TestimonialSection() {
             type="button"
             onClick={scrollRight}
             aria-label="Next testimonial"
-            className="flex h-9 w-9 items-center justify-center rounded-xl border border-slate-200/90 bg-white text-[#0B0F19] shadow-sm transition-all active:bg-[#2563EB] active:text-white"
+            className="flex h-9 w-9 items-center justify-center rounded border border-slate-200/90 bg-white text-[#0B0F19] shadow-sm transition-all active:bg-[#2563EB] active:text-white"
           >
             <HiArrowRight size={17} strokeWidth={2} />
           </button>
@@ -515,12 +510,12 @@ export default function TestimonialSection() {
               animate={{ x: 0, opacity: 1 }}
               exit={{ x: '100%', opacity: 0 }}
               transition={{ type: 'spring', damping: 28, stiffness: 220 }}
-              className="fixed top-[75px] md:top-[85px] right-2 md:right-6 bottom-2 md:bottom-6 w-[calc(100%-16px)] md:w-[380px] bg-white shadow-[0_24px_60px_rgba(15,23,42,0.2)] z-[101] flex flex-col overflow-hidden rounded-2xl border border-slate-200/60"
+              className="fixed top-[75px] md:top-[85px] right-2 md:right-6 bottom-2 md:bottom-6 w-[calc(100%-16px)] md:w-[380px] bg-white shadow-[0_24px_60px_rgba(15,23,42,0.2)] z-[101] flex flex-col overflow-hidden rounded border border-slate-200/60"
             >
               <div className="relative h-[200px] bg-gradient-to-br from-[#2563EB] via-[#1D4ED8] to-[#1E40AF] flex-shrink-0 flex items-center justify-center overflow-hidden">
                 <button
                   onClick={() => setSelectedTestimonial(null)}
-                  className="absolute top-4 right-4 w-8 h-8 bg-white/15 hover:bg-white text-white hover:text-[#2563EB] rounded-lg flex items-center justify-center transition-all z-10 backdrop-blur-sm"
+                  className="absolute top-4 right-4 w-8 h-8 bg-white/15 hover:bg-white text-white hover:text-[#2563EB] rounded flex items-center justify-center transition-all z-10 backdrop-blur-sm"
                   aria-label="Close modal"
                 >
                   <HiXMark size={18} strokeWidth={1} />
@@ -536,7 +531,7 @@ export default function TestimonialSection() {
 
                 <div className="relative z-10 mt-2">
                   <div className="absolute inset-0 bg-white/20 blur-[40px] rounded-full scale-[2]" />
-                  <div className="w-[80px] h-[80px] rounded-2xl bg-white/15 backdrop-blur-md flex items-center justify-center shadow-[0_0_35px_rgba(255,255,255,0.25)] border border-white/30 rotate-[6deg] transform hover:rotate-0 transition-transform duration-500">
+                  <div className="w-[80px] h-[80px] rounded bg-white/15 backdrop-blur-md flex items-center justify-center shadow-[0_0_35px_rgba(255,255,255,0.25)] border border-white/30 rotate-[6deg] transform hover:rotate-0 transition-transform duration-500">
                     <span className="text-[34px] font-bold text-white uppercase" style={{ textShadow: '0 2px 10px rgba(0,0,0,0.15)' }}>
                       {selectedTestimonial.author.charAt(0)}
                     </span>
@@ -563,7 +558,7 @@ export default function TestimonialSection() {
                 </div>
 
                 <div className="mt-6 pt-5 border-t border-slate-100 flex items-center gap-3">
-                  <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-[#2563EB] to-[#1D4ED8] flex items-center justify-center overflow-hidden shrink-0 shadow-sm">
+                  <div className="w-11 h-11 rounded bg-gradient-to-br from-[#2563EB] to-[#1D4ED8] flex items-center justify-center overflow-hidden shrink-0 shadow-sm">
                     <span className="text-[16px] font-bold text-white uppercase">{selectedTestimonial.author.charAt(0)}</span>
                   </div>
                   <div className="min-w-0">

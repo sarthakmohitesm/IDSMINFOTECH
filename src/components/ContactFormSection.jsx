@@ -51,7 +51,7 @@ function FieldIcon({ children }) {
 }
 
 const inputClass =
-  'w-full rounded-xl border border-slate-200/90 bg-white pl-10 pr-4 py-3 text-[14px] text-[#0B0F19] outline-none transition-all duration-200 placeholder:text-[#94A3B8] focus:border-[#2563EB] focus:ring-2 focus:ring-[#2563EB]/10';
+  'w-full rounded border border-slate-200/90 bg-white pl-10 pr-4 py-3 text-[14px] text-[#0B0F19] outline-none transition-all duration-200 placeholder:text-[#94A3B8] focus:border-[#2563EB] focus:ring-2 focus:ring-[#2563EB]/10';
 
 export default function ContactFormSection() {
   const [submitState, setSubmitState] = useState('idle');
@@ -115,7 +115,7 @@ export default function ContactFormSection() {
 
       <div className="relative z-10 max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 w-full">
         {/* Main Card Container */}
-        <div className="rounded-[24px] bg-white border border-slate-200/80 shadow-[0_20px_60px_rgba(15,23,42,0.06)] p-6 sm:p-8 lg:p-10">
+        <div className="rounded bg-white border border-slate-200/80 shadow-[0_20px_60px_rgba(15,23,42,0.06)] p-6 sm:p-8 lg:p-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch">
 
             {/* ─── LEFT COLUMN: Info & Map (5 cols) ─── */}
@@ -212,7 +212,7 @@ export default function ContactFormSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.2 }}
-                className="w-full flex-1 min-h-[230px] lg:min-h-[250px] relative overflow-hidden rounded-2xl border border-slate-200/90 shadow-[0_4px_20px_rgba(15,23,42,0.05)]"
+                className="w-full flex-1 min-h-[230px] lg:min-h-[250px] relative overflow-hidden rounded border border-slate-200/90 shadow-[0_4px_20px_rgba(15,23,42,0.05)]"
               >
                 <OfficeLocationMap />
               </motion.div>
@@ -267,7 +267,7 @@ export default function ContactFormSection() {
                       </div>
 
                       {/* Contact Number with Integrated Flag Selector */}
-                      <div className="relative flex items-center rounded-xl border border-slate-200/90 bg-white transition-all duration-200 focus-within:border-[#2563EB] focus-within:ring-2 focus-within:ring-[#2563EB]/10">
+                      <div className="relative flex items-center rounded border border-slate-200/90 bg-white transition-all duration-200 focus-within:border-[#2563EB] focus-within:ring-2 focus-within:ring-[#2563EB]/10">
                         {/* Phone icon */}
                         <div className="pl-3.5 text-[#94A3B8] pointer-events-none flex items-center">
                           <Phone className="w-[15px] h-[15px]" strokeWidth={1.75} />
@@ -297,7 +297,7 @@ export default function ContactFormSection() {
                                 animate={{ opacity: 1, y: 0 }}
                                 exit={{ opacity: 0, y: -4 }}
                                 transition={{ duration: 0.15 }}
-                                className="absolute left-0 top-full mt-2 w-[220px] bg-white border border-slate-200 rounded-xl shadow-[0_12px_32px_rgba(15,23,42,0.12)] z-40 overflow-hidden py-1"
+                                className="absolute left-0 top-full mt-2 w-[220px] bg-white border border-slate-200 rounded shadow-[0_12px_32px_rgba(15,23,42,0.12)] z-40 overflow-hidden py-1"
                               >
                                 {COUNTRIES.map((country) => (
                                   <button
@@ -344,7 +344,7 @@ export default function ContactFormSection() {
                       <textarea
                         name="requirement"
                         required
-                        className={`${inputClass} min-h-[110px] resize-y pt-3 pl-10 rounded-xl`}
+                        className={`${inputClass} min-h-[110px] resize-y pt-3 pl-10 rounded`}
                         placeholder="Describe the Project *"
                       />
                     </div>
@@ -369,7 +369,7 @@ export default function ContactFormSection() {
                     <button
                       type="button"
                       onClick={() => fileInputRef.current?.click()}
-                      className="inline-flex items-center gap-2 rounded-xl border border-slate-200/90 bg-white px-4 sm:px-5 py-2.5 text-[13px] font-medium text-slate-600 transition-all duration-200 hover:border-[#2563EB] hover:text-[#2563EB] focus:outline-none focus:ring-2 focus:ring-[#2563EB]/10"
+                      className="inline-flex items-center gap-2 rounded border border-slate-200/90 bg-white px-4 sm:px-5 py-2.5 text-[13px] font-medium text-slate-600 transition-all duration-200 hover:border-[#2563EB] hover:text-[#2563EB] focus:outline-none focus:ring-2 focus:ring-[#2563EB]/10"
                     >
                       <Paperclip className="w-4 h-4" strokeWidth={1.75} />
                       <span className="truncate max-w-[140px] sm:max-w-[200px]">
@@ -380,7 +380,7 @@ export default function ContactFormSection() {
                     <button
                       type="submit"
                       disabled={submitState === 'submitting' || submitState === 'success'}
-                      className="inline-flex items-center justify-center gap-2 px-7 sm:px-8 py-2.5 rounded-xl bg-[#2563EB] hover:bg-[#1D4ED8] text-white text-[14px] font-semibold shadow-[0_4px_16px_rgba(37,99,235,0.25)] hover:shadow-[0_6px_22px_rgba(37,99,235,0.35)] transition-all duration-200 active:scale-[0.98] disabled:opacity-60 disabled:pointer-events-none"
+                      className="inline-flex items-center justify-center gap-2 px-7 sm:px-8 py-2.5 rounded bg-[#2563EB] hover:bg-[#1D4ED8] text-white text-[14px] font-semibold shadow-[0_4px_16px_rgba(37,99,235,0.25)] hover:shadow-[0_6px_22px_rgba(37,99,235,0.35)] transition-all duration-200 active:scale-[0.98] disabled:opacity-60 disabled:pointer-events-none"
                     >
                       {submitState === 'idle' ? (
                         <>
@@ -405,7 +405,7 @@ export default function ContactFormSection() {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        className="absolute inset-0 z-20 flex items-center justify-center bg-white/95 backdrop-blur-sm rounded-xl"
+                        className="absolute inset-0 z-20 flex items-center justify-center bg-white/95 backdrop-blur-sm rounded"
                       >
                         <motion.div
                           initial={{ opacity: 0, scale: 0.95, y: 8 }}

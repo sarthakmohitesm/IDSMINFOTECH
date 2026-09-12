@@ -129,14 +129,14 @@ export default function OfficeLocationMap({ hideAddressFooter = false }) {
         href={MAP_LINK}
         target="_blank"
         rel="noopener noreferrer"
-        className="absolute left-3.5 top-3.5 z-[3] flex items-center gap-1.5 rounded-lg border border-slate-200/80 bg-white/95 px-3 py-1.5 text-[12px] font-semibold text-[#1E69D6] shadow-sm backdrop-blur-sm transition-all hover:bg-white hover:shadow"
+        className="absolute left-3.5 top-3.5 z-[3] flex items-center gap-1.5 rounded border border-slate-200/80 bg-white/95 px-3 py-1.5 text-[12px] font-semibold text-[#1E69D6] shadow-sm backdrop-blur-sm transition-all hover:bg-white hover:shadow"
       >
         <span className="text-sm">📍</span>
         <span>Open in Google Maps</span>
         <span className="text-[11px]">↗</span>
       </a>
 
-      <div className="absolute right-3.5 top-3.5 z-[3] flex flex-col rounded-lg border border-slate-200/80 bg-white/95 shadow-sm backdrop-blur-sm overflow-hidden">
+      <div className="absolute right-3.5 top-3.5 z-[3] flex flex-col rounded border border-slate-200/80 bg-white/95 shadow-sm backdrop-blur-sm overflow-hidden">
         <button
           type="button"
           aria-label="Zoom in"
@@ -160,7 +160,7 @@ export default function OfficeLocationMap({ hideAddressFooter = false }) {
 
       {!hideAddressFooter && (
         <div className="absolute bottom-0 left-0 right-0 z-[2] bg-[#1E69D6] px-4 py-3 flex items-center gap-3.5 text-white shadow-md">
-          <div className="w-9 h-9 rounded-lg bg-white/15 border border-white/20 flex items-center justify-center shrink-0">
+          <div className="w-9 h-9 rounded bg-white/15 border border-white/20 flex items-center justify-center shrink-0">
             <span className="text-base">📍</span>
           </div>
           <div className="min-w-0 flex-1">

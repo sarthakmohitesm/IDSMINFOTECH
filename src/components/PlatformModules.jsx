@@ -626,13 +626,12 @@ export default function PlatformModules() {
                 <div
                   key={i}
                   onClick={() => jumpToModule(i)}
-                  className={`h-1.5 rounded-full flex-1 transition-all duration-300 cursor-pointer ${
-                    i === activeIndex
-                      ? 'bg-[#2563EB] scale-y-125'
-                      : i < activeIndex
+                  className={`h-1.5 rounded-full flex-1 transition-all duration-300 cursor-pointer ${i === activeIndex
+                    ? 'bg-[#2563EB] scale-y-125'
+                    : i < activeIndex
                       ? 'bg-blue-200'
                       : 'bg-slate-200 hover:bg-slate-300'
-                  }`}
+                    }`}
                   title={MODULES[i].title}
                 />
               ))}

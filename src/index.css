@@ -62,6 +62,16 @@
     font-size: 16px;
   }
 
+  h1 span,
+  h2 span,
+  h3 span,
+  h4 span,
+  h5 span,
+  h6 span {
+    font-size: inherit;
+    line-height: inherit;
+  }
+
   /*
    * Cursor: no I-beam over normal copy (inherits default from html/body).
    * Pointer on obvious controls; children inherit (e.g. text inside <a>).

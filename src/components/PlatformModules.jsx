@@ -249,7 +249,7 @@ const MODULES = [
 ];
 
 /* ─── 3D Interactive Tilt Card Component with Glare & Depth ─── */
-function Interactive3DDisplay({ activeModule }) {
+function Interactive3DDisplay({ activeModule, scrollProgress }) {
   const cardRef = useRef(null);
   const mouseX = useMotionValue(0.5);
   const mouseY = useMotionValue(0.5);
@@ -258,8 +258,16 @@ function Interactive3DDisplay({ activeModule }) {
   const smoothX = useSpring(mouseX, springConfig);
   const smoothY = useSpring(mouseY, springConfig);
 
-  const rotateX = useTransform(smoothY, [0, 1], [9, -9]);
-  const rotateY = useTransform(smoothX, [0, 1], [-9, 9]);
+  const mouseRotateX = useTransform(smoothY, [0, 1], [9, -9]);
+  const mouseRotateY = useTransform(smoothX, [0, 1], [-9, 9]);
+  const stageScale = useTransform(scrollProgress, [0, 1], [0.985, 1.02]);
+  const stageDepth = useTransform(scrollProgress, [0, 1], [16, -16]);
+  const stageTiltX = useTransform(scrollProgress, [0, 1], [8, -8]);
+  const stageTiltY = useTransform(scrollProgress, [0, 1], [-7, 7]);
+  const glowOpacity = useTransform(scrollProgress, [0, 1], [0.35, 0.9]);
+
+  const rotateX = useTransform([mouseRotateX, stageTiltX], ([mX, sX]) => mX + sX);
+  const rotateY = useTransform([mouseRotateY, stageTiltY], ([mY, sY]) => mY + sY);
 
   const glareX = useTransform(smoothX, [0, 1], [0, 100]);
   const glareY = useTransform(smoothY, [0, 1], [0, 100]);
@@ -283,13 +291,15 @@ function Interactive3DDisplay({ activeModule }) {
       ref={cardRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      style={{ perspective: 1200 }}
+      style={{ perspective: 1800 }}
       className="relative w-full h-full flex items-center justify-center select-none"
     >
       <motion.div
         style={{
           rotateX,
           rotateY,
+          scale: stageScale,
+          translateZ: stageDepth,
           transformStyle: 'preserve-3d',
         }}
         className="relative w-full max-w-[620px] rounded-2xl bg-white border border-slate-200/90 shadow-[0_28px_65px_-10px_rgba(15,23,42,0.18),0_10px_24px_-5px_rgba(37,99,235,0.08)] overflow-hidden transition-shadow duration-300"
@@ -301,7 +311,6 @@ function Interactive3DDisplay({ activeModule }) {
             <span className="w-2.5 h-2.5 rounded-full bg-amber-400/80" />
             <span className="w-2.5 h-2.5 rounded-full bg-emerald-400/80" />
             <span className="ml-2 text-[11px] font-semibold text-slate-500 tracking-wide flex items-center gap-1.5">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#2563EB] animate-pulse" />
               IDMS Smart ERP &bull; {activeModule.title}
             </span>
           </div>
@@ -329,6 +338,7 @@ function Interactive3DDisplay({ activeModule }) {
           <motion.div
             style={{
               background: `radial-gradient(circle 320px at ${glareX}% ${glareY}%, rgba(255,255,255,0.28) 0%, transparent 80%)`,
+              opacity: glowOpacity,
             }}
             className="absolute inset-0 pointer-events-none mix-blend-overlay"
           />
@@ -337,20 +347,7 @@ function Interactive3DDisplay({ activeModule }) {
           <div className="absolute inset-x-0 bottom-0 h-14 bg-gradient-to-t from-black/40 via-black/10 to-transparent pointer-events-none" />
 
           {/* Floating 3D Badge on Top of Image */}
-          <div
-            style={{ transform: 'translateZ(32px)' }}
-            className="absolute bottom-3.5 left-4 right-4 flex items-center justify-between pointer-events-none"
-          >
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-900/80 backdrop-blur-md border border-white/20 text-white text-[11.5px] sm:text-xs font-semibold shadow-lg">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
-              {activeModule.badgeText}
-            </div>
-
-            <div className="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-white/90 backdrop-blur-md text-slate-800 text-[11px] font-semibold shadow">
-              <Sparkles className="w-3 h-3 text-[#2563EB]" />
-              Enterprise Feature
-            </div>
-          </div>
+          <div className="absolute inset-x-0 bottom-0 h-14 bg-gradient-to-t from-black/40 via-black/10 to-transparent pointer-events-none" />
         </div>
       </motion.div>
     </div>
@@ -370,10 +367,16 @@ export default function PlatformModules() {
   });
 
   const smoothProgress = useSpring(scrollYProgress, {
-    stiffness: 140,
-    damping: 24,
+    stiffness: 180,
+    damping: 28,
+    mass: 0.7,
     restDelta: 0.001,
   });
+
+  const detailRotateX = useTransform(smoothProgress, [0, 1], [8, -8]);
+  const detailRotateY = useTransform(smoothProgress, [0, 1], [-10, 10]);
+  const detailTranslateY = useTransform(smoothProgress, [0, 1], [12, -12]);
+  const detailScale = useTransform(smoothProgress, [0, 1], [0.985, 1.015]);
 
   // Calculate active index from scroll progress
   useEffect(() => {
@@ -456,11 +459,6 @@ export default function PlatformModules() {
 
             {/* Hint & Navigation Buttons */}
             <div className="flex items-center gap-3">
-              <div className="hidden sm:flex items-center gap-1.5 text-xs text-slate-400 font-medium">
-                <MousePointer className="w-3.5 h-3.5 text-[#2563EB] animate-bounce" />
-                <span>Scroll page to rotate modules</span>
-              </div>
-
               {/* Prev / Next controls */}
               <div className="flex items-center gap-1.5">
                 <button
@@ -530,12 +528,18 @@ export default function PlatformModules() {
                   animate={{ opacity: 1, x: 0, filter: 'blur(0px)' }}
                   exit={{ opacity: 0, x: 24, filter: 'blur(4px)' }}
                   transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                  style={{
+                    rotateX: detailRotateX,
+                    rotateY: detailRotateY,
+                    y: detailTranslateY,
+                    scale: detailScale,
+                    transformPerspective: 1600,
+                    transformStyle: 'preserve-3d',
+                  }}
                   className="flex flex-col items-start"
                 >
                   {/* Category Pill */}
-                  <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-md text-[11px] font-bold uppercase tracking-[0.16em] border mb-3.5 shadow-xs ${activeModule.tagColor}`}>
-                    <span>{activeModule.tagline}</span>
-                  </div>
+            <div className="mb-3.5" />
 
                   {/* Module Title */}
                   <h3 className="text-[28px] sm:text-[34px] lg:text-[40px] font-extrabold tracking-tight text-[#0F172A] leading-[1.12] mb-3.5">
@@ -604,7 +608,7 @@ export default function PlatformModules() {
 
             {/* ── RIGHT COLUMN: 3D INTERACTIVE TILT SCREEN ── */}
             <div className="lg:col-span-7 flex justify-center items-center relative min-h-[300px] sm:min-h-[420px]">
-              <Interactive3DDisplay activeModule={activeModule} />
+              <Interactive3DDisplay activeModule={activeModule} scrollProgress={smoothProgress} />
             </div>
 
           </div>

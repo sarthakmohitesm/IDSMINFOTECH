@@ -133,7 +133,7 @@ export default function About() {
               transition={{ duration: 0.6, delay: 0.15 }}
               className="lg:col-span-6 xl:col-span-6 relative w-full"
             >
-              <div className="rounded-2xl border border-slate-200/90 bg-gradient-to-br from-white via-slate-50/40 to-blue-50/20 p-4 sm:p-5 shadow-[0_16px_40px_rgba(15,23,42,0.06)] relative overflow-hidden">
+              <div className="rounded-lg border border-slate-200/90 bg-gradient-to-br from-white via-slate-50/40 to-blue-50/20 p-4 sm:p-5 shadow-[0_16px_40px_rgba(15,23,42,0.06)] relative overflow-hidden">
                 {/* Decorative Top Line */}
                 <div
                   className="absolute top-0 left-0 right-0 h-[3px]"

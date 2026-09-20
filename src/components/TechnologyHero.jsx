@@ -11,7 +11,7 @@ const TechnologyHero = () => {
   const bgScale = useTransform(smoothY, [0, 1], [1, 1.08]);
 
   return (
-    <section ref={sectionRef} className="relative w-full h-[calc(100vh-103px)] min-h-[560px] overflow-hidden bg-white select-none">
+    <section ref={sectionRef} className="relative w-full min-h-[660px] lg:h-[calc(100vh-103px)] lg:min-h-[680px] overflow-hidden bg-white select-none">
 
       {/* Subtle grid */}
       <div
@@ -25,34 +25,131 @@ const TechnologyHero = () => {
         aria-hidden="true"
       />
 
-      {/* Glow orbs */}
-      <div className="pointer-events-none absolute -top-20 left-1/2 -translate-x-1/2 w-[700px] h-[400px] bg-gradient-to-b from-blue-100/60 via-sky-50/30 to-transparent blur-3xl" aria-hidden="true" />
-      <div className="pointer-events-none absolute top-1/3 -right-24 w-[350px] h-[350px] bg-gradient-radial from-indigo-100/40 to-transparent blur-2xl" aria-hidden="true" />
+      {/* Glowing atmospheric elements */}
+      <div className="pointer-events-none absolute -top-24 left-1/2 -translate-x-1/2 w-[800px] h-[450px] bg-gradient-to-b from-blue-100/70 via-sky-50/40 to-transparent blur-3xl" aria-hidden="true" />
+      <div className="pointer-events-none absolute top-1/4 -left-20 w-[400px] h-[400px] bg-gradient-radial from-blue-50/60 to-transparent blur-2xl" aria-hidden="true" />
+      <div className="pointer-events-none absolute top-1/3 -right-20 w-[400px] h-[400px] bg-gradient-radial from-indigo-50/50 to-transparent blur-2xl" aria-hidden="true" />
 
-      {/* Scrolling background tech pattern */}
+      {/* Floating Language & Tech Logos with realistic 3D floating animation */}
       <motion.div
         style={{ scale: bgScale }}
-        className="absolute inset-0 pointer-events-none"
+        className="absolute inset-0 pointer-events-none z-10"
         aria-hidden="true"
       >
-        {/* Decorative floating code blocks */}
         {[
-          { top: '15%', left: '7%', text: 'React.js', delay: 0 },
-          { top: '28%', right: '8%', text: 'Node.js', delay: 0.1 },
-          { top: '62%', left: '5%', text: 'MongoDB', delay: 0.2 },
-          { top: '70%', right: '6%', text: 'AWS Cloud', delay: 0.15 },
-          { top: '45%', left: '3%', text: 'Docker', delay: 0.05 },
-          { top: '50%', right: '4%', text: 'CI/CD', delay: 0.12 },
-        ].map((tag, i) => (
+          {
+            name: 'React',
+            logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg',
+            top: '16%',
+            left: '8%',
+            glow: 'rgba(97,218,251,0.2)',
+            delay: 0,
+            floatDuration: 4.5,
+          },
+          {
+            name: 'TypeScript',
+            logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg',
+            top: '38%',
+            left: '3%',
+            glow: 'rgba(49,120,198,0.2)',
+            delay: 0.3,
+            floatDuration: 5.2,
+          },
+          {
+            name: 'Python',
+            logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg',
+            top: '64%',
+            left: '6%',
+            glow: 'rgba(255,212,59,0.25)',
+            delay: 0.6,
+            floatDuration: 4.8,
+          },
+          {
+            name: 'Docker',
+            logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg',
+            top: '84%',
+            left: '14%',
+            glow: 'rgba(36,150,237,0.2)',
+            delay: 0.2,
+            floatDuration: 5.6,
+          },
+          {
+            name: 'Node.js',
+            logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg',
+            top: '16%',
+            right: '9%',
+            glow: 'rgba(104,160,99,0.25)',
+            delay: 0.15,
+            floatDuration: 4.6,
+          },
+          {
+            name: 'AWS Cloud',
+            logo: 'https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg',
+            top: '38%',
+            right: '4%',
+            glow: 'rgba(255,153,0,0.2)',
+            delay: 0.45,
+            floatDuration: 5.4,
+          },
+          {
+            name: 'MongoDB',
+            logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg',
+            top: '64%',
+            right: '7%',
+            glow: 'rgba(71,162,72,0.2)',
+            delay: 0.7,
+            floatDuration: 5.0,
+          },
+          {
+            name: 'PostgreSQL',
+            logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg',
+            top: '84%',
+            right: '15%',
+            glow: 'rgba(51,103,145,0.2)',
+            delay: 0.35,
+            floatDuration: 4.9,
+          },
+        ].map((item, i) => (
           <motion.div
-            key={i}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 + tag.delay }}
-            className="absolute px-3 py-1.5 rounded-full border border-slate-200/80 bg-white/70 backdrop-blur-sm text-[11px] font-mono font-semibold text-slate-400 shadow-sm"
-            style={{ top: tag.top, left: tag.left, right: tag.right }}
+            key={item.name}
+            initial={{ opacity: 0, scale: 0.6 }}
+            animate={{
+              opacity: 1,
+              scale: 1,
+              y: [0, -12, 0],
+              rotate: [0, i % 2 === 0 ? 3 : -3, 0],
+            }}
+            transition={{
+              opacity: { duration: 0.6, delay: 0.3 + item.delay },
+              scale: { duration: 0.6, delay: 0.3 + item.delay },
+              y: { duration: item.floatDuration, repeat: Infinity, ease: 'easeInOut', delay: item.delay },
+              rotate: { duration: item.floatDuration * 1.3, repeat: Infinity, ease: 'easeInOut', delay: item.delay },
+            }}
+            className="absolute hidden md:flex items-center justify-center pointer-events-auto group cursor-pointer"
+            style={{
+              top: item.top,
+              left: item.left,
+              right: item.right,
+            }}
           >
-            {tag.text}
+            {/* Ambient logo glow backdrop */}
+            <div
+              className="absolute inset-0 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+              style={{ backgroundColor: item.glow }}
+            />
+
+            {/* Glassmorphic realistic logo tile */}
+            <div className="relative flex flex-col items-center gap-1.5 p-3 sm:p-3.5 rounded-2xl bg-white/90 backdrop-blur-md border border-slate-200/90 shadow-[0_10px_25px_rgba(15,23,42,0.06),0_2px_6px_rgba(15,23,42,0.04)] group-hover:shadow-[0_18px_35px_rgba(15,23,42,0.12)] group-hover:border-blue-300/80 group-hover:-translate-y-1 transition-all duration-300">
+              <img
+                src={item.logo}
+                alt={item.name}
+                className="w-9 h-9 sm:w-10 sm:h-10 object-contain drop-shadow-sm group-hover:scale-110 transition-transform duration-300"
+                loading="lazy"
+              />
+              <span className="text-[10.5px] font-semibold text-slate-500 tracking-tight group-hover:text-[#2563EB] transition-colors">
+                {item.name}
+              </span>
+            </div>
           </motion.div>
         ))}
       </motion.div>

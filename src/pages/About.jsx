@@ -12,27 +12,9 @@ import {
 import PageBackground from '../components/ui/PageBackground';
 import AboutStory from '../components/AboutStory';
 import WhyIDMS from '../components/WhyIDMS';
+import LeadershipSection3D from '../components/LeadershipSection3D';
 
-import pic1 from '../assets/pics/06_JPG.avif';
-import pic2 from '../assets/pics/07_JPG.avif';
-import ruhanImage from '../assets/pics/Rohan.jpeg';
-import nishigandhaImage from '../assets/pics/Nishigandha Mam.jpg';
-import payalImage from '../assets/pics/Payal Mam.jpeg';
-import nileshSarafImage from '../assets/pics/Nilesh_Saraf sir.jpg';
 import smartErpLogo from '../assets/shapes/smart-erp-logo-header.svg';
-
-const leadershipData = {
-  "Board of Directors": [
-    { name: "Shailesh Deshpande", role: "Managing Director", image: pic2 },
-    { name: "Nikhil Moharil", role: "Technical Director", image: pic1 }
-  ],
-  "Management Team": [
-    { name: "Rohan Pathradkar ", role: "Group Product Manager", image: ruhanImage },
-    { name: "Nishigandha Kamlapurkar", role: "Group Product Manager", image: nishigandhaImage },
-    { name: "Payal Deo", role: "Group Product Manager", image: payalImage },
-    { name: "Nilesh Saraf ", role: "Group Product Manager", image: nileshSarafImage }
-  ]
-};
 
 export default function About() {
   return (
@@ -306,86 +288,8 @@ export default function About() {
         aria-hidden
       />
 
-      {/* 3rd Section: Our Leadership (Full Grid) */}
-      <section className="pt-16 pb-20 md:pt-24 md:pb-32 px-4 lg:px-[80px] w-full bg-white border-t border-[#f1f5f9]">
-        <div className="max-w-[1444px] mx-auto flex flex-col items-center">
-
-          {/* Header */}
-          <div className="text-center mb-16 md:mb-24">
-            <p className="text-[#0083FF] font-bold tracking-[0.25em] text-[12px] mb-4 uppercase">Expertise & Vision</p>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#122a66] font-noto-sans tracking-tight mb-6">
-              Our Leadership Team
-            </h2>
-            <div className="mt-8 mx-auto h-1 w-20 bg-[#0083FF] rounded-full" />
-          </div>
-
-          {/* Responsive Cards Grid */}
-          <div className="w-full">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-14 w-full max-w-[1140px] mx-auto">
-              {[...leadershipData["Board of Directors"], ...leadershipData["Management Team"]].map((person, idx) => (
-                <motion.div
-                  key={person.name}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: idx * 0.1, ease: [0.22, 1, 0.36, 1] }}
-                  whileHover={{ 
-                    y: -8,
-                    scale: 1.03,
-                    transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] }
-                  }}
-                  className={`relative bg-white border rounded-[5px] flex flex-col items-center text-center transition-all duration-500 group px-8 py-10 mx-auto w-full overflow-hidden
-                    ${idx === 0 
-                      ? "shadow-[0_8px_30px_rgba(37,85,235,0.12)] border-[#2555eb]/20 bg-[#f8fbff]" 
-                      : "shadow-[0_4px_20px_rgba(0,0,0,0.03)] border-[#e2e8f0] hover:shadow-[0_20px_40px_rgba(37,85,235,0.08)]"
-                    }`}
-                >
-                  {/* Subtle Hover Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-transparent to-[#2555eb]/[0.02] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-                  
-                  {/* Blue Glow Effect */}
-                  <div className="absolute -inset-1 bg-[#2555eb]/[0.03] rounded blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 -z-10" />
-
-                  <div className="pointer-events-none absolute inset-x-0 top-0 h-[3px] origin-center scale-x-0 rounded-t-[5px] bg-[#0083FF] transition-transform duration-700 cubic-bezier(.22,1,.36,1) group-hover:scale-x-100" />
-                  
-                  {/* Image Container */}
-                  <div className="relative h-[180px] w-[180px] mb-8 z-10 transition-transform duration-500">
-                    {/* Static Dashed Border */}
-                    <div className="absolute inset-0 rounded-full border-2 border-dashed border-[#0083FF]/30 scale-110" />
-                    
-                    <div className="h-full w-full rounded-full overflow-hidden p-1 bg-white shadow-xl relative z-10">
-                      <img
-                        src={person.image}
-                        alt={person.name}
-                        className="h-full w-full rounded-full object-cover object-top"
-                      />
-                    </div>
-                  </div>
-
-                  {/* Text Container */}
-                  <h3 className="text-2xl font-bold text-[#122a66] font-noto-sans tracking-tight mb-2.5">
-                    {person.name}
-                  </h3>
-                  <p className="text-[15px] text-[#475569] font-medium font-noto-sans tracking-wide">
-                    {person.role}
-                  </p>
-
-                  {/* Animated Line Interaction */}
-                  <div className="mt-8 w-10 h-[2.5px] bg-[#e2e8f0] group-hover:w-24 group-hover:bg-[#0083FF] transition-all duration-700 cubic-bezier(.22,1,.36,1)" />
-                </motion.div>
-              ))}
-            </div>
-          </div>
-
-          {/* Optional CTA Link */}
-          <div className="mt-20 text-center">
-            <p className="text-gray-400 text-sm font-noto-sans font-light tracking-wide italic">
-              Backed by strong leadership, we help businesses scale with confidence.
-            </p>
-          </div>
-
-        </div>
-      </section>
+      {/* 3rd Section: Animated 3D Leadership Team */}
+      <LeadershipSection3D />
 
     </PageBackground>
   );

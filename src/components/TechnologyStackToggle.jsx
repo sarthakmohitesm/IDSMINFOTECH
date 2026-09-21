@@ -1,154 +1,213 @@
-import React, { useRef } from 'react';
-import { motion, useScroll, useSpring, useTransform } from 'framer-motion';
-import MernStack from '../assets/pics/mern.svg';
-import MeanStack from '../assets/pics/mean.svg';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
-const stackSections = [
-  {
-    key: 'MERN',
-    label: 'MERN Stack',
+/* ── Stack data ───────────────────────────────────────────────── */
+const stacks = {
+  MERN: {
     tagline: 'Fast, Flexible & Full-Stack',
-    title: 'MERN Stack at IDMS',
-    content:
-      'At IDMS, we use the MERN stack to build fast, reliable, and highly scalable web applications for modern businesses. MongoDB serves as our primary NoSQL database, Express.js powers our secure API layer, React.js enables dynamic and responsive user experiences, and Node.js ties everything together through a high-performance JavaScript runtime.',
-    image: MernStack,
-    imageAlt: 'MERN stack visual',
-    reverse: false,
     accent: '#2563EB',
-    pills: ['MongoDB', 'Express.js', 'React.js', 'Node.js'],
+    techs: [
+      {
+        name: 'MongoDB',
+        role: 'Database',
+        desc: 'Flexible NoSQL document database for scalable data storage.',
+        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg',
+        color: '#00A74A',
+      },
+      {
+        name: 'Express.js',
+        role: 'Backend',
+        desc: 'Minimal, fast Node.js framework powering our secure API layer.',
+        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg',
+        color: '#444444',
+      },
+      {
+        name: 'React.js',
+        role: 'Frontend',
+        desc: 'Component-driven UI library for dynamic, responsive experiences.',
+        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg',
+        color: '#61DAFB',
+      },
+      {
+        name: 'Node.js',
+        role: 'Runtime',
+        desc: 'High-performance JavaScript runtime tying the full stack together.',
+        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg',
+        color: '#68A063',
+      },
+    ],
   },
-  {
-    key: 'MEAN',
-    label: 'MEAN Stack',
+  MEAN: {
     tagline: 'Structured, Scalable & Enterprise-Ready',
-    title: 'MEAN Stack at IDMS',
-    content:
-      'At IDMS, we use the MEAN stack to deliver powerful, structured, and enterprise-grade web applications built for scale. MongoDB provides a flexible data foundation, Express.js enables robust backend services, Angular delivers consistent front-end architecture, and Node.js ensures efficient server-side execution throughout the application lifecycle.',
-    image: MeanStack,
-    imageAlt: 'MEAN stack visual',
-    reverse: true,
     accent: '#7C3AED',
-    pills: ['MongoDB', 'Express.js', 'Angular', 'Node.js'],
+    techs: [
+      {
+        name: 'MongoDB',
+        role: 'Database',
+        desc: 'Flexible data foundation for enterprise document storage.',
+        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg',
+        color: '#00A74A',
+      },
+      {
+        name: 'Express.js',
+        role: 'Backend',
+        desc: 'Robust backend services and middleware architecture.',
+        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg',
+        color: '#444444',
+      },
+      {
+        name: 'Angular',
+        role: 'Frontend',
+        desc: 'Enterprise-grade front-end architecture with TypeScript.',
+        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg',
+        color: '#DD0031',
+      },
+      {
+        name: 'Node.js',
+        role: 'Runtime',
+        desc: 'Efficient server-side execution across the application lifecycle.',
+        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg',
+        color: '#68A063',
+      },
+    ],
   },
-];
+};
 
-function StackSection({ section, index }) {
-  const ref = useRef(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'end start'] });
-  const smooth = useSpring(scrollYProgress, { stiffness: 80, damping: 22 });
-  const imgY = useTransform(smooth, [0, 1], [section.reverse ? -30 : 30, section.reverse ? 30 : -30]);
-  const textY = useTransform(smooth, [0, 1], [20, -20]);
-
+/* ── Tech card ────────────────────────────────────────────────── */
+function TechCard({ tech, index }) {
   return (
-    <section
-      ref={ref}
-      className={`relative overflow-hidden border-t border-slate-200/80 px-6 lg:px-[80px] py-20 lg:py-28 ${
-        index % 2 === 0 ? 'bg-white' : 'bg-[#F8FAFF]'
-      }`}
+    <motion.div
+      initial={{ opacity: 0, y: 16 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -10 }}
+      transition={{ duration: 0.35, delay: index * 0.07, ease: [0.22, 1, 0.36, 1] }}
+      whileHover={{ y: -4, transition: { type: 'spring', stiffness: 400, damping: 22 } }}
+      className="group relative flex flex-col rounded-xl border border-slate-200/80 bg-white p-5 transition-all duration-300 hover:shadow-[0_8px_24px_rgba(0,0,0,0.06)] hover:border-slate-300"
     >
-      {/* Grid */}
+      {/* Hover accent line */}
       <div
-        className="pointer-events-none absolute inset-0 opacity-30"
-        style={{
-          backgroundImage: 'linear-gradient(to right,#e5e7eb 1px,transparent 1px),linear-gradient(to bottom,#e5e7eb 1px,transparent 1px)',
-          backgroundSize: '44px 44px',
-          WebkitMaskImage: 'radial-gradient(ellipse 70% 60% at 50% 50%,#000 40%,transparent 100%)',
-          maskImage: 'radial-gradient(ellipse 70% 60% at 50% 50%,#000 40%,transparent 100%)',
-        }}
-        aria-hidden="true"
+        className="absolute top-0 left-4 right-4 h-[2px] rounded-b-full opacity-0 group-hover:opacity-100 transition-opacity duration-400"
+        style={{ backgroundColor: tech.color }}
       />
 
-      {/* Glow blob */}
+      <div className="flex items-center gap-3 mb-3">
+        <div
+          className="w-10 h-10 rounded-lg flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-110"
+          style={{ backgroundColor: `${tech.color}12`, border: `1px solid ${tech.color}20` }}
+        >
+          <img src={tech.icon} alt={tech.name} className="w-5.5 h-5.5 object-contain" loading="lazy" />
+        </div>
+        <div>
+          <h4 className="font-noto-sans text-[15px] font-bold text-[#0B0F19] leading-tight">{tech.name}</h4>
+          <span className="text-[10.5px] font-semibold uppercase tracking-wider text-slate-400">{tech.role}</span>
+        </div>
+      </div>
+
+      <p className="font-noto-sans text-[13px] leading-[1.6] text-slate-500">{tech.desc}</p>
+    </motion.div>
+  );
+}
+
+/* ── Main Component ───────────────────────────────────────────── */
+export default function TechnologyStackToggle() {
+  const [active, setActive] = useState('MERN');
+  const stack = stacks[active];
+
+  return (
+    <section className="relative overflow-hidden bg-white border-t border-slate-100 px-6 lg:px-[80px] py-14 lg:py-16">
+      {/* Subtle grid background */}
       <div
-        className="pointer-events-none absolute w-[400px] h-[400px] rounded-full blur-3xl opacity-25"
+        className="pointer-events-none absolute inset-0 opacity-25"
         style={{
-          backgroundColor: section.accent,
-          top: '20%',
-          [section.reverse ? 'right' : 'left']: '-5%',
+          backgroundImage:
+            'linear-gradient(to right,#e5e7eb 1px,transparent 1px),linear-gradient(to bottom,#e5e7eb 1px,transparent 1px)',
+          backgroundSize: '44px 44px',
+          WebkitMaskImage: 'radial-gradient(ellipse 60% 50% at 50% 50%,#000 30%,transparent 100%)',
+          maskImage: 'radial-gradient(ellipse 60% 50% at 50% 50%,#000 30%,transparent 100%)',
         }}
         aria-hidden="true"
       />
 
       <div className="max-w-[1300px] mx-auto relative z-10">
-        <div className={`grid grid-cols-1 items-center gap-12 lg:gap-20 lg:grid-cols-2 ${section.reverse ? 'lg:[&>*:first-child]:order-2 lg:[&>*:last-child]:order-1' : ''}`}>
-
-          {/* Image */}
+        {/* Header row: title left, toggle right */}
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8">
           <motion.div
-            style={{ y: imgY }}
-            initial={{ opacity: 0, x: section.reverse ? 60 : -60 }}
+            initial={{ opacity: 0, x: -16 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: '-80px' }}
-            transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
-            className="relative flex items-center justify-center"
+            viewport={{ once: true, margin: '-40px' }}
+            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
           >
-            {/* Glow ring behind image */}
-            <div
-              className="absolute w-[280px] h-[280px] rounded-full blur-3xl opacity-20"
-              style={{ backgroundColor: section.accent }}
-            />
-            <img
-              src={section.image}
-              alt={section.imageAlt}
-              className="relative z-10 w-full max-w-[380px] object-contain drop-shadow-xl"
-            />
-          </motion.div>
-
-          {/* Text */}
-          <motion.div
-            style={{ y: textY }}
-            initial={{ opacity: 0, x: section.reverse ? -60 : 60 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: '-80px' }}
-            transition={{ duration: 0.85, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-          >
-            {/* Eyebrow */}
-            <div className="flex items-center gap-3 mb-3">
-              <div className="h-px w-8" style={{ background: `linear-gradient(to right, transparent, ${section.accent})` }} />
-              <span className="text-[11px] font-bold tracking-[0.25em] uppercase" style={{ color: section.accent }}>
-                {section.label}
+            <div className="flex items-center gap-2.5 mb-1.5">
+              <div className="h-px w-7" style={{ background: `linear-gradient(to right, transparent, ${stack.accent})` }} />
+              <span className="text-[11px] font-bold tracking-[0.25em] uppercase" style={{ color: stack.accent }}>
+                {active} Stack
               </span>
             </div>
-
-            <h3 className="font-noto-sans text-[clamp(26px,3vw,40px)] font-extrabold leading-tight tracking-[-0.03em] text-[#0B0F19] mb-2">
-              {section.title}
-            </h3>
-            <p className="text-[13px] font-semibold text-slate-400 mb-5 uppercase tracking-wider">{section.tagline}</p>
-
-            <p className="font-noto-sans text-[15px] leading-[1.75] text-[#475569] mb-7 max-w-lg">
-              {section.content}
-            </p>
-
-            {/* Tech pills */}
-            <div className="flex flex-wrap gap-2">
-              {section.pills.map((pill) => (
-                <span
-                  key={pill}
-                  className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[12px] font-bold border"
-                  style={{
-                    color: section.accent,
-                    borderColor: `${section.accent}30`,
-                    backgroundColor: `${section.accent}08`,
-                  }}
-                >
-                  <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: section.accent }} />
-                  {pill}
-                </span>
-              ))}
-            </div>
+            <h2 className="font-noto-sans text-[clamp(24px,2.8vw,36px)] font-extrabold leading-tight tracking-[-0.03em] text-[#0B0F19]">
+              {active} Stack at IDMS
+            </h2>
+            <AnimatePresence mode="wait">
+              <motion.p
+                key={active}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.2 }}
+                className="text-[12.5px] font-semibold text-slate-400 mt-1 uppercase tracking-wider"
+              >
+                {stack.tagline}
+              </motion.p>
+            </AnimatePresence>
           </motion.div>
 
+          {/* Toggle */}
+          <motion.div
+            initial={{ opacity: 0, x: 16 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: '-40px' }}
+            transition={{ duration: 0.5, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
+            className="inline-flex items-center rounded-full p-1 border border-slate-200 bg-slate-50/80"
+          >
+            {['MERN', 'MEAN'].map((key) => (
+              <button
+                key={key}
+                onClick={() => setActive(key)}
+                className="relative px-5 py-2 text-[13px] font-bold rounded-full transition-colors duration-300 cursor-pointer"
+                style={{ color: active === key ? '#fff' : '#94a3b8' }}
+              >
+                {active === key && (
+                  <motion.div
+                    layoutId="stackPill"
+                    className="absolute inset-0 rounded-full"
+                    style={{
+                      background: stacks[key].accent,
+                      boxShadow: `0 3px 12px ${stacks[key].accent}30`,
+                    }}
+                    transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+                  />
+                )}
+                <span className="relative z-10">{key}</span>
+              </button>
+            ))}
+          </motion.div>
         </div>
+
+        {/* Tech cards: 4 columns */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={active}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"
+          >
+            {stack.techs.map((tech, i) => (
+              <TechCard key={tech.name + active} tech={tech} index={i} />
+            ))}
+          </motion.div>
+        </AnimatePresence>
       </div>
     </section>
-  );
-}
-
-export default function TechnologyStackToggle() {
-  return (
-    <>
-      {stackSections.map((section, i) => (
-        <StackSection key={section.key} section={section} index={i} />
-      ))}
-    </>
   );
 }

@@ -11,7 +11,7 @@ const TechnologyHero = () => {
   const bgScale = useTransform(smoothY, [0, 1], [1, 1.08]);
 
   return (
-    <section ref={sectionRef} className="relative w-full min-h-[580px] lg:h-[calc(100vh-80px)] lg:min-h-[600px] overflow-hidden bg-white select-none">
+    <section ref={sectionRef} className="relative w-full min-h-[480px] lg:h-[calc(100vh-64px)] lg:min-h-[500px] overflow-hidden bg-white select-none">
 
       {/* Subtle grid */}
       <div

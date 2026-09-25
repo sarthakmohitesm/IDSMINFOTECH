@@ -74,7 +74,7 @@ function StackCard({ card, index }) {
 
 export default function TechnologyStack() {
   return (
-    <section className="bg-white px-6 py-12 lg:px-[80px] lg:py-16 overflow-hidden relative border-t border-slate-100">
+    <section className="bg-[#EFF6FF] px-6 py-12 lg:px-[80px] lg:py-16 overflow-hidden relative border-t border-blue-100 min-h-screen flex items-center">
       {/* Decorative Radial Backdrop */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full pointer-events-none bg-[radial-gradient(circle_at_center,rgba(0,143,255,0.03)_0%,transparent_70%)]" />
 

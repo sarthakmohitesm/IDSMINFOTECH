@@ -100,7 +100,15 @@ const TechnologyHero = () => {
             delay: 0.7,
             floatDuration: 5.0,
           },
-
+          {
+            name: 'JavaScript',
+            logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg',
+            top: '84%',
+            right: '15%',
+            glow: 'rgba(247,223,30,0.25)',
+            delay: 0.35,
+            floatDuration: 4.9,
+          },
         ].map((item, i) => (
           <motion.div
             key={item.name}

@@ -150,7 +150,7 @@ export default function Navbar() {
                             setOpenDropdownHref(link.href);
                           }}
                           onMouseLeave={scheduleCloseDropdown}
-                          className={`fixed top-[64px] left-0 w-full bg-white/95 backdrop-blur-xl border-b border-[#e5e5e5]/80 shadow-[0_12px_32px_rgba(10,10,10,0.08)] transition-all duration-300 z-40 overflow-hidden before:content-[''] before:absolute before:left-0 before:right-0 before:-top-3 before:h-3 before:pointer-events-auto ${
+                          className={`fixed top-[64px] left-0 w-full bg-white backdrop-blur-xl border-b border-[#e5e5e5]/80 shadow-[0_12px_32px_rgba(10,10,10,0.08)] transition-all duration-300 z-40 overflow-hidden before:content-[''] before:absolute before:left-0 before:right-0 before:-top-3 before:h-3 before:pointer-events-auto ${
                             dropdownOpen
                               ? 'opacity-100 visible translate-y-0 pointer-events-auto'
                               : 'pointer-events-none invisible opacity-0 -translate-y-2'

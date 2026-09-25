@@ -65,11 +65,11 @@ const TechnologyHero = () => {
             floatDuration: 4.8,
           },
           {
-            name: 'Docker',
-            logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg',
+            name: 'Digital Ocean',
+            logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/digitalocean/digitalocean-original.svg',
             top: '84%',
             left: '14%',
-            glow: 'rgba(36,150,237,0.2)',
+            glow: 'rgba(0,105,225,0.25)',
             delay: 0.2,
             floatDuration: 5.6,
           },
@@ -100,15 +100,7 @@ const TechnologyHero = () => {
             delay: 0.7,
             floatDuration: 5.0,
           },
-          {
-            name: 'PostgreSQL',
-            logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg',
-            top: '84%',
-            right: '15%',
-            glow: 'rgba(51,103,145,0.2)',
-            delay: 0.35,
-            floatDuration: 4.9,
-          },
+
         ].map((item, i) => (
           <motion.div
             key={item.name}

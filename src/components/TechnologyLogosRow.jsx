@@ -214,14 +214,8 @@ export default function TechnologyLogosRow() {
         style={{ textAlign: 'center', marginBottom: 48 }}
       >
         <h2
-          style={{
-            fontFamily: '"Noto Sans", sans-serif',
-            fontSize: 'clamp(28px, 3vw, 44px)',
-            fontWeight: 700,
-            letterSpacing: '-0.03em',
-            color: '#122a66',
-            margin: 0,
-          }}
+          className="font-noto-sans text-[28px] sm:text-[34px] lg:text-[40px] font-bold tracking-tight leading-[1.15] text-[#122a66]"
+          style={{ margin: 0 }}
         >
           Technologies
         </h2>

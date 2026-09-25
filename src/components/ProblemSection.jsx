@@ -42,7 +42,7 @@ export default function ProblemSection() {
             THE REALITY CHECK
           </div>
 
-          <h2 className="text-[32px] sm:text-[44px] font-extrabold text-[#0F172A] tracking-[-0.025em] leading-[1.12] mb-3.5">
+          <h2 className="font-noto-sans text-[28px] sm:text-[34px] lg:text-[40px] font-bold text-[#0F172A] tracking-tight leading-[1.15] mb-3.5">
             This is how most businesses operate.
           </h2>
 
@@ -296,7 +296,7 @@ export default function ProblemSection() {
             <span>Unified Intelligence</span>
           </div>
 
-          <h2 className="text-[32px] sm:text-[44px] font-extrabold text-[#0B0F19] tracking-[-0.025em] leading-[1.12] mb-4">
+          <h2 className="font-noto-sans text-[28px] sm:text-[34px] lg:text-[40px] font-bold text-[#0B0F19] tracking-tight leading-[1.15] mb-4">
             This is how modern businesses operate.
           </h2>
 

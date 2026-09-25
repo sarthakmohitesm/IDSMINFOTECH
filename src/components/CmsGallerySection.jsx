@@ -27,7 +27,7 @@ export default function CmsGallerySection() {
     <section className="border-b border-[#1f1b19]/10 bg-[#fcfcfb] px-4 py-10 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-[1480px]">
         <p className="font-rajdhani text-[11px] font-bold uppercase tracking-[0.2em] text-[#2555eb]">From the CMS</p>
-        <h2 className="mt-2 font-rajdhani text-[clamp(24px,3vw,36px)] font-semibold tracking-tight text-[#0a2357]">
+        <h2 className="mt-2 font-noto-sans text-[28px] sm:text-[34px] lg:text-[40px] font-bold tracking-tight leading-[1.15] text-[#0a2357]">
           Featured moments
         </h2>
         <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">

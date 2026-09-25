@@ -143,7 +143,7 @@ export default function TechnologyStackToggle() {
                 {active} Stack
               </span>
             </div>
-            <h2 className="font-noto-sans text-[clamp(24px,2.8vw,36px)] font-extrabold leading-tight tracking-[-0.03em] text-[#0B0F19]">
+            <h2 className="font-noto-sans text-[28px] sm:text-[34px] lg:text-[40px] font-bold leading-[1.15] tracking-tight text-[#0B0F19]">
               {active} Stack at IDMS
             </h2>
             <AnimatePresence mode="wait">

@@ -199,7 +199,7 @@ export default function AudienceSection() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-[32px] md:text-[40px] lg:text-[48px] font-bold text-white mb-4 leading-[1.1] tracking-tight"
+            className="font-noto-sans text-[28px] sm:text-[34px] lg:text-[40px] font-bold text-white mb-4 tracking-tight leading-[1.15]"
           >
             Smart ERP Is Designed for <br />
             <span className="text-transparent bg-clip-text bg-[linear-gradient(120deg,#468BEF,#9600FA,#FF0078)]">

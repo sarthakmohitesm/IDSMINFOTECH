@@ -364,7 +364,7 @@ export default function TestimonialSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: 0.05 }}
-                className="text-[26px] sm:text-[32px] lg:text-[36px] font-extrabold tracking-tight text-[#0B0F19] leading-tight"
+                className="font-noto-sans text-[28px] sm:text-[34px] lg:text-[40px] font-bold tracking-tight text-[#0B0F19] leading-[1.15]"
               >
                 Trusted by{' '}
                 <span className="bg-gradient-to-r from-[#2563EB] to-[#4338CA] bg-clip-text text-transparent">

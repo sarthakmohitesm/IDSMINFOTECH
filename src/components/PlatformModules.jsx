@@ -452,7 +452,7 @@ export default function PlatformModules() {
                 <Sparkles className="w-3.5 h-3.5" />
                 <span>Modular Operating Architecture</span>
               </div>
-              <h2 className="text-[24px] sm:text-[30px] lg:text-[34px] font-extrabold tracking-tight text-[#0F172A] leading-tight">
+              <h2 className="font-noto-sans text-[28px] sm:text-[34px] lg:text-[40px] font-bold tracking-tight text-[#0F172A] leading-[1.15]">
                 Explore All 11+ Modules in <span className="text-[#2563EB]">3D Perspective</span>
               </h2>
             </div>

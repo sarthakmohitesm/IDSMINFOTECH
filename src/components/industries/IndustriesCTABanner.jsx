@@ -15,7 +15,7 @@ export default function IndustriesCTABanner() {
       <div className="container mx-auto px-6 py-24 text-center relative z-10">
         <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '2px', background: 'linear-gradient(90deg, #008FFF, #00C9FF)' }}></div>
         <div className="max-w-3xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-8">Ready to see how IDMS fits your operations?</h2>
+          <h2 className="font-noto-sans text-[28px] sm:text-[34px] lg:text-[40px] font-bold text-white mb-8 tracking-tight leading-[1.15]">Ready to see how IDMS fits your operations?</h2>
           <p className="text-lg text-gray-400 mb-12">
             Our experts don't just speak code — they speak your industry language. Schedule a workshop to discuss your specific operational challenges.
           </p>

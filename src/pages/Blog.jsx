@@ -304,7 +304,7 @@ export default function Blog() {
 
       <section className="bg-[linear-gradient(to_right,#2555eb,#2575eb)] px-4 py-3 lg:px-[80px]">
         <div className="flex w-full flex-wrap items-center justify-between gap-x-10 gap-y-3 lg:flex-nowrap">
-          <h2 className="shrink-0 font-noto-sans text-[clamp(26px,3vw,34px)] leading-[0.95] tracking-[-0.03em] text-white">
+          <h2 className="shrink-0 font-noto-sans text-[28px] sm:text-[34px] lg:text-[40px] font-bold leading-[1.15] tracking-tight text-white">
             Insights
           </h2>
 
@@ -373,7 +373,7 @@ export default function Blog() {
               <p className="font-noto-sans text-[clamp(20px,2.2vw,28px)] font-semibold sm:text-[22px] lg:text-[24px] leading-[1.08] tracking-[-0.03em] text-[#0a0a0a]">
                 {featuredStory.label}
               </p>
-              <h2 className="mt-3 max-w-237.5 font-noto-sans text-[clamp(23px,2.4vw,34px)] font-semibold leading-[1.08] tracking-[-0.03em] text-[#122a66]">
+              <h2 className="mt-3 max-w-237.5 font-noto-sans text-[28px] sm:text-[34px] lg:text-[40px] font-bold leading-[1.15] tracking-tight text-[#122a66]">
                 {featuredStory.title}
               </h2>
               <p className="mt-3 max-w-275 font-noto-sans text-[14px] leading-normal text-[#121212] sm:text-[16px]">

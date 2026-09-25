@@ -127,7 +127,7 @@ export default function CaseStudySection() {
                 </div>
                 
                 <div className="flex-1 min-h-0 flex flex-col justify-center">
-                  <h2 className="text-[34px] md:text-[38px] font-bold text-[#122a66] mb-5 leading-[1.15] tracking-tight font-noto-sans">
+                  <h2 className="font-noto-sans text-[28px] sm:text-[34px] lg:text-[40px] font-bold text-[#122a66] mb-5 tracking-tight leading-[1.15]">
                     {currentStudy.title}
                   </h2>
                   

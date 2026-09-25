@@ -136,7 +136,7 @@ export default function ValueSection() {
           </div>
 
           {/* Heading: Enterprise Operations Made Intelligent */}
-          <h2 className="font-noto-sans text-[22px] sm:text-[26px] lg:text-[30px] font-extrabold tracking-tight text-[#0F172A] leading-tight mb-1">
+          <h2 className="font-noto-sans text-[28px] sm:text-[34px] lg:text-[40px] font-bold tracking-tight text-[#0F172A] leading-[1.15] mb-1">
             Enterprise Operations Made{' '}
             <span className="text-[#059669]">Intelligent</span>
           </h2>

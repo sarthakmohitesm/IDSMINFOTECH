@@ -509,7 +509,7 @@ export default function ServicesPage() {
       <section className="sol-container sol-reveal" ref={processRef} style={{ maxWidth: '1280px' }}>
         <div style={{ textAlign: 'center', marginBottom: '24px' }}>
           <div style={{ color: 'var(--color-primary)', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '2px', fontSize: '0.85rem', marginBottom: '16px' }}>Our Process</div>
-          <h2 style={{ fontSize: '2.5rem', fontWeight: '800', marginBottom: '16px', color: 'var(--color-text-primary)' }}>How We Deliver</h2>
+          <h2 className="font-noto-sans text-[28px] sm:text-[34px] lg:text-[40px] font-bold tracking-tight leading-[1.15]" style={{ marginBottom: '16px', color: 'var(--color-text-primary)' }}>How We Deliver</h2>
           <p style={{ color: 'var(--color-text-secondary)', fontSize: '1.1rem' }}>A production‑first playbook that keeps releases reliable and reversible.</p>
         </div>
         <div className="sol-wave-container">
@@ -545,7 +545,7 @@ export default function ServicesPage() {
         <div className="sol-container sol-reveal" ref={modelsRef}>
           <div style={{ textAlign: 'center', marginBottom: '48px' }}>
             <div style={{ color: 'var(--color-primary)', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '2px', fontSize: '0.85rem', marginBottom: '16px' }}>How We Work Together</div>
-            <h2 style={{ fontSize: '2.5rem', fontWeight: '800', marginBottom: '16px', color: 'var(--color-text-primary)' }}>Choose Your Engagement Model</h2>
+            <h2 className="font-noto-sans text-[28px] sm:text-[34px] lg:text-[40px] font-bold tracking-tight leading-[1.15]" style={{ marginBottom: '16px', color: 'var(--color-text-primary)' }}>Choose Your Engagement Model</h2>
             <p style={{ color: 'var(--color-text-secondary)', fontSize: '1.1rem' }}>Every model comes with the same enterprise-grade foundation.</p>
           </div>
           <div className="sol-model-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '24px', marginBottom: '48px' }}>
@@ -605,7 +605,7 @@ export default function ServicesPage() {
         <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '2px', background: 'linear-gradient(135deg, var(--color-primary), var(--color-magenta))' }}></div>
         <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '800px', height: '800px', background: 'radial-gradient(circle, rgba(0,143,255,0.1) 0%, transparent 60%)', zIndex: 0, pointerEvents: 'none', borderRadius: '50%' }}></div>
         <div style={{ position: 'relative', zIndex: 1, maxWidth: '800px', margin: '0 auto' }}>
-          <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3.5rem)', fontWeight: '800', marginBottom: '24px', color: 'var(--color-bg-default)' }}>Ready to transform your operations?</h2>
+          <h2 className="font-noto-sans text-[28px] sm:text-[34px] lg:text-[40px] font-bold tracking-tight leading-[1.15]" style={{ marginBottom: '24px', color: 'var(--color-bg-default)' }}>Ready to transform your operations?</h2>
           <p style={{ color: 'var(--color-text-secondary)', fontSize: '1.2rem', marginBottom: '40px' }}>
             Let's align on outcomes and craft the right engagement model for you.
           </p>

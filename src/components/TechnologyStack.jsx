@@ -91,7 +91,7 @@ export default function TechnologyStack() {
             <div className="font-noto-sans text-[11.5px] font-bold uppercase tracking-[0.25em] text-[#0083FF]">
               STACK OVERVIEW
             </div>
-            <h2 className="mt-3 font-noto-sans text-[clamp(28px,3.2vw,44px)] font-black leading-[1.12] tracking-[-0.04em] text-[#122a66]">
+            <h2 className="mt-3 font-noto-sans text-[28px] sm:text-[34px] lg:text-[40px] font-bold leading-[1.15] tracking-tight text-[#122a66]">
               Engineering Stack for <br className="hidden sm:inline" />
               Enterprise Platforms
             </h2>

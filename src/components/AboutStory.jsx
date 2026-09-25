@@ -170,7 +170,7 @@ const AboutStory = () => {
           <p className="mb-1.5 font-noto-sans text-[11px] font-bold uppercase tracking-[0.2em] text-[#0083FF] md:mb-2">
             Our journey
           </p>
-          <h2 className="font-noto-sans text-2xl font-bold leading-tight tracking-tight text-[#122a66] md:text-3xl lg:text-4xl">
+          <h2 className="font-noto-sans text-[28px] sm:text-[34px] lg:text-[40px] font-bold leading-[1.15] tracking-tight text-[#122a66]">
             Milestones that shaped IDMS
           </h2>
         </header>

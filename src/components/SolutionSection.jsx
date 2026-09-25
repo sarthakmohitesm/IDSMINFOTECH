@@ -233,7 +233,7 @@ export default function SolutionSection() {
               <span className="w-1.5 h-1.5 rounded-full bg-blue-600 animate-pulse" />
               <span>Modular Platform</span>
             </div>
-            <h2 className="text-[32px] sm:text-[44px] font-extrabold tracking-tight leading-[1.12] text-[#0B0F19]">
+            <h2 className="font-noto-sans text-[28px] sm:text-[34px] lg:text-[40px] font-bold tracking-tight leading-[1.15] text-[#0B0F19]">
               A Unified Business Ecosystem
             </h2>
             <p className="text-[15px] sm:text-[16px] text-[#64748B] mt-2 max-w-xl">

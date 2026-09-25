@@ -28,7 +28,7 @@ export default function CmsBlogSection() {
     <section className="border-b border-slate-200/80 bg-white px-4 py-10 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-345">
         <p className="font-noto-sans text-[11px] font-bold uppercase tracking-[0.2em] text-[#2555eb]">From the CMS</p>
-        <h2 className="mt-2 font-noto-sans text-[clamp(22px,2.4vw,30px)] font-semibold tracking-tight text-[#122a66]">
+        <h2 className="mt-2 font-noto-sans text-[28px] sm:text-[34px] lg:text-[40px] font-bold tracking-tight leading-[1.15] text-[#122a66]">
           Latest posts
         </h2>
         <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

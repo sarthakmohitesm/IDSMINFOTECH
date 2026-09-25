@@ -133,7 +133,7 @@ export default function IndustriesGrid() {
         {/* HEADER SECTION */}
         <div className="mb-8 flex shrink-0 flex-col gap-4 md:flex-row md:items-end md:justify-between pr-4 lg:pr-0">
           <div className="min-w-0">
-            <h2 className="font-noto-sans !text-[40px] font-bold tracking-tight leading-[1.1] text-[#122a66]">
+            <h2 className="font-noto-sans text-[28px] sm:text-[34px] lg:text-[40px] font-bold tracking-tight leading-[1.15] text-[#122a66]">
               Industries <span className="!text-[40px]">We Cater To</span>
             </h2>
             <p className="text-[#374151] mt-2 text-lg">Operational workflows mapped to each industry from planning to dispatch.</p>

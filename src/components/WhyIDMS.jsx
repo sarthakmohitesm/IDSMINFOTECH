@@ -35,7 +35,7 @@ const WhyIDMS = () => {
             WHY IDMS INFOTECH
           </motion.p>
 
-          <h2 className="text-[28px] md:text-[34px] lg:text-[40px] font-bold text-[#122a66] mb-4 font-noto-sans tracking-tight leading-[1.1]">
+          <h2 className="font-noto-sans text-[28px] sm:text-[34px] lg:text-[40px] font-bold text-[#122a66] mb-4 tracking-tight leading-[1.15]">
             Why Businesses Choose IDMS
           </h2>
 

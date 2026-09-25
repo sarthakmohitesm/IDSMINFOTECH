@@ -141,7 +141,7 @@ export default function ContactFormSection() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: 0.05 }}
-                  className="text-[32px] sm:text-[38px] font-extrabold tracking-tight text-[#0B0F19] leading-[1.15] mb-2.5"
+                  className="font-noto-sans text-[28px] sm:text-[34px] lg:text-[40px] font-bold tracking-tight text-[#0B0F19] leading-[1.15] mb-2.5"
                 >
                   Get in <span className="text-[#2563EB]">Touch</span>
                 </motion.h2>

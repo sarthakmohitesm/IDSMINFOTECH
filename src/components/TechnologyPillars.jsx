@@ -84,7 +84,7 @@ const TechnologyPillars = () => {
           {/* Inner Content */}
           <div className="bg-gradient-to-r from-[#591BFF] via-[#468BEF] to-[#0FC2C0] rounded-[5px] px-8 py-8 md:py-10 flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left">
             <div className="max-w-3xl">
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 leading-tight">
+              <h2 className="font-noto-sans text-[28px] sm:text-[34px] lg:text-[40px] font-bold text-white mb-4 tracking-tight leading-[1.15]">
                 Pick MEAN or MERN.<br />
                 Keep everything else consistent.
               </h2>

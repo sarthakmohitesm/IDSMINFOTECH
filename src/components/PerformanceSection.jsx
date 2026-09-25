@@ -283,7 +283,7 @@ export default function PerformanceSection() {
               <Sparkles className="w-3.5 h-3.5 text-[#2563EB]" />
               Enterprise Performance & Scalability
             </div>
-            <h2 className="text-[#0B0F19] text-[26px] sm:text-[32px] font-extrabold tracking-[-0.03em] leading-tight">
+            <h2 className="font-noto-sans text-[28px] sm:text-[34px] lg:text-[40px] font-bold text-[#0B0F19] tracking-tight leading-[1.15]">
               IDMS Infotech in Numbers
             </h2>
           </div>

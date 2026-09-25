@@ -107,7 +107,7 @@ function ExpertiseTree() {
           <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-50 border border-purple-100 text-[#9600FA] text-xs font-bold uppercase tracking-widest mb-6 shadow-sm">
             <span className="w-2 h-2 rounded-full bg-[#9600FA] animate-pulse"></span>What We Do
           </span>
-          <h2 className="text-4xl md:text-5xl font-bold text-[#111827] mb-4 font-noto-sans">
+          <h2 className="font-noto-sans text-[28px] sm:text-[34px] lg:text-[40px] font-bold text-[#111827] mb-4 tracking-tight leading-[1.15]">
             Our Expertise <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#9600FA] to-[#468BEF]">(No Hype)</span>
           </h2>
           <p className="text-gray-500 text-lg max-w-2xl mx-auto font-noto-sans">
@@ -313,7 +313,7 @@ function WhatDrivesUsTree() {
 
       <div className="relative z-10 mx-auto max-w-6xl px-6">
         <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-12 text-center">
-          <h2 className="font-noto-sans text-4xl font-bold text-[#111827] md:text-5xl">
+          <h2 className="font-noto-sans text-[28px] sm:text-[34px] lg:text-[40px] font-bold text-[#111827] tracking-tight leading-[1.15]">
             What <span className="bg-gradient-to-r from-[#FF0078] via-[#9600FA] to-[#468BEF] bg-clip-text text-transparent">Drives Us</span>
           </h2>
         </motion.div>
@@ -539,7 +539,7 @@ function OurTeam() {
           className="text-center mb-10"
         >
           <div className="mx-auto mb-4 h-[3px] w-24 rounded-full bg-gradient-to-r from-[#FF0078] via-[#9600FA] to-[#468BEF]"></div>
-          <h2 className="text-4xl md:text-5xl font-bold text-[#111827] font-noto-sans">
+          <h2 className="font-noto-sans text-[28px] sm:text-[34px] lg:text-[40px] font-bold text-[#111827] tracking-tight leading-[1.15]">
             Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF0078] via-[#9600FA] to-[#468BEF]">Leadership</span>
           </h2>
           <p className="mx-auto mt-4 max-w-2xl font-noto-sans text-sm leading-relaxed text-gray-500 md:text-base">

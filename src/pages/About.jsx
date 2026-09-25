@@ -238,7 +238,7 @@ export default function About() {
             {/* Left Text Block */}
             <div className="lg:col-span-7 xl:col-span-7">
               <p className="text-[#0083FF] font-bold tracking-[0.2em] text-[11px] mb-4 uppercase">Our Mission</p>
-              <h2 className="text-[40px] font-bold text-[#122a66] mb-2 font-noto-sans tracking-tight">
+              <h2 className="font-noto-sans text-[28px] sm:text-[34px] lg:text-[40px] font-bold text-[#122a66] mb-2 tracking-tight leading-[1.15]">
                 Enterprise Modernization
               </h2>
               <div className="inline-block px-3 py-1 bg-slate-100 rounded-full text-[12px] font-bold text-slate-500 uppercase tracking-widest mb-6">

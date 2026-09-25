@@ -141,7 +141,7 @@ function StickyScrollGallery() {
         <div className="mx-auto flex max-w-[1480px] flex-col gap-10 px-4 py-16 sm:px-6 lg:flex-row lg:gap-14 lg:px-[80px]">
           <div className="lg:w-[340px] lg:flex-shrink-0">
             <div className="lg:sticky lg:top-48">
-              <h2 className="mt-3 font-rajdhani text-[clamp(28px,3.4vw,48px)] font-semibold leading-[0.96] tracking-[-0.04em] text-white">
+              <h2 className="mt-3 font-noto-sans text-[28px] sm:text-[34px] lg:text-[40px] font-bold leading-[1.15] tracking-tight text-white">
                 Work in Motion
               </h2>
               <motion.div
@@ -677,7 +677,7 @@ export default function Gallery() {
             transition={{ duration: 0.55 }}
           >
             <div className="mb-8">
-              <h2 className="mt-3 text-[#122a66] text-[clamp(28px,3.4vw,48px)] font-bold leading-[0.96] tracking-[-0.04em]">
+              <h2 className="mt-3 font-noto-sans text-[28px] sm:text-[34px] lg:text-[40px] font-bold leading-[1.15] tracking-tight text-[#122a66]">
                 Gallery Highlights
               </h2>
             </div>

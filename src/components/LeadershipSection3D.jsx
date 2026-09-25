@@ -6,7 +6,6 @@ import {
   useTransform,
   useMotionValue,
 } from 'framer-motion';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 import pic1 from '../assets/pics/06_JPG.avif';
 import pic2 from '../assets/pics/07_JPG.avif';
@@ -20,37 +19,31 @@ const LEADERS = [
     name: 'Shailesh Deshpande',
     role: 'MANAGING DIRECTOR',
     image: pic2,
-    accentColor: '#0066FF',
   },
   {
-    name: 'Nikhil Mohan',
+    name: 'Nikhil Moharil',
     role: 'TECHNICAL DIRECTOR',
     image: pic1,
-    accentColor: '#0066FF',
   },
   {
-    name: 'Rohan Pathwankar',
+    name: 'Rohan Pathradkar',
     role: 'GROUP PRODUCT MANAGER',
     image: ruhanImage,
-    accentColor: '#0066FF',
   },
   {
-    name: 'Priya Deshpande',
-    role: 'HEAD – HR & ADMIN',
+    name: 'Nishigandha Kamlapurkar',
+    role: 'GROUP PRODUCT MANAGER',
     image: nishigandhaImage,
-    accentColor: '#0066FF',
   },
   {
-    name: 'Minal Jadhav',
-    role: 'FINANCE MANAGER',
+    name: 'Payal Deo',
+    role: 'GROUP PRODUCT MANAGER',
     image: payalImage,
-    accentColor: '#0066FF',
   },
   {
-    name: 'Vivek Desai',
-    role: 'OPERATIONS HEAD',
+    name: 'Nilesh Saraf',
+    role: 'GROUP PRODUCT MANAGER',
     image: nileshSarafImage,
-    accentColor: '#0066FF',
   },
 ];
 
@@ -79,10 +72,10 @@ function PortraitCard({ person, index, delay = 0 }) {
   return (
     <motion.div
       ref={cardRef}
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 16 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-20px' }}
-      transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1], delay }}
+      transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1], delay }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       style={{ perspective: 1000 }}
@@ -94,7 +87,7 @@ function PortraitCard({ person, index, delay = 0 }) {
         className="relative w-full overflow-hidden rounded-2xl shadow-sm hover:shadow-md border border-slate-200/80 bg-white flex flex-col transition-all duration-300"
       >
         {/* Top Portrait Image Section */}
-        <div className="relative w-full aspect-[4/3.9] overflow-hidden bg-gradient-to-b from-slate-200 to-slate-300">
+        <div className="relative w-full aspect-[4/3.9] overflow-hidden bg-gradient-to-b from-[#e2e8f0] to-[#cbd5e1]">
           <img
             src={person.image}
             alt={person.name}
@@ -123,7 +116,6 @@ function PortraitCard({ person, index, delay = 0 }) {
 /* ── Main Section ── */
 export default function LeadershipSection3D() {
   const sectionRef = useRef(null);
-  const carouselRef = useRef(null);
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -136,41 +128,32 @@ export default function LeadershipSection3D() {
     restDelta: 0.001,
   });
 
-  const bgLineY = useTransform(smoothScroll, [0, 1], [-20, 20]);
-
-  const scroll = (direction) => {
-    if (!carouselRef.current) return;
-    const scrollAmount = 300;
-    carouselRef.current.scrollBy({
-      left: direction === 'left' ? -scrollAmount : scrollAmount,
-      behavior: 'smooth',
-    });
-  };
+  const bgLineY = useTransform(smoothScroll, [0, 1], [-15, 15]);
 
   return (
     <section
       ref={sectionRef}
-      className="relative w-full py-10 sm:py-12 lg:py-16 px-4 sm:px-8 lg:px-14 xl:px-20 overflow-hidden select-none bg-white border-t border-slate-200/80"
+      className="relative w-full py-12 sm:py-16 lg:py-20 px-4 sm:px-8 lg:px-12 xl:px-16 overflow-hidden select-none bg-white border-t border-slate-100"
     >
-      {/* Subtle grid pattern */}
+      {/* Subtle vertical and grid background pattern */}
       <div
-        className="pointer-events-none absolute inset-0 opacity-50 bg-[linear-gradient(to_right,#f1f5f9_1px,transparent_1px),linear-gradient(to_bottom,#f1f5f9_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_85%_65%_at_50%_40%,#000_60%,transparent_100%)]"
+        className="pointer-events-none absolute inset-0 opacity-[0.45] bg-[linear-gradient(to_right,#f1f5f9_1px,transparent_1px),linear-gradient(to_bottom,#f8fafc_1px,transparent_1px)] bg-[size:60px_60px] [mask-image:radial-gradient(ellipse_90%_70%_at_50%_40%,#000_65%,transparent_100%)]"
         aria-hidden="true"
       />
 
-      {/* Ambient glow orbs */}
+      {/* Ambient subtle blue glow */}
       <motion.div
-        style={{ y: bgLineY, background: 'radial-gradient(circle, rgba(0,102,255,0.06) 0%, transparent 70%)' }}
-        className="absolute -top-20 -left-20 w-[450px] h-[450px] rounded-full blur-[80px] pointer-events-none"
+        style={{ y: bgLineY, background: 'radial-gradient(circle, rgba(0,102,255,0.05) 0%, transparent 70%)' }}
+        className="absolute -top-24 -left-24 w-[500px] h-[500px] rounded-full blur-[90px] pointer-events-none"
         aria-hidden="true"
       />
       <motion.div
-        style={{ y: bgLineY, background: 'radial-gradient(circle, rgba(99,102,241,0.05) 0%, transparent 70%)' }}
-        className="absolute -bottom-20 -right-20 w-[400px] h-[400px] rounded-full blur-[70px] pointer-events-none"
+        style={{ y: bgLineY, background: 'radial-gradient(circle, rgba(99,102,241,0.04) 0%, transparent 70%)' }}
+        className="absolute -bottom-24 -right-24 w-[450px] h-[450px] rounded-full blur-[80px] pointer-events-none"
         aria-hidden="true"
       />
 
-      <div className="max-w-[1440px] mx-auto relative z-10 w-full">
+      <div className="max-w-[1400px] mx-auto relative z-10 w-full">
 
         {/* ── Section Header — Top Left ── */}
         <motion.div
@@ -178,18 +161,18 @@ export default function LeadershipSection3D() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-40px' }}
           transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-          className="mb-8 sm:mb-10"
+          className="mb-8 sm:mb-10 text-left"
         >
           {/* Eyebrow Pill Badge */}
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50/90 border border-blue-100 mb-3">
-            <span className="w-5 h-[2px] bg-[#0066FF] rounded-full" />
-            <span className="text-[10.5px] font-bold tracking-[0.2em] uppercase text-[#0066FF]">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50/90 border border-blue-100/90 mb-3.5">
+            <span className="w-4 h-[2px] bg-[#0066FF] rounded-full" />
+            <span className="text-[10px] sm:text-[10.5px] font-bold tracking-[0.16em] uppercase text-[#0066FF]">
               OUR LEADERSHIP
             </span>
           </div>
 
-          {/* Heading */}
-          <h2 className="text-[28px] sm:text-[34px] lg:text-[40px] font-extrabold text-[#0B0F19] font-noto-sans tracking-tight leading-tight">
+          {/* Main Heading */}
+          <h2 className="font-noto-sans text-[28px] sm:text-[34px] lg:text-[40px] font-bold text-[#0B0F19] tracking-tight leading-[1.15]">
             The Minds Behind{' '}
             <span className="text-[#0066FF]">
               IDMS
@@ -197,45 +180,23 @@ export default function LeadershipSection3D() {
           </h2>
 
           {/* Subtitle */}
-          <p className="mt-2.5 text-[14px] sm:text-[15px] text-[#475569] leading-relaxed max-w-xl font-noto-sans">
+          <p className="mt-2.5 text-[14px] sm:text-[15px] text-[#475569] leading-relaxed max-w-xl font-noto-sans font-normal">
             Visionaries and engineers who have built one of India's most respected enterprise digital platforms.
           </p>
         </motion.div>
 
-        {/* ── Leaders Row / Carousel with Left & Right Arrows ── */}
-        <div className="relative w-full flex items-center">
-          {/* Left Arrow Button */}
-          <button
-            onClick={() => scroll('left')}
-            className="absolute -left-3 sm:-left-5 z-20 w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white shadow-md border border-slate-200 text-[#0066FF] flex items-center justify-center hover:bg-blue-50 hover:scale-105 active:scale-95 transition-all duration-200"
-            aria-label="Previous Leaders"
-          >
-            <ChevronLeft className="w-5 h-5" />
-          </button>
-
-          {/* Cards Grid / Container */}
-          <div
-            ref={carouselRef}
-            className="w-full grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4 overflow-x-auto no-scrollbar scroll-smooth py-2 px-1"
-          >
+        {/* ── Leaders Row — 6 Cards in Single Row ── */}
+        <div className="w-full">
+          <div className="w-full grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4 py-2">
             {LEADERS.map((person, i) => (
               <PortraitCard
                 key={person.name}
                 person={person}
                 index={i}
-                delay={i * 0.05}
+                delay={i * 0.04}
               />
             ))}
           </div>
-
-          {/* Right Arrow Button */}
-          <button
-            onClick={() => scroll('right')}
-            className="absolute -right-3 sm:-right-5 z-20 w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white shadow-md border border-slate-200 text-[#0066FF] flex items-center justify-center hover:bg-blue-50 hover:scale-105 active:scale-95 transition-all duration-200"
-            aria-label="Next Leaders"
-          >
-            <ChevronRight className="w-5 h-5" />
-          </button>
         </div>
 
       </div>

@@ -139,7 +139,7 @@ export default function CTASection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.55, delay: 0.08 }}
-              className="mb-4 text-[30px] sm:text-[40px] md:text-[48px] font-extrabold tracking-[-0.035em] text-[#0B0F19] leading-[1.12]"
+              className="font-noto-sans text-[28px] sm:text-[34px] lg:text-[40px] font-bold tracking-tight text-[#0B0F19] leading-[1.15]"
             >
               Run Your Operations{' '}
               <span className="relative inline-block text-[#2563EB]">

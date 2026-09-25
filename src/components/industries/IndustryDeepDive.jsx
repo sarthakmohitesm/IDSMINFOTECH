@@ -111,7 +111,7 @@ export default function IndustryDeepDive() {
         {/* Header Section: Title + Right aligned Tabs */}
         <div className="flex flex-col md:flex-row md:items-start justify-between mb-8 gap-8">
           <div className="max-w-2xl">
-            <h2 className="text-[36px] md:text-[40px] font-bold text-[#122a66] leading-tight tracking-tight">
+            <h2 className="font-noto-sans text-[28px] sm:text-[34px] lg:text-[40px] font-bold text-[#122a66] leading-[1.15] tracking-tight">
               Industry-Specific ERP Capabilities
             </h2>
           </div>

@@ -57,59 +57,53 @@ const STEPS = [
   }
 ];
 
-/* ── Hardware-Accelerated Smooth Single Card Switch (No Overlap, Clean Disappear) ── */
+/* ── Hardware-Accelerated Smooth Single Card Switch (Original Slide-Up with Disappearing Previous Card) ── */
 function CrispStackCard({ step, index, smoothProgress, onSelect }) {
   const IconComponent = step.icon;
 
-  // Declarative range transforms running directly on GPU compositor thread (No JS loop lag)
-  // Card 0: active [0 -> 0.20], exits [0.20 -> 0.27]
-  const opacity0 = useTransform(smoothProgress, [0, 0.20, 0.27], [1, 1, 0]);
-  const y0 = useTransform(smoothProgress, [0, 0.20, 0.27], [0, 0, -35]);
-  const scale0 = useTransform(smoothProgress, [0, 0.20, 0.27], [1, 1, 0.96]);
+  // Original slide-up motion from bottom (y: 520 -> 0)
+  // Previous cards fade out completely as the incoming card slides over them so they don't overlap
 
-  // Card 1: enters [0.20 -> 0.27], active [0.27 -> 0.45], exits [0.45 -> 0.52]
-  const opacity1 = useTransform(smoothProgress, [0.20, 0.27, 0.45, 0.52], [0, 1, 1, 0]);
-  const y1 = useTransform(smoothProgress, [0.20, 0.27, 0.45, 0.52], [40, 0, 0, -35]);
-  const scale1 = useTransform(smoothProgress, [0.20, 0.27, 0.45, 0.52], [0.96, 1, 1, 0.96]);
+  // Card 0: Starts in place, fades out as Card 1 slides up over it (0.20 -> 0.28)
+  const y0 = useTransform(smoothProgress, [0, 0.28], [0, 0]);
+  const opacity0 = useTransform(smoothProgress, [0, 0.20, 0.28], [1, 1, 0]);
 
-  // Card 2: enters [0.45 -> 0.52], active [0.52 -> 0.70], exits [0.70 -> 0.77]
-  const opacity2 = useTransform(smoothProgress, [0.45, 0.52, 0.70, 0.77], [0, 1, 1, 0]);
-  const y2 = useTransform(smoothProgress, [0.45, 0.52, 0.70, 0.77], [40, 0, 0, -35]);
-  const scale2 = useTransform(smoothProgress, [0.45, 0.52, 0.70, 0.77], [0.96, 1, 1, 0.96]);
+  // Card 1: Enters sliding up from bottom (0.08 -> 0.28), stays active, fades out as Card 2 slides over it (0.48 -> 0.56)
+  const y1 = useTransform(smoothProgress, [0.08, 0.28, 0.48, 0.56], [520, 0, 0, 0]);
+  const opacity1 = useTransform(smoothProgress, [0.08, 0.20, 0.48, 0.56], [0, 1, 1, 0]);
 
-  // Card 3: enters [0.70 -> 0.77], active [0.77 -> 1.0]
-  const opacity3 = useTransform(smoothProgress, [0.70, 0.77, 1.0], [0, 1, 1]);
-  const y3 = useTransform(smoothProgress, [0.70, 0.77, 1.0], [40, 0, 0]);
-  const scale3 = useTransform(smoothProgress, [0.70, 0.77, 1.0], [0.96, 1, 1]);
+  // Card 2: Enters sliding up from bottom (0.38 -> 0.58), stays active, fades out as Card 3 slides over it (0.78 -> 0.86)
+  const y2 = useTransform(smoothProgress, [0.38, 0.58, 0.78, 0.86], [520, 0, 0, 0]);
+  const opacity2 = useTransform(smoothProgress, [0.38, 0.50, 0.78, 0.86], [0, 1, 1, 0]);
+
+  // Card 3: Enters sliding up from bottom (0.68 -> 0.88), remains active
+  const y3 = useTransform(smoothProgress, [0.68, 0.88], [520, 0]);
+  const opacity3 = useTransform(smoothProgress, [0.68, 0.80], [0, 1]);
 
   let yValue = y0;
   let opacityValue = opacity0;
-  let scaleValue = scale0;
 
   if (index === 1) {
     yValue = y1;
     opacityValue = opacity1;
-    scaleValue = scale1;
   } else if (index === 2) {
     yValue = y2;
     opacityValue = opacity2;
-    scaleValue = scale2;
   } else if (index === 3) {
     yValue = y3;
     opacityValue = opacity3;
-    scaleValue = scale3;
   }
 
   const pointerEventsValue = useTransform(opacityValue, (v) => (v > 0.1 ? 'auto' : 'none'));
+  const zIndex = 10 + index * 10;
 
   return (
     <motion.div
       style={{
         y: yValue,
         opacity: opacityValue,
-        scale: scaleValue,
         pointerEvents: pointerEventsValue,
-        zIndex: 10,
+        zIndex,
       }}
       onClick={() => onSelect(index)}
       className="absolute top-0 left-0 right-0 w-full max-w-[880px] mx-auto transform-gpu cursor-pointer"

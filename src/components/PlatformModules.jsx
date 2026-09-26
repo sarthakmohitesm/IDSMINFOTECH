@@ -424,9 +424,19 @@ export default function PlatformModules() {
     <section
       ref={containerRef}
       // Height gives ample scroll track to cycle through 12 modules comfortably
-      className="relative w-full bg-[#FAFBFD] select-none"
+      className="relative w-full bg-[#ebebff] select-none"
       style={{ height: '340vh' }}
     >
+      {/* Subtle grid on light blue */}
+      <div
+        className="pointer-events-none absolute inset-0 opacity-[0.35]"
+        style={{
+          backgroundImage:
+            'linear-gradient(rgba(15,23,42,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(15,23,42,0.06) 1px, transparent 1px)',
+          backgroundSize: '60px 60px'
+        }}
+      />
+
       {/* Top Hairline Divider */}
       <div
         className="absolute top-0 left-0 right-0 z-30 pointer-events-none h-px w-full"
@@ -446,15 +456,12 @@ export default function PlatformModules() {
         {/* ── 1. HEADER & INTERACTIVE MODULE PILL BAR ── */}
         <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-[80px] z-20 shrink-0">
           {/* Top text row */}
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-3 mb-3.5">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 mb-3.5">
             <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50/90 border border-blue-200/70 text-[#2563EB] text-[11px] sm:text-xs font-bold uppercase tracking-wider mb-1.5 shadow-xs">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50/90 border border-blue-200/70 text-[#2563EB] text-[11px] sm:text-xs font-bold uppercase tracking-wider shadow-xs">
                 <Sparkles className="w-3.5 h-3.5" />
                 <span>Modular Operating Architecture</span>
               </div>
-              <h2 className="font-noto-sans text-[28px] sm:text-[34px] lg:text-[40px] font-bold tracking-tight text-[#0F172A] leading-[1.15]">
-                Explore All 11+ Modules in <span className="text-[#2563EB]">3D Perspective</span>
-              </h2>
             </div>
 
             {/* Hint & Navigation Buttons */}

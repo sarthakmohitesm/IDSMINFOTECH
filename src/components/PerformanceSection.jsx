@@ -57,48 +57,59 @@ const STEPS = [
   }
 ];
 
-/* ── Hardware-Accelerated Smooth Stacking Card (Crisp & Zero-Lag) ── */
+/* ── Hardware-Accelerated Smooth Single Card Switch (No Overlap, Clean Disappear) ── */
 function CrispStackCard({ step, index, smoothProgress, onSelect }) {
   const IconComponent = step.icon;
 
   // Declarative range transforms running directly on GPU compositor thread (No JS loop lag)
-  // Card 0: Starts in place, shifts up by 18px each time a card stacks over it
-  const y0 = useTransform(smoothProgress, [0, 0.28, 0.58, 0.85], [0, -18, -36, -54]);
+  // Card 0: active [0 -> 0.20], exits [0.20 -> 0.27]
+  const opacity0 = useTransform(smoothProgress, [0, 0.20, 0.27], [1, 1, 0]);
+  const y0 = useTransform(smoothProgress, [0, 0.20, 0.27], [0, 0, -35]);
+  const scale0 = useTransform(smoothProgress, [0, 0.20, 0.27], [1, 1, 0.96]);
 
-  // Card 1: Enters between 0.08 and 0.28, shifts up when Card 2 & 3 stack
-  const y1 = useTransform(smoothProgress, [0.08, 0.28, 0.58, 0.85], [520, 0, -18, -36]);
-  const opacity1 = useTransform(smoothProgress, [0.08, 0.16], [0, 1]);
+  // Card 1: enters [0.20 -> 0.27], active [0.27 -> 0.45], exits [0.45 -> 0.52]
+  const opacity1 = useTransform(smoothProgress, [0.20, 0.27, 0.45, 0.52], [0, 1, 1, 0]);
+  const y1 = useTransform(smoothProgress, [0.20, 0.27, 0.45, 0.52], [40, 0, 0, -35]);
+  const scale1 = useTransform(smoothProgress, [0.20, 0.27, 0.45, 0.52], [0.96, 1, 1, 0.96]);
 
-  // Card 2: Enters between 0.38 and 0.58, shifts up when Card 3 stacks
-  const y2 = useTransform(smoothProgress, [0.38, 0.58, 0.85], [520, 0, -18]);
-  const opacity2 = useTransform(smoothProgress, [0.38, 0.46], [0, 1]);
+  // Card 2: enters [0.45 -> 0.52], active [0.52 -> 0.70], exits [0.70 -> 0.77]
+  const opacity2 = useTransform(smoothProgress, [0.45, 0.52, 0.70, 0.77], [0, 1, 1, 0]);
+  const y2 = useTransform(smoothProgress, [0.45, 0.52, 0.70, 0.77], [40, 0, 0, -35]);
+  const scale2 = useTransform(smoothProgress, [0.45, 0.52, 0.70, 0.77], [0.96, 1, 1, 0.96]);
 
-  // Card 3: Enters between 0.68 and 0.88
-  const y3 = useTransform(smoothProgress, [0.68, 0.88], [520, 0]);
-  const opacity3 = useTransform(smoothProgress, [0.68, 0.76], [0, 1]);
+  // Card 3: enters [0.70 -> 0.77], active [0.77 -> 1.0]
+  const opacity3 = useTransform(smoothProgress, [0.70, 0.77, 1.0], [0, 1, 1]);
+  const y3 = useTransform(smoothProgress, [0.70, 0.77, 1.0], [40, 0, 0]);
+  const scale3 = useTransform(smoothProgress, [0.70, 0.77, 1.0], [0.96, 1, 1]);
 
   let yValue = y0;
-  let opacityValue = null;
+  let opacityValue = opacity0;
+  let scaleValue = scale0;
 
   if (index === 1) {
     yValue = y1;
     opacityValue = opacity1;
+    scaleValue = scale1;
   } else if (index === 2) {
     yValue = y2;
     opacityValue = opacity2;
+    scaleValue = scale2;
   } else if (index === 3) {
     yValue = y3;
     opacityValue = opacity3;
+    scaleValue = scale3;
   }
 
-  const zIndex = 10 + index * 10;
+  const pointerEventsValue = useTransform(opacityValue, (v) => (v > 0.1 ? 'auto' : 'none'));
 
   return (
     <motion.div
       style={{
         y: yValue,
-        opacity: opacityValue || 1,
-        zIndex,
+        opacity: opacityValue,
+        scale: scaleValue,
+        pointerEvents: pointerEventsValue,
+        zIndex: 10,
       }}
       onClick={() => onSelect(index)}
       className="absolute top-0 left-0 right-0 w-full max-w-[880px] mx-auto transform-gpu cursor-pointer"

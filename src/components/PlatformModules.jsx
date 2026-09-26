@@ -35,15 +35,14 @@ const MODULES = [
     title: 'Lead Management',
     tagline: 'CRM & Growth',
     badgeText: 'Pipeline Optimization',
-    desc: 'Capture and qualify leads with pipeline visibility, follow-ups, and sales alignment from first touch to opportunity.',
+    desc: 'Capture, score, and convert leads with complete pipeline visibility and automated follow-ups.',
     items: [
       'Lead capture & scoring',
       'Pipeline tracking',
       'Follow-up workflows',
-      'Source attribution',
       'Sales handoff'
     ],
-    impact: 'Impact: Shorter sales cycles; clear CRM visibility',
+    impact: 'Impact: Shorter sales cycles & CRM visibility',
     image: leadsImage,
     accentColor: '#2563EB',
     tagColor: 'bg-blue-50 text-blue-700 border-blue-200'
@@ -53,15 +52,14 @@ const MODULES = [
     title: 'New Product Development',
     tagline: 'R&D & Innovation',
     badgeText: 'Lifecycle Traceability',
-    desc: 'Run product development with traceability, design collaboration, and documentation from concept through prototype.',
+    desc: 'Track R&D milestones, design revisions, and prototype testing from concept to launch.',
     items: [
-      'Product development stages',
-      'Full traceability',
+      'Stage-gate milestones',
       'Design collaboration',
       'Prototype tracking',
-      'Specification control'
+      'Spec control'
     ],
-    impact: 'Impact: Faster time-to-market; design control',
+    impact: 'Impact: Faster time-to-market & design control',
     image: npdImage,
     accentColor: '#7C3AED',
     tagColor: 'bg-purple-50 text-purple-700 border-purple-200'
@@ -71,15 +69,14 @@ const MODULES = [
     title: 'Purchase',
     tagline: 'Supply Chain Control',
     badgeText: 'Vendor Automation',
-    desc: 'Simplify procurement with vendor coordination, PO visibility, approvals, and clearer buying control across the supply chain.',
+    desc: 'Automate procurement, vendor coordination, PO approvals, and price history tracking.',
     items: [
       'PO automation',
       'Vendor management',
       'Approval tracking',
-      'Price history',
-      'Goods receipt alignment'
+      'Goods receipt matching'
     ],
-    impact: 'Impact: Optimized spending; vendor transparency',
+    impact: 'Impact: Optimized spending & vendor control',
     image: purchaseImage,
     accentColor: '#059669',
     tagColor: 'bg-emerald-50 text-emerald-700 border-emerald-200'
@@ -89,15 +86,14 @@ const MODULES = [
     title: 'Production',
     tagline: 'Shop Floor Intelligence',
     badgeText: 'Real-time Line Telemetry',
-    desc: 'Run the production floor with stronger job order visibility, resource planning, and output monitoring across operations.',
+    desc: 'Monitor shop floor job orders, machine allocation, and real-time WIP output.',
     items: [
       'Job order tracking',
       'Resource allocation',
-      'Output monitoring',
-      'Quality checkpoints',
-      'WIP tracking'
+      'Real-time WIP telemetry',
+      'Quality checkpoints'
     ],
-    impact: 'Impact: Maximum throughput; real-time line visibility',
+    impact: 'Impact: Maximum throughput & line visibility',
     image: productionImage,
     accentColor: '#D97706',
     tagColor: 'bg-amber-50 text-amber-700 border-amber-200'
@@ -107,15 +103,14 @@ const MODULES = [
     title: 'Quality',
     tagline: 'Compliance & Standards',
     badgeText: 'Zero-Defect Protocol',
-    desc: 'Embed quality at every stage with audits, compliance checks, and consistent standards across the plant.',
+    desc: 'Enforce zero-defect protocols with inline inspections, audit logs, and batch testing.',
     items: [
       'Quality audits',
-      'Compliance checks',
       'Inspection workflows',
       'Defect logging',
       'Batch certification'
     ],
-    impact: 'Impact: Zero-defect delivery; full compliance',
+    impact: 'Impact: Zero-defect delivery & full compliance',
     image: qualityImage,
     accentColor: '#DC2626',
     tagColor: 'bg-rose-50 text-rose-700 border-rose-200'
@@ -125,15 +120,14 @@ const MODULES = [
     title: 'Sales',
     tagline: 'Revenue Operations',
     badgeText: 'Quotation Engine',
-    desc: 'Manage the full sales journey from quotations to orders with visibility that supports stronger growth and fulfillment.',
+    desc: 'Accelerate revenue workflows from quotation creation to order fulfillment.',
     items: [
       'Quotation & orders',
       'Order processing',
       'Customer tracking',
-      'Pricing visibility',
       'Delivery coordination'
     ],
-    impact: 'Impact: Higher deal velocity; customer satisfaction',
+    impact: 'Impact: Higher deal velocity & order accuracy',
     image: salesImage,
     accentColor: '#2563EB',
     tagColor: 'bg-blue-50 text-blue-700 border-blue-200'
@@ -143,15 +137,14 @@ const MODULES = [
     title: 'Dispatch',
     tagline: 'Fulfillment & Logistics',
     badgeText: 'Carrier Coordination',
-    desc: 'Coordinate the final leg of delivery with better control over packing, logistics, shipping, and customer communication.',
+    desc: 'Manage packing slips, carrier logistics, shipment tracking, and proof of delivery.',
     items: [
       'Shipment planning',
       'Packing control',
       'Logistics tracking',
-      'Carrier coordination',
       'Delivery confirmation'
     ],
-    impact: 'Impact: On-time delivery; accurate packing',
+    impact: 'Impact: On-time delivery & accurate packing',
     image: dispatchImage,
     accentColor: '#0D9488',
     tagColor: 'bg-teal-50 text-teal-700 border-teal-200'
@@ -161,15 +154,14 @@ const MODULES = [
     title: 'Stores / Inventory',
     tagline: 'Stock Precision',
     badgeText: 'Real-time Inward/Outward',
-    desc: 'Keep inventory visible in real time with inward and outward tracking, material control, and stock alerts.',
+    desc: 'Maintain instant stock visibility with automated inward/outward tracking and low-stock alerts.',
     items: [
       'Real-time stock levels',
-      'Inventory movement',
-      'Smart alerts',
+      'Material movement',
       'Stock valuation',
-      'Expiry & batch control'
+      'Batch & expiry control'
     ],
-    impact: 'Impact: Accurate inventory; reduced wastage',
+    impact: 'Impact: Accurate inventory & zero wastage',
     image: storesImage,
     accentColor: '#EA580C',
     tagColor: 'bg-orange-50 text-orange-700 border-orange-200'
@@ -179,15 +171,14 @@ const MODULES = [
     title: 'Maintenance',
     tagline: 'Asset Health',
     badgeText: 'Predictive Scheduling',
-    desc: 'Reduce downtime with preventive and corrective maintenance scheduling that improves asset reliability and continuity.',
+    desc: 'Prevent equipment downtime with scheduled preventive care and breakdown work orders.',
     items: [
       'Preventive scheduling',
-      'Corrective work orders',
+      'Work orders',
       'Asset lifecycle',
-      'Spare parts linkage',
-      'Breakdown analysis'
+      'Spare parts linkage'
     ],
-    impact: 'Impact: Higher uptime; extended machine life',
+    impact: 'Impact: Higher uptime & extended machine life',
     image: maintenanceImage,
     accentColor: '#4F46E5',
     tagColor: 'bg-indigo-50 text-indigo-700 border-indigo-200'
@@ -197,15 +188,14 @@ const MODULES = [
     title: 'Human Resource',
     tagline: 'People Management',
     badgeText: 'Talent & Attendance Suite',
-    desc: 'Handle payroll, attendance, recruitment, and employee records with administrative workflows in one place.',
+    desc: 'Automate payroll processing, biometric attendance, employee records, and recruitment.',
     items: [
       'Payroll & attendance',
-      'Recruitment',
       'Employee records',
-      'Performance & training',
-      'HR policy workflows'
+      'Recruitment',
+      'Policy workflows'
     ],
-    impact: 'Impact: Efficient administration; happy workforce',
+    impact: 'Impact: Efficient HR administration & payroll',
     image: hrImage,
     accentColor: '#0284C7',
     tagColor: 'bg-sky-50 text-sky-700 border-sky-200'
@@ -215,15 +205,14 @@ const MODULES = [
     title: 'Accounts',
     tagline: 'Financial Integrity',
     badgeText: 'Audit-Ready Ledgers',
-    desc: 'Streamline billing, taxation, payables, receivables, and audit-ready records in one financial operating layer.',
+    desc: 'Manage GST billing, payables, receivables, bank reconciliation, and audit ledgers.',
     items: [
       'Billing & taxation',
       'Payables & receivables',
       'General ledger',
-      'Bank reconciliation',
-      'Audit-ready records'
+      'Bank reconciliation'
     ],
-    impact: 'Impact: Clean accounting; faster closures',
+    impact: 'Impact: Clean accounting & audit readiness',
     image: accountsImage,
     accentColor: '#059669',
     tagColor: 'bg-emerald-50 text-emerald-700 border-emerald-200'
@@ -233,15 +222,14 @@ const MODULES = [
     title: 'Finance',
     tagline: 'Executive Intelligence',
     badgeText: 'Budget & Cashflow Analytics',
-    desc: 'Monitor business health through budgeting, expenses, income visibility, and reporting with better operational clarity.',
+    desc: 'Gain executive clarity with cash flow analytics, budget variance, and financial reporting.',
     items: [
       'Budgeting insights',
       'Expense tracking',
-      'Financial reporting',
       'Cash flow analysis',
-      'Tax compliance'
+      'Financial reporting'
     ],
-    impact: 'Impact: Smart decisions; healthy bottom line',
+    impact: 'Impact: Executive clarity & financial control',
     image: financeImage,
     accentColor: '#2563EB',
     tagColor: 'bg-blue-50 text-blue-700 border-blue-200'
@@ -356,9 +344,24 @@ function Interactive3DDisplay({ activeModule, scrollProgress }) {
 
 export default function PlatformModules() {
   const containerRef = useRef(null);
+  const pillNavRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const [isManualOverride, setIsManualOverride] = useState(false);
   const manualTimeoutRef = useRef(null);
+
+  // Auto-scroll active module pill into view
+  useEffect(() => {
+    if (pillNavRef.current) {
+      const activeEl = pillNavRef.current.children[activeIndex];
+      if (activeEl) {
+        activeEl.scrollIntoView({
+          behavior: 'smooth',
+          block: 'nearest',
+          inline: 'center',
+        });
+      }
+    }
+  }, [activeIndex]);
 
   // Monitor scroll progress across the container
   const { scrollYProgress } = useScroll({
@@ -494,8 +497,8 @@ export default function PlatformModules() {
           </div>
 
           {/* Horizontal Scrollable Pill Rail */}
-          <div className="w-full overflow-x-auto no-scrollbar pb-1 pt-0.5">
-            <div className="flex items-center gap-2 min-w-max">
+          <div className="w-full overflow-x-auto custom-pill-scrollbar pb-2.5 pt-0.5">
+            <div ref={pillNavRef} className="flex items-center gap-2 min-w-max pb-1">
               {MODULES.map((m, idx) => {
                 const isActive = idx === activeIndex;
                 return (
@@ -545,9 +548,6 @@ export default function PlatformModules() {
                   }}
                   className="flex flex-col items-start"
                 >
-                  {/* Category Pill */}
-            <div className="mb-3.5" />
-
                   {/* Module Title */}
                   <h3 className="text-[28px] sm:text-[34px] lg:text-[40px] font-extrabold tracking-tight text-[#0F172A] leading-[1.12] mb-3.5">
                     {activeModule.title}
